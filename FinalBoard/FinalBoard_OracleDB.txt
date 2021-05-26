@@ -1,0 +1,108 @@
+CREATE USER TEAM3 IDENTIFIED BY team3;
+GRANT CONNECT, RESOURCE TO TEAM3;
+GRANT ALTER SESSION TO TEAM3;
+
+CONN TEAM3/team3;
+
+SHOW USER;
+
+-- 게시판
+DROP TABLE BOARD CASCADE CONSTRAINT;
+CREATE TABLE BOARD(
+  NO NUMBER,            						 -- 게시글번호
+  WRITER VARCHAR2(30),						-- 작성자
+  TITLE VARCHAR2(1000),        					-- 게시글제목
+  CONTENT VARCHAR2(4000),    					-- 게시글내용
+  REGDATE DATE DEFAULT SYSDATE,        				 -- 게시글작성날짜
+  CNT NUMBER DEFAULT 0,    					-- 조회수
+  CONSTRAINT BOARD_PK PRIMARY KEY(NO)
+);
+
+ALTER TABLE MEMBER ADD SESSIONKEY VARCHAR(50) DEFAULT 'none' NOT NULL;
+ALTER TABLE MEMBER ADD SESSIONLIMIT TIMESTAMP;
+
+INSERT INTO BOARD(NO,WRITER,TITLE,CONTENT) VALUES(1,'test','안녕하세요 ','첫 게시글입니다 반가워요');
+
+
+COLUMN CNT FORMAT 999;
+COLUMN REGDATE FORMAT A20;
+COLUMN CONTENT FORMAT A30;
+COLUMN TITLE FORMAT A10;
+COLUMN WRITER FORMAT A10;
+COLUMN NO FORMAT 999;
+
+-- 공지사항 시퀀스
+DROP SEQUENCE UNI_SEQ;
+CREATE SEQUENCE UNI_SEQ INCREMENT BY 1 MAXVALUE 1000;
+
+
+-- 공지사항
+DROP TABLE NOTICE CASCADE CONSTRAINT;
+CREATE TABLE NOTICE(
+  UNI NUMBER CONSTRAINT NOTICE_UNI_PK PRIMARY KEY,			-- 고유번호
+  NO VARCHAR2(10),            						 -- 게시글번호
+  WRITER VARCHAR2(30),							-- 작성자
+  TITLE VARCHAR2(1000),        						-- 게시글제목
+  CONTENT VARCHAR2(4000),    						 -- 게시글내용
+  REGDATE DATE DEFAULT SYSDATE,          				             -- 게시글작성날짜
+  CNT NUMBER DEFAULT 0    						 -- 조회수
+);
+
+SELECT UNI_SEQ.NEXTVAL FROM DUAL;
+INSERT INTO NOTICE(NO,WRITER,TITLE,CONTENT,UNI) VALUES('공지','test','공지사항입니다. 필독 바랍니다. ','냉무',(UNI_SEQ.CURRVAL));
+
+-- 게시판 사용자
+DROP TABLE MEMBER CASCADE CONSTRAINT;
+CREATE TABLE MEMBER(
+  ID VARCHAR2(20) ,                 					 -- 아이디
+  ROLE VARCHAR2(10),						-- 권한
+  PASSWORD VARCHAR2(20),                   				-- 패스워드
+  EMAIL VARCHAR2(50),                    				  -- 이메일
+  IMAGE VARCHAR2(100),              					 -- 유저이미지
+  NAME VARCHAR2(20),                   				-- 이름
+  BIRTH DATE,                 						-- 생일
+  POST VARCHAR2(20),                  					 -- 우편번호
+  ADDRESS VARCHAR2(100),                 				  -- 주소  
+  CONSTRAINT MEMBER_ID_PK PRIMARY KEY(ID)			
+);
+
+
+INSERT INTO MEMBER VALUES('test','admin','test123','test@naver.com','none','name',sysdate,'none','서울시');
+INSERT INTO MEMBER VALUES('user','user','user123','user@naver.com','none','김나박',sysdate,'none','인천시');
+
+column id format a10;
+column pw format a8;
+column post format a10;
+column email format a20;
+column image format a10;
+column name format a10;
+column address format a8;
+set line 120
+
+
+--댓글정보
+DROP TABLE BOARD_COMMENT CASCADE CONSTRAINT;
+CREATE TABLE BOARD_COMMENT(
+  COMMENT_NO NUMBER PRIMARY KEY	,		            -- 댓글 번호
+  NO NUMBER,            					 	-- 게시글번호
+  WRITER VARCHAR2(30),						-- 작성자
+  CONTENT VARCHAR2(1000),         					-- 댓글내용
+  REGDATE DATE DEFAULT SYSDATE,           				-- 댓글날짜	
+  CONSTRAINT B_COMMENT_FK_BOARD FOREIGN KEY(NO) REFERENCES BOARD(NO)
+);
+
+-- 공감도정보
+DROP TABLE MOOD CASCADE CONSTRAINT;
+CREATE TABLE MOOD(
+  NO NUMBER,             						-- 게시판_넘버
+  GOOD NUMBER DEFAULT 0,                				-- 좋아요
+  BAD NUMBER DEFAULT 0,						-- 싫어요
+  CONSTRAINT MOOD_PK PRIMARY KEY(NO),
+  CONSTRAINT MOOD_FK_BOARD FOREIGN KEY(NO) REFERENCES BOARD(NO)
+);
+
+INSERT INTO MOOD(no) VALUES((SELECT NVL(MAX(NO), 0) FROM BOARD));
+
+
+
+COMMIT;
