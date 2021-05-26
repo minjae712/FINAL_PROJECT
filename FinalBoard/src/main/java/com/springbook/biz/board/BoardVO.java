@@ -14,6 +14,7 @@ public class BoardVO {
 	private String content;
 	private Date regDate;
 	private int cnt;
+	private int comment_cnt;
 	private String searchCondition;
 	private String searchKeyword;
 	private int startRow;

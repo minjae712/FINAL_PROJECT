@@ -29,8 +29,8 @@
 	</if>
 	</select>
 	
-	<select id="getBoardPages" resultType="board">
-	SELECT * FROM
+	<select id="getBoardPages" resultMap="boardResult">
+	SELECT a.*,(SELECT count(*) from BOARD_COMMENT where no = a.no) comment_cnt FROM 
 	(SELECT B.*,ROWNUM AS R FROM (SELECT * FROM BOARD WHERE 1 = 1
 	<if test="searchCondition == 'TITLE'">
 	AND TITLE LIKE '%'||#{searchKeyword}||'%'
@@ -38,7 +38,7 @@
 	<if test="searchCondition == 'CONTENT'">
 	AND CONTENT LIKE '%'||#{searchKeyword}||'%'
 	</if>
-	ORDER BY NO DESC) B)
+	ORDER BY NO DESC) B) a
 	<![CDATA[
 	WHERE R >= #{startRow} AND R <= #{endRow}
 	]]>
@@ -99,6 +99,7 @@
 		<result property="content" column="CONTENT" />
 		<result property="regDate" column="REGDATE" />
 		<result property="cnt" column="CNT" />
+		<result property="comment_cnt" column="comment_cnt"/>
 	</resultMap>
 
 </mapper>
