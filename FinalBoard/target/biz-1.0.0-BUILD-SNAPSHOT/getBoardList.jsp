@@ -51,7 +51,7 @@
 			<c:forEach items="${pages.boardList}" var="board">
 			<tr>
 				<td>${board.no}</td>
-				<td align="left"><a href="getBoard.do?no=${board.no}">${board.title}</a></td>
+				<td align="left"><a href="getBoard.do?no=${board.no}">${board.title}</a>[${board.comment_cnt}]</td>
 				<td>${board.writer}</td>
 				<td>${board.regDate}</td>
 				<td>${board.cnt}</td>

@@ -57,7 +57,15 @@ public class UserController {
 			return "login.jsp";
 		}
 	}
-
+	
+	@RequestMapping("/naverLogin.do")
+	public String naverLogin(HttpSession session) {
+		
+		return "naverLogin.jsp";
+		
+	}
+	
+	
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session) {
 
