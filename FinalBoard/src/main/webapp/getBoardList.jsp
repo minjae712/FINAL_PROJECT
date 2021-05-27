@@ -65,7 +65,12 @@
 								<li><a href="getBoardList.do?currentPage=${pages.startPage - 5}&searchKeyword=${bvo.searchKeyword}">이전</a></li>
 							</c:if> 
 								<c:forEach var="pNo" begin="${pages.startPage}" end="${pages.endPage}">
-									<li><a href="getBoardList.do?currentPage=${pNo}&searchKeyword=${bvo.searchKeyword}">${pNo}</a>
+									<c:if test="${pNo == pages.currentPage}" >
+										<li class="active"><a href="getBoardList.do?currentPage=${pNo}&searchKeyword=${bvo.searchKeyword}">${pNo}</a></li>
+									</c:if>
+									<c:if test="${pNo != pages.currentPage}" >
+										<li><a href="getBoardList.do?currentPage=${pNo}&searchKeyword=${bvo.searchKeyword}">${pNo}</a></li>
+									</c:if>									
 								</c:forEach>
 							<c:if test="${pages.endPage < pages.totalPages}">
 								<li><a href="getBoardList.do?currentPage=${pages.startPage + 5}&searchKeyword=${bvo.searchKeyword}">다음</a></li>

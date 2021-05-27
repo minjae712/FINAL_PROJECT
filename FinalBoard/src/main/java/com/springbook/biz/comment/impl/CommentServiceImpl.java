@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springbook.biz.comment.BestCommentDTO;
+import com.springbook.biz.comment.C_MoodVO;
 import com.springbook.biz.comment.CommentPages;
 import com.springbook.biz.comment.CommentService;
 import com.springbook.biz.comment.CommentVO;
@@ -18,6 +20,7 @@ public class CommentServiceImpl implements CommentService{
 	
 	public void insertComment(CommentVO vo) {
 		CommentDAO.insertComment(vo);
+		CommentDAO.insertMood(vo);
 	}
 
 	public void updateComment(CommentVO vo) {
@@ -25,6 +28,7 @@ public class CommentServiceImpl implements CommentService{
 	}
 
 	public void deleteComment(CommentVO vo) {
+		CommentDAO.deleteMood(vo);
 		CommentDAO.deleteComment(vo);
 	}
 
@@ -35,5 +39,24 @@ public class CommentServiceImpl implements CommentService{
 	public List<CommentVO> getCommentList(CommentVO vo) {
 		return CommentDAO.getCommentList(vo);
 	}
+
+	public List<BestCommentDTO> getBestCommentList(BestCommentDTO dto) {
+		return CommentDAO.getBestCommentList(dto);
+	}
+
+	public List<C_MoodVO> getCommentMood(C_MoodVO vo) {
+		return CommentDAO.getCommentMood(vo);
+	}
+
+	@Override
+	public CommentVO textAreaSet(CommentVO vo) {
+		return CommentDAO.textAreaSet(vo);
+	}
+
+	@Override
+	public void goodOrBad(C_MoodVO vo) {
+		CommentDAO.goodOrBad(vo);
+	}
+
 	
 }

@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springbook.biz.board.B_MoodVO;
 import com.springbook.biz.board.BoardPages;
 import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
-import com.springbook.biz.board.MoodVO;
 import com.springbook.biz.board.NoticeVO;
 import com.springbook.biz.board.PageSize;
 
@@ -28,7 +28,7 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 	
-	public void goodOrBad(MoodVO vo) {
+	public void goodOrBad(B_MoodVO vo) {
 		boardDAO.goodOrBad(vo);
 	}
 	
@@ -57,7 +57,7 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.getNoticeList();
 	}
 
-	public MoodVO getMood(MoodVO mvo) {
+	public B_MoodVO getMood(B_MoodVO mvo) {
 		return boardDAO.getMood(mvo);
 	}
 	

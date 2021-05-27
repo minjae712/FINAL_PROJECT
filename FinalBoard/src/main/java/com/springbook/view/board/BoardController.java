@@ -4,17 +4,20 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.springbook.biz.board.B_MoodVO;
 import com.springbook.biz.board.BoardPages;
 import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
-import com.springbook.biz.board.MoodVO;
 import com.springbook.biz.board.NoticeVO;
 import com.springbook.biz.comment.CommentService;
 import com.springbook.biz.comment.CommentVO;
@@ -27,12 +30,11 @@ public class BoardController {
 	private BoardService boardService;
 	
 	
-	@RequestMapping("/goodOrBad.do")
-	public String goodOrBad(MoodVO vo) throws IOException {
-		int no = vo.getNo();
+	@RequestMapping("/b_goodOrBad.do")
+	public @ResponseBody String ajax_b_goodOrBad(B_MoodVO vo) throws IOException {
 		boardService.goodOrBad(vo);
 		vo.clear();
-		return "redirect:getBoard.do?no=" + no;
+		return "success";
 	}
 	
 	@RequestMapping(value = "/insertBoard.do")
@@ -61,14 +63,27 @@ public class BoardController {
 	}
 
 	@RequestMapping("/getBoard.do")
-	public String getBoard(BoardVO vo, Model model,CommentVO Commentvo,MoodVO mvo) {
+	public String getBoard(BoardVO vo, Model model) {
 		BoardVO result = boardService.getBoard(vo);
 		model.addAttribute("board", result);
-		mvo.setNo(vo.getNo());
-		MoodVO result2 = boardService.getMood(mvo);
-		return "redirect:getCommentList.do?no=" + result.getNo()+"&good="+ result2.getGood() + "&bad=" + result2.getBad(); 
+		return "getBoard.jsp"; 
 	}
 
+	@RequestMapping("/getBoardMood.do")
+	public @ResponseBody String ajax_getBoardMood(B_MoodVO vo) {
+		B_MoodVO result = boardService.getMood(vo);
+		JSONArray jsonArr = new JSONArray();
+		JSONObject json = new JSONObject();
+		
+		json.put("no", result.getNo());
+		json.put("good", result.getGood());
+		json.put("bad", result.getBad());
+		
+		jsonArr.put(json);
+		
+		return jsonArr.toString(); 
+	}
+	
 	@RequestMapping("/getNotice.do")
 	public String getNotice(NoticeVO nvo, Model model) {
 		NoticeVO result = boardService.getNotice(nvo);

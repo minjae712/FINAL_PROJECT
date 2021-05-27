@@ -9,8 +9,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.springbook.biz.board.B_MoodVO;
 import com.springbook.biz.board.BoardVO;
-import com.springbook.biz.board.MoodVO;
 import com.springbook.biz.board.NoticeVO;
 import com.springbook.biz.board.PageSize;
 
@@ -32,7 +32,7 @@ public class BoardDAOMybatis{
 		mybatis.insert("BoardDAO.insertMood");
 	}
 	
-	public void goodOrBad(MoodVO vo) {
+	public void goodOrBad(B_MoodVO vo) {
 		mybatis.insert("BoardDAO.goodOrBad",vo);
 	}
 	
@@ -67,7 +67,7 @@ public class BoardDAOMybatis{
 		return mybatis.selectList("BoardDAO.getNoticeList");
 	}
 	
-	public MoodVO getMood(MoodVO mvo) {
+	public B_MoodVO getMood(B_MoodVO mvo) {
 		return mybatis.selectOne("BoardDAO.getMood", mvo);
 	}
 	

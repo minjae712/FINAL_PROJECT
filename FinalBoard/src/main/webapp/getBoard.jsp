@@ -1,18 +1,43 @@
+<%@page import="com.springbook.biz.user.UserVO"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="u" tagdir="/WEB-INF/tags/" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style type="text/css">
+a {
+cursor: pointer;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" language="javascript">
+
+var b_num = ${board.no};
+var modifying = 0;
+var name = '${user.name}';
+
+$(window).ready(function(){
+
+	getCommentCount();
+	getCommentList();
+	getBestList();
+	getB_Mood();
+});
+
+</script>
+<script src="${pageContext.request.contextPath}/js/board_comment.js" type="text/javascript"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <title>글 상세</title>
 </head>
 <body>
 	<center>
 		<%@ include file="/menuBar.jsp" %>
-		<h1><a onclick="location.reload()" style="cursor: pointer;"><b>자유 게시판</b></a></h1>
+		<h1><a onclick="location.reload()"><b>자유 게시판</b></a></h1>
 		<hr>
 		<div style="width: 70%">
 			<table class="table table-bordered" >
@@ -40,8 +65,8 @@
 				</tr>
 			</table>
 					<center>
-					<a class="glyphicon glyphicon-thumbs-up" href="goodOrBad.do?good=1&no=${board.no}">추천 ${mvo.good}</a>&nbsp;&nbsp;
-					<a class="glyphicon glyphicon-thumbs-down" href="goodOrBad.do?bad=1&no=${board.no}">반대 ${mvo.bad}</a>
+ 					<a id="B_good${board.no}"class="glyphicon glyphicon-thumbs-up" onclick="b_checkGoodOrBad(1,0)" >추천 </a>&nbsp;&nbsp;
+ 					<a id="B_bad${board.no}" class="glyphicon glyphicon-thumbs-down" onclick="b_checkGoodOrBad(0,1)" >반대 </a> 
 					</center>
 			<hr>
 			<%@ include file="/comment.jsp" %>

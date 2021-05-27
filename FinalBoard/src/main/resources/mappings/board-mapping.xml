@@ -14,7 +14,7 @@
 	</insert>
 
 	<insert id="insertMood" >	
-		INSERT INTO MOOD(no)
+		INSERT INTO B_MOOD(no)
 		VALUES((SELECT NVL(MAX(NO), 0) FROM BOARD))
 	</insert>
 	
@@ -57,16 +57,16 @@
 		SELECT * FROM NOTICE WHERE UNI = #{uni}
 	</select>
 
-	<select id="getMood" resultType="mvo">
-		SELECT * FROM MOOD WHERE NO = #{no}
+	<select id="getMood" resultType="B_MOOD">
+		SELECT * FROM B_MOOD WHERE NO = #{no}
 	</select>
 
 	<update id="increaseCount">
 		UPDATE BOARD SET CNT = CNT + 1 WHERE NO = #{no}
 	</update>
 
-	<update id="goodOrBad" parameterType="mvo">
-		UPDATE MOOD
+	<update id="goodOrBad" parameterType="B_MOOD">
+		UPDATE B_MOOD
 		<if test="good == 1">
 		SET GOOD = GOOD + 1
 		</if>

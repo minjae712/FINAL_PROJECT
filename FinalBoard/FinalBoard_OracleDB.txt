@@ -10,11 +10,11 @@ SHOW USER;
 DROP TABLE BOARD CASCADE CONSTRAINT;
 CREATE TABLE BOARD(
   NO NUMBER,            						 -- 게시글번호
-  WRITER VARCHAR2(30),						-- 작성자
-  TITLE VARCHAR2(1000),        					-- 게시글제목
-  CONTENT VARCHAR2(4000),    					-- 게시글내용
+  WRITER VARCHAR2(30),							-- 작성자
+  TITLE VARCHAR2(1000),        						-- 게시글제목
+  CONTENT VARCHAR2(4000),    						 -- 게시글내용
   REGDATE DATE DEFAULT SYSDATE,        				 -- 게시글작성날짜
-  CNT NUMBER DEFAULT 0,    					-- 조회수
+  CNT NUMBER DEFAULT 0,    						 -- 조회수
   CONSTRAINT BOARD_PK PRIMARY KEY(NO)
 );
 
@@ -41,7 +41,7 @@ CREATE TABLE NOTICE(
   WRITER VARCHAR2(30),							-- 작성자
   TITLE VARCHAR2(1000),        						-- 게시글제목
   CONTENT VARCHAR2(4000),    						 -- 게시글내용
-  REGDATE DATE DEFAULT SYSDATE,          				             -- 게시글작성날짜
+  REGDATE DATE DEFAULT SYSDATE,          				 -- 게시글작성날짜
   CNT NUMBER DEFAULT 0    						 -- 조회수
 );
 
@@ -52,11 +52,11 @@ INSERT INTO NOTICE(NO,WRITER,TITLE,CONTENT,UNI) VALUES('공지','test','공지�
 DROP TABLE MEMBER CASCADE CONSTRAINT;
 CREATE TABLE MEMBER(
   ID VARCHAR2(20) ,                 					 -- 아이디
-  ROLE VARCHAR2(10),						-- 권한
-  PASSWORD VARCHAR2(20),                   				-- 패스워드
+  ROLE VARCHAR2(10),							-- 권한
+  PASSWORD VARCHAR2(20),                   					-- 패스워드
   EMAIL VARCHAR2(50),                    				  -- 이메일
   IMAGE VARCHAR2(100),              					 -- 유저이미지
-  NAME VARCHAR2(20),                   				-- 이름
+  NAME VARCHAR2(20),                   					 -- 이름
   BIRTH DATE,                 						-- 생일
   POST VARCHAR2(20),                  					 -- 우편번호
   ADDRESS VARCHAR2(100),                 				  -- 주소  
@@ -64,7 +64,7 @@ CREATE TABLE MEMBER(
 );
 
 
-INSERT INTO MEMBER VALUES('test','admin','test123','test@naver.com','none','name',sysdate,'none','서울시');
+INSERT INTO MEMBER VALUES('test','admin','test123','test@naver.com','none','김이박',sysdate,'none','서울시');
 INSERT INTO MEMBER VALUES('user','user','user123','user@naver.com','none','김나박',sysdate,'none','인천시');
 
 column id format a10;
@@ -80,26 +80,40 @@ set line 120
 --댓글정보
 DROP TABLE BOARD_COMMENT CASCADE CONSTRAINT;
 CREATE TABLE BOARD_COMMENT(
-  COMMENT_NO NUMBER PRIMARY KEY	,		            -- 댓글 번호
+  COMMENT_NO NUMBER PRIMARY KEY	,					-- 댓글 번호
   NO NUMBER,            					 	-- 게시글번호
-  WRITER VARCHAR2(30),						-- 작성자
+  WRITER VARCHAR2(30),							-- 작성자
   CONTENT VARCHAR2(1000),         					-- 댓글내용
   REGDATE DATE DEFAULT SYSDATE,           				-- 댓글날짜	
   CONSTRAINT B_COMMENT_FK_BOARD FOREIGN KEY(NO) REFERENCES BOARD(NO)
 );
 
--- 공감도정보
-DROP TABLE MOOD CASCADE CONSTRAINT;
-CREATE TABLE MOOD(
+INSERT INTO BOARD_COMMENT VALUES((SELECT NVL(MAX(COMMENT_NO), 0) + 1 FROM BOARD_COMMENT),1,'김이박','첫댓글입니다. 반가워요',SYSDATE);
+
+-- 게시판 공감도정보
+DROP TABLE B_MOOD CASCADE CONSTRAINT;
+CREATE TABLE B_MOOD(
   NO NUMBER,             						-- 게시판_넘버
   GOOD NUMBER DEFAULT 0,                				-- 좋아요
-  BAD NUMBER DEFAULT 0,						-- 싫어요
-  CONSTRAINT MOOD_PK PRIMARY KEY(NO),
-  CONSTRAINT MOOD_FK_BOARD FOREIGN KEY(NO) REFERENCES BOARD(NO)
+  BAD NUMBER DEFAULT 0,							-- 싫어요
+  CONSTRAINT B_MOOD_PK PRIMARY KEY(NO),
+  CONSTRAINT B_MOOD_FK_BOARD FOREIGN KEY(NO) REFERENCES BOARD(NO)
 );
 
-INSERT INTO MOOD(no) VALUES((SELECT NVL(MAX(NO), 0) FROM BOARD));
+INSERT INTO B_MOOD VALUES((SELECT NVL(MAX(NO), 0) FROM BOARD),1,1);
 
+-- 댓글 공감도정보
+DROP TABLE C_MOOD CASCADE CONSTRAINT;
+CREATE TABLE C_MOOD(
+  NO NUMBER,             						-- 게시판_넘버
+  COMMENT_NO NUMBER,							-- 댓글_넘버
+  GOOD NUMBER DEFAULT 0,                				-- 좋아요
+  BAD NUMBER DEFAULT 0,							-- 싫어요
+  CONSTRAINT C_MOOD_PK PRIMARY KEY(COMMENT_NO),
+  CONSTRAINT C_MOOD_FK_COMMENT FOREIGN KEY(COMMENT_NO) REFERENCES BOARD_COMMENT(COMMENT_NO)
+);
 
+INSERT INTO C_MOOD VALUES(1,(SELECT NVL(MAX(COMMENT_NO), 0) FROM BOARD_COMMENT),1,1);
 
 COMMIT;
+

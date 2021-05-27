@@ -8,7 +8,7 @@ public interface BoardService {
 	
 	void insertNotice(NoticeVO nvo);
 	
-	void goodOrBad(MoodVO vo);
+	void goodOrBad(B_MoodVO vo);
 
 	void updateBoard(BoardVO vo);
 
@@ -22,7 +22,7 @@ public interface BoardService {
 	
 	List<NoticeVO> getNoticeList();
 	
-	MoodVO getMood(MoodVO mvo);
+	B_MoodVO getMood(B_MoodVO mvo);
 	
 	BoardPages getBoardPages(int pageNo,BoardVO vo);
 }

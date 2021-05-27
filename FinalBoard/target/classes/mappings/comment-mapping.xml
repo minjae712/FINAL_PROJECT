@@ -7,15 +7,48 @@
 		INSERT INTO BOARD_COMMENT(COMMENT_NO,NO,WRITER,CONTENT)
 		VALUES((SELECT NVL(MAX(COMMENT_NO), 0) + 1 FROM BOARD_COMMENT),#{no},#{writer},#{content})
 	</insert>
+
+	<insert id="insertMood">	
+		INSERT INTO C_MOOD(NO,COMMENT_NO) VALUES(#{no},(SELECT NVL(MAX(COMMENT_NO), 0) FROM BOARD_COMMENT))
+	</insert>
+
+	<select id="textAreaSet" resultType="Comment">
+	SELECT * FROM BOARD_COMMENT WHERE NO = #{no} AND COMMENT_NO = #{commentNo}
+	</select>
 	
 	<select id="getCommentList" resultMap="CommentResult">
 	<![CDATA[
 	SELECT * FROM BOARD_COMMENT WHERE NO = #{no} ORDER BY COMMENT_NO
 	]]>
 	</select>
+
+	<select id="getBestCommentList" resultMap="BestResult">
+	SELECT * FROM (SELECT B.*,ROWNUM AS R FROM 
+	(SELECT BC.COMMENT_NO,BC.NO,BC.WRITER,BC.REGDATE,BC.CONTENT,CM.GOOD,CM.BAD FROM 
+	BOARD_COMMENT BC,C_MOOD CM 
+	WHERE BC.COMMENT_NO = CM.COMMENT_NO AND BC.NO = #{no} ORDER BY CM.GOOD DESC) B)
+	<![CDATA[
+	 WHERE R >= 1 AND R <= 3
+	]]>
+	</select>
 	
+	<select id="getCommentMood" resultMap="C_MoodResult">
+	SELECT * FROM C_MOOD WHERE NO = #{no} ORDER BY COMMENT_NO
+	</select>
+
 	<update id="updateComment">
 		UPDATE BOARD_COMMENT SET CONTENT=#{content} WHERE NO = #{no} AND COMMENT_NO = #{commentNo}
+	</update>
+
+	<update id="goodOrBad" parameterType="C_MOOD">
+		UPDATE C_MOOD
+		<if test="good == 1">
+		SET GOOD = GOOD + 1
+		</if>
+		<if test="bad == 1">
+		SET BAD = BAD + 1
+		</if>
+		WHERE NO = #{no} AND COMMENT_NO = #{commentNo}
 	</update>
 	
 	<select id="getCommentCount" resultType="int">
@@ -26,12 +59,33 @@
 		DELETE FROM BOARD_COMMENT WHERE NO = #{no} AND COMMENT_NO = #{commentNo}
 	</delete>
 	
+	<delete id="deleteMood">
+		DELETE FROM C_MOOD WHERE NO = #{no} AND COMMENT_NO = #{commentNo} 
+	</delete>
+	
 	<resultMap id="CommentResult" type="Comment">
 		<id property="commentNo" column="COMMENT_NO"/>
 		<result property="no" column="NO" />
 		<result property="writer" column="WRITER" />
 		<result property="content" column="CONTENT" />
 		<result property="regDate" column="REGDATE" />
+	</resultMap>
+
+	<resultMap id="BestResult" type="best">
+		<id property="commentNo" column="COMMENT_NO"/>
+		<result property="no" column="NO" />
+		<result property="writer" column="WRITER" />
+		<result property="content" column="CONTENT" />
+		<result property="regDate" column="REGDATE" />
+		<result property="good" column="GOOD" />
+		<result property="bad" column="BAD" />
+	</resultMap>
+	
+		<resultMap id="C_MoodResult" type="C_MOOD">
+		<id property="commentNo" column="COMMENT_NO"/>
+		<result property="no" column="NO" />
+		<result property="good" column="GOOD" />
+		<result property="bad" column="BAD" />
 	</resultMap>
 
 </mapper>
