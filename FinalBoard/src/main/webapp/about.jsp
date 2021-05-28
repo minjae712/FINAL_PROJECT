@@ -1,12 +1,11 @@
-<%@page contentType="text/html; charset=UTF-8"%>
-
+<%@ page contentType="text/html; charset=utf-8"%>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Animal랑</title>
+    <title>Animal</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -42,26 +41,14 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-8">
                             <div class="short_contact_list">
-                                <ul>
-                                    <li><a href="#">+880 4664 216</a></li>
-                                    <li><a href="#">Mon - Sat 10:00 - 7:00</a></li>
-                                </ul>
+                               
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-4 ">
                             <div class="social_media_links">
-                                <a href="#">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-pinterest-p"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
+                               <a href="#"> <img src="./resources/css/img/naver.png" border="0" width="30" height="30"></a> 
+								<a href="#"> <img src="./resources/css/img/kakao.png" border="0" width="30" height="30"></a> 
+								<a href="#"> <i class="fa fa-linkedin"></i></a>
                             </div>
                         </div>
                     </div>
@@ -72,7 +59,7 @@
                     <div class="row align-items-center">
                         <div class="col-xl-3 col-lg-3">
                             <div class="logo">
-                                <a href="index.html">
+                                <a href="css.jsp">
                                     <img src="./resources/css/img/logo.png" alt="">
                                 </a>
                             </div>
@@ -81,22 +68,20 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a  href="index.html">home</a></li>
-                                        <li><a href="about.html">about</a></li>
-                                        <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                                        <li><a href="index2.jsp">홈</a></li>
+										<li><a href="about.jsp">게시판 소개</a></li>
+										<li><a href="#">게시판 <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="blog.html">blog</a></li>
-                                                <li><a href="single-blog.html">single-blog</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">pages <i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-                                                <li><a href="elements.html">elements</a></li>
-                                                
-                                            </ul>
-                                        </li>
-                                        <li><a href="service.html">services</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                                 <li><a href="blog.jsp">마이펫자랑하기</a></li>
+                                                <li><a href="blog2.jsp">마이펫시터</a></li>
+                                                <li><a href="blog3.jsp">마이펫쇼핑</a></li>
+                                                <li><a href="single-blog.jsp">[COMENT 소스참고]</a></li>
+                                                </ul> </li>
+											<li><a href="#">서비스 <i class="ti-angle-down"></i></a>
+											<ul class="submenu">
+										        <li><a href="service.jsp">애완동물병원 및 예약</a></li>
+										        </ul></li>
+										<li><a href="contact.jsp">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -117,7 +102,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="bradcam_text text-center">
-                        <h3>About Us</h3>
+                        <h3>게시판소개</h3>
                     </div>
                 </div>
             </div>
@@ -141,7 +126,6 @@
                                 As you care</h3>
                             <p>Lorem ipsum dolor sit , consectetur adipiscing elit, sed do <br> iusmod tempor incididunt ut labore et dolore magna aliqua. <br> Quis ipsum suspendisse ultrices gravida. Risus commodo <br>
                                 viverra maecenas accumsan.</p>
-                            <a href="about.html" class="boxed-btn3">About Us</a>
                         </div>
                     </div>
                 </div>
@@ -150,55 +134,7 @@
     </div>
     <!-- pet_care_area_end  -->
 
-    <!-- adapt_area_start  -->
-    <div class="adapt_area">
-        <div class="container">
-            <div class="row justify-content-between align-items-center">
-                <div class="col-lg-5">
-                    <div class="adapt_help">
-                        <div class="section_title">
-                            <h3><span>We need your</span>
-                                help Adopt Us</h3>
-                            <p>Lorem ipsum dolor sit , consectetur adipiscing elit, sed do iusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.</p>
-                            <a href="contact.html" class="boxed-btn3">Contact Us</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="adapt_about">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="single_adapt text-center">
-                                    <img src="./resources/css/img/adapt_icon/1.png" alt="">
-                                    <div class="adapt_content">
-                                        <h3 class="counter">452</h3>
-                                        <p>Pets Available</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="single_adapt text-center">
-                                    <img src="./resources/css/img/adapt_icon/3.png" alt="">
-                                    <div class="adapt_content">
-                                        <h3><span class="counter">52</span>+</h3>
-                                        <p>Pets Available</p>
-                                    </div>
-                                </div>
-                                <div class="single_adapt text-center">
-                                    <img src="./resources/css/img/adapt_icon/2.png" alt="">
-                                    <div class="adapt_content">
-                                        <h3><span class="counter">52</span>+</h3>
-                                        <p>Pets Available</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- adapt_area_end  -->
+   
 
     <!-- testmonial_area_start  -->
     <div class="testmonial_area">
@@ -306,25 +242,6 @@
     </div>
     <!-- team_area_start  -->
 
-    <div class="contact_anipat anipat_bg_1">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="contact_text text-center">
-                        <div class="section_title text-center">
-                            <h3>Why go with Anipat?</h3>
-                            <p>Because we know that even the best technology is only as good as the people behind it. 24/7 tech support.</p>
-                        </div>
-                        <div class="contact_btn d-flex align-items-center justify-content-center">
-                            <a href="contact.html" class="boxed-btn4">Contact Us</a>
-                            <p>Or  <a href="#"> +880 4664 216</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- footer_start  -->
     <footer class="footer">
         <div class="footer_top">
@@ -382,26 +299,9 @@
                             </p>
                             <div class="socail_links">
                                 <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-pinterest"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-google-plus"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
+                                   <li><a href="#"> <img src="./resources/css/img/naver.png" border="0" width="30" height="30"></a></li> 
+								    <li><a href="#"> <img src="./resources/css/img/kakao.png" border="0" width="30" height="30"></a></li>
+									<li><a href="#"> <i class="fa fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
 
@@ -454,7 +354,7 @@
     <script src="./resources/css/js/jquery.validate.min.js"></script>
     <script src="./resources/css/js/mail-script.js"></script>
 
-    <script src="js/main.js"></script>
+    <script src="./resources/css/js/main.js"></script>
     <script>
         $('#datepicker').datepicker({
             iconsLibrary: 'fontawesome',

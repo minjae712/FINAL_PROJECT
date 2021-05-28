@@ -42,21 +42,14 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-8">
                             <div class="short_contact_list">
-                                <ul>
-                                    <li><a href="#">+880 4664 216</a></li>
-                                    <li><a href="#">Mon - Sat 10:00 - 7:00</a></li>
-                                </ul>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-4 ">
                             <div class="social_media_links">
-                                <a href="#">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                           
-                                <a href="#">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
+                                
+                                <a href="#"> <img src="./resources/css/img/naver.png" border="0" width="30" height="30"></a> 
+								<a href="#"> <img src="./resources/css/img/kakao.png" border="0" width="30" height="30"></a> 
+								<a href="#"> <i class="fa fa-linkedin"></i></a>
                             
                             </div>
                         </div>
@@ -77,20 +70,20 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a  href="index.html">home</a></li>
-                                        <li><a href="about.html">about</a></li>
-                                        <li><a href="#">게시판 <i class="ti-angle-down"></i></a>
+                                       <li><a href="index2.jsp">홈</a></li>
+										<li><a href="about.jsp">게시판 소개</a></li>
+										<li><a href="#">게시판 <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                  <li><a href="blog.jsp">마이펫자랑하기</a></li>
                                                 <li><a href="blog2.jsp">마이펫시터</a></li>
-                                                <li><a href="single-blog.jsp">마이펫쇼핑</a></li>
+                                                <li><a href="blog3.jsp">마이펫쇼핑</a></li>
                                                 <li><a href="single-blog.jsp">[COMENT 소스참고]</a></li>
-                                              
-                                            </ul>
-                                        </li>
-                                        
-                                        <li><a href="service.jsp">services</a></li>
-                                        <li><a href="contact.jsp">Contact</a></li>
+                                                </ul> </li>
+											<li><a href="#">서비스 <i class="ti-angle-down"></i></a>
+											<ul class="submenu">
+										        <li><a href="service.jsp">애완동물병원 및 예약</a></li>
+										        </ul></li>
+										<li><a href="contact.jsp">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -330,26 +323,9 @@
                             </p>
                             <div class="socail_links">
                                 <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-pinterest"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-google-plus"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
+                                    <li><a href="#"> <img src="./resources/css/img/naver.png" border="0" width="30" height="30"></a></li> 
+								    <li><a href="#"> <img src="./resources/css/img/kakao.png" border="0" width="30" height="30"></a></li>
+									<li><a href="#"> <i class="fa fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
 

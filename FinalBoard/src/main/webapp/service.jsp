@@ -1,17 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=utf-8"%>
 
 <!doctype html>
 <html class="no-js" lang="zxx">
 
 <head>
-    <meta charset="utf-8">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Animal하</title>
+    <title>Animal</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="./resources/css/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
@@ -42,26 +43,14 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-8">
                             <div class="short_contact_list">
-                                <ul>
-                                    <li><a href="#">+880 4664 216</a></li>
-                                    <li><a href="#">Mon - Sat 10:00 - 7:00</a></li>
-                                </ul>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-4 ">
                             <div class="social_media_links">
-                                <a href="#">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-pinterest-p"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
+                                <a href="#"> <img src="./resources/css/img/naver.png" border="0" width="30" height="30"></a> 
+								<a href="#"> <img src="./resources/css/img/kakao.png" border="0" width="30" height="30"></a> 
+								<a href="#"> <i class="fa fa-linkedin"></i></a>
+                            
                             </div>
                         </div>
                     </div>
@@ -72,7 +61,7 @@
                     <div class="row align-items-center">
                         <div class="col-xl-3 col-lg-3">
                             <div class="logo">
-                                <a href="index.jsp">
+                                <a href="index.html">
                                     <img src="./resources/css/img/logo.png" alt="">
                                 </a>
                             </div>
@@ -80,24 +69,22 @@
                         <div class="col-xl-9 col-lg-9">
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
-                                    <ul id="navigation">
-                                        <li><a  href="index.jsp">home</a></li>
-                                        <li><a href="about.jsp">about</a></li>
-                                        <li><a href="#">ê²ìí <i class="ti-angle-down"></i></a>
+                                   <ul id="navigation">
+										<li><a href="index2.jsp">홈</a></li>
+										<li><a href="about.jsp">게시판 소개</a></li>
+										<li><a href="#">게시판 <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="blog.jsp">ë§ì´í«ìëíê¸°</a></li>
-                                                <li><a href="single-blog.jsp">ë§ì´í«ì¤ê³ ê±°ë</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">pages <i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-                                                <li><a href="elements.jsp">elements</a></li>
-                                                
-                                            </ul>
-                                        </li>
-                                        <li><a href="service.html">services</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                    </ul>
+                                                 <li><a href="blog.jsp">마이펫자랑하기</a></li>
+                                                <li><a href="blog2.jsp">마이펫시터</a></li>
+                                                <li><a href="blog3.jsp">마이펫쇼핑</a></li>
+                                                <li><a href="single-blog.jsp">[COMENT 소스참고]</a></li>
+                                                </ul> </li>
+											<li><a href="#">서비스 <i class="ti-angle-down"></i></a>
+											<ul class="submenu">
+										        <li><a href="service.jsp">애완동물병원 및 예약</a></li>
+										        </ul></li>
+										<li><a href="contact.jsp">Contact</a></li>
+									</ul>
                                 </nav>
                             </div>
                         </div>
@@ -117,7 +104,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="bradcam_text text-center">
-                        <h3>Services</h3>
+                        <h3>동물병원 예약하기</h3>
                     </div>
                 </div>
             </div>
@@ -231,83 +218,7 @@
     </div>
     <!-- testmonial_area_end  -->
 
-    <!-- team_area_start  -->
-    <div class="team_area">
-        <div class="container">
-            <div class="row justify-content-center ">
-                <div class="col-lg-6 col-md-10">
-                    <div class="section_title text-center mb-95">
-                        <h3>Our Team</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_team">
-                        <div class="thumb">
-                            <img src="./resources/css/img/team/1.png" alt="">
-                        </div>
-                        <div class="member_name text-center">
-                            <div class="mamber_inner">
-                                <h4>Rala Emaia</h4>
-                                <p>Senior Director</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_team">
-                        <div class="thumb">
-                            <img src="./resources/css/img/team/2.png" alt="">
-                        </div>
-                        <div class="member_name text-center">
-                            <div class="mamber_inner">
-                                <h4>jhon Smith</h4>
-                                <p>Senior Director</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_team">
-                        <div class="thumb">
-                            <img src="./resources/css/img/team/3.png" alt="">
-                        </div>
-                        <div class="member_name text-center">
-                            <div class="mamber_inner">
-                                <h4>Rala Emaia</h4>
-                                <p>Senior Director</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- team_area_start  -->
-
-    <!-- contact_anipat_start  -->
-    <div class="contact_anipat anipat_bg_1">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="contact_text text-center">
-                        <div class="section_title text-center">
-                            <h3>Why go with Anipat?</h3>
-                            <p>Because we know that even the best technology is only as good as the people behind it. 24/7 tech support.</p>
-                        </div>
-                        <div class="contact_btn d-flex align-items-center justify-content-center">
-                            <a href="contact.jsp" class="boxed-btn4">Contact Us</a>
-                            <p>Or  <a href="#"> +880 4664 216</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- contact_anipat_end  -->
-
+   
     <!-- footer_start  -->
     <footer class="footer">
         <div class="footer_top">
@@ -357,7 +268,7 @@
                         <div class="footer_widget">
                             <div class="footer_logo">
                                 <a href="#">
-                                    <img src="img/logo.png" alt="">
+                                    <img src="./resources/css/img/logo.png" alt="">
                                 </a>
                             </div>
                             <p class="address_text">239 E 5th St, New York 
@@ -365,26 +276,9 @@
                             </p>
                             <div class="socail_links">
                                 <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-pinterest"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-google-plus"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
+                                    <li><a href="#"> <img src="./resources/css/img/naver.png" border="0" width="30" height="30"></a></li> 
+								    <li><a href="#"> <img src="./resources/css/img/kakao.png" border="0" width="30" height="30"></a></li>
+									<li><a href="#"> <i class="fa fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
 
@@ -412,31 +306,31 @@
 
 
     <!-- JS here -->
-    <script src="./resources/css/js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="./resources/css/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="./resources/css/js/popper.min.js"></script>
-    <script src="./resources/css/js/bootstrap.min.js"></script>
-    <script src="./resources/css/js/owl.carousel.min.js"></script>
-    <script src="./resources/css/js/isotope.pkgd.min.js"></script>
-    <script src="./resources/css/js/ajax-form.js"></script>
-    <script src="./resources/css/js/waypoints.min.js"></script>
-    <script src="./resources/css/js/jquery.counterup.min.js"></script>
-    <script src="./resources/css/js/imagesloaded.pkgd.min.js"></script>
-    <script src="./resources/css/js/scrollIt.js"></script>
-    <script src="./resources/css/js/jquery.scrollUp.min.js"></script>
-    <script src="./resources/css/js/wow.min.js"></script>
-    <script src="./resources/css/js/nice-select.min.js"></script>
-    <script src="./resources/css/js/jquery.slicknav.min.js"></script>
-    <script src="./resources/css/js/jquery.magnific-popup.min.js"></script>
-    <script src="./resources/css/js/plugins.js"></script>
-    <script src="./resources/css/js/gijgo.min.js"></script>
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/ajax-form.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/scrollIt.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/nice-select.min.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/gijgo.min.js"></script>
 
     <!--contact js-->
-    <script src="./resources/css/js/contact.js"></script>
-    <script src="./resources/css/js/jquery.ajaxchimp.min.js"></script>
-    <script src="./resources/css/js/jquery.form.js"></script>
-    <script src="./resources/css/js/jquery.validate.min.js"></script>
-    <script src="./resources/css/js/mail-script.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/mail-script.js"></script>
 
     <script src="js/main.js"></script>
     <script>
