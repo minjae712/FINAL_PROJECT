@@ -57,6 +57,7 @@ function getCommentList(){
         url : "getCommentList.do",
         data : {"no" :b_num},
         success : function(data){
+        	alert("통신성공" + data);
             var str="";
             $(".commentList").html("");
             $.each(data,function(idx,item){
@@ -70,8 +71,8 @@ function getCommentList(){
             	str += "<div><small>" + item.regDate + "</small></div>";
             	str += "<div align='right'>";
             	if(item.writer == name) {
-            	str += "<a onclick='textAreaSet("+ idx + "," + item.commentNo + ","+ item.no + ")'>[수정]</a>";
-            	str += "<a onclick='deleteComment("+ item.commentNo + ","+ item.no + ")'>[삭제]</a>";
+            		str += "<a onclick='textAreaSet("+ idx + "," + item.commentNo + ","+ item.no + ")'>[수정]</a>";
+            		str += "<a onclick='deleteComment("+ item.commentNo + ","+ item.no + ")'>[삭제]</a>";
             	};
             	str += "</div><hr></div>";
                   });
