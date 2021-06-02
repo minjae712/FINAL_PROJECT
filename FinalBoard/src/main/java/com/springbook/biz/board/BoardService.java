@@ -25,4 +25,6 @@ public interface BoardService {
 	B_MoodVO getMood(B_MoodVO mvo);
 	
 	BoardPages getBoardPages(int pageNo,BoardVO vo);
+	
+	List<BoardVO> getBestList(BoardVO vo);
 }

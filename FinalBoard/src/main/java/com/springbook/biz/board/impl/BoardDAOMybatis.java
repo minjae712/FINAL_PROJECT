@@ -77,6 +77,9 @@ public class BoardDAOMybatis{
 	public List<BoardVO> getBoardPages(BoardVO vo) {
 		return mybatis.selectList("BoardDAO.getBoardPages",vo);
 	}
-
+	
+	public List<BoardVO> getBestList(BoardVO vo){
+		return mybatis.selectList("BoardDAO.getBestList",vo);
+	}
 
 }
