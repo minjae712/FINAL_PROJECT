@@ -13,7 +13,7 @@ import com.springbook.biz.board.NoticeVO;
 import com.springbook.biz.board.PageSize;
 
 @Service("boardService")
-public class BoardServiceImpl implements BoardService {
+public class BoardServiceImpl implements BoardService  {
 	
 	@Autowired
 	private BoardDAOMybatis boardDAO;
@@ -69,10 +69,10 @@ public class BoardServiceImpl implements BoardService {
 		return new BoardPages(totalBoardCount, pageNo, 10, boardList);
 		
 	}
-
-
-
-
+	
+	public List<BoardVO> getBestList(BoardVO vo){
+		return boardDAO.getBestList(vo);
+	}
 
 
 }
