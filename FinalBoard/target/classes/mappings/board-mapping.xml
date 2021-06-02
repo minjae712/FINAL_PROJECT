@@ -60,6 +60,16 @@
 	<select id="getMood" resultType="B_MOOD">
 		SELECT * FROM B_MOOD WHERE NO = #{no}
 	</select>
+	
+	<select id="getBestList" resultType="board">
+		SELECT NO, WRITER, TITLE, CONTENT, REGDATE, CNT, ROW_NUMBER() OVER
+		(ORDER BY CNT DESC, REGDATE DESC) AS RANK
+		FROM (SELECT NO, WRITER, TITLE, CONTENT, REGDATE, CNT FROM BOARD ORDER BY
+		CNT DESC)
+		<![CDATA[
+		where rownum <= 10  AND REGDATE between ADD_MONTHS ( TRUNC(sysdate, 'MM'), -1) AND LAST_DAY(SYSDATE)
+		]]>
+	</select>
 
 	<update id="increaseCount">
 		UPDATE BOARD SET CNT = CNT + 1 WHERE NO = #{no}

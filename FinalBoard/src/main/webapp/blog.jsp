@@ -1,9 +1,17 @@
 <%@page contentType="text/html; charset=UTF-8"%>
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
 <!doctype html>
 <html class="no-js" lang="zxx">
 
 <head>
+<style>
+#fixedbutton {
+    position: fixed;
+    bottom: 30px;
+    right: 30px; 
+}
+</style>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>마이펫자랑하기</title>
@@ -27,16 +35,20 @@
     <link rel="stylesheet" href="./resources/css/css/slicknav.css">
     <link rel="stylesheet" href="./resources/css/css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+    <!-- Channel Plugin Scripts -->
 </head>
-
 <body>
+
     <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
     <!-- header_start  -->
     <header>
+    	
+
         <div class="header-area ">
+        	
             <div class="header-top_area">
                 <div class="container">
                     <div class="row">
@@ -119,69 +131,62 @@
             <div class="row">
                 <div class="col-lg-8 mb-5 mb-lg-0">
                     <div class="blog_left_sidebar">
-                        <article class="blog_item">
-                            <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="./resources/css/img/blog/single_blog_1.png" alt="">
-                                <a href="#" class="blog_item_date">
-                                    <h3>15</h3>
-                                    <p>Jan</p>
-                                </a>
-                            </div>
+                        <c:forEach items="${pages.boardList}" var="board">
+	                        <article class="blog_item"> 
+	                            <div class="blog_item_img">
+	                                <img class="card-img rounded-0" src="./resources/css/img/blog/single_blog_1.png" alt="">
+	                                <a href="#" class="blog_item_date">
+	                                    <h3>15</h3>
+	                                    <p>Jan</p>
+	                                </a>
+	                            </div>
+	
+	                            <div class="blog_details">
+	                                <a class="d-inline-block" href="getBoard.do?no=${board.no}">
+	                                    <h2>${board.title}</h2>
+	                                </a>
+	                                <p>${board.content}</p>
+	                                <ul class="blog-info-link">
+	                                    <li><a href="#"><i class="fa fa-user"></i> ${board.cnt}</a></li>
+	                                    <li><a href="#"><i class="fa fa-comments"></i> ${board.comment_cnt}</a></li>
+	                                </ul>
+	                            </div>
+	                        </article>
+						</c:forEach>
 
-                            <div class="blog_details">
-                                <a class="d-inline-block" href="single-blog.html">
-                                    <h2>멍냥게시판 제목</h2>
-                                </a>
-                                <p>글내용</p>
-                                <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i> 방문자수</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i> 조회수</a></li>
-                                </ul>
-                            </div>
-                        </article>
-
-                        <article class="blog_item">
-                            <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="./resources/css/img/blog/single_blog_2.png" alt="">
-                                <a href="#" class="blog_item_date">
-                                    <h3>15</h3>
-                                    <p>Jan</p>
-                                </a>
-                            </div>
-
-                            <div class="blog_details">
-                                <a class="d-inline-block" href="single-blog.jsp">
-                                    <h2>멍냥게시판 제목2</h2>
-                                </a>
-                                <p> 글내용2</p>
-                                <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i> 방문자수</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i> 조회수</a></li>
-                                </ul>
-                            </div>
-                        </article>
-
-						<!-- 페이징처리 -->				                                        
-                        <nav class="blog-pagination justify-content-center d-flex">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Previous">
-                                        <i class="ti-angle-left"></i>
-                                    </a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">1</a>
-                                </li>
-                                <li class="page-item active">
-                                    <a href="#" class="page-link">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Next">
-                                        <i class="ti-angle-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+						<!-- 페이징처리 -->
+						<c:if test="${pages.hasArticles()}">				                                        
+	                        <nav class="blog-pagination justify-content-center d-flex">
+	                            <ul class="pagination">
+	                           		<c:if test="${pages.startPage > 5}">
+		                                <li class="page-item">
+		                                    <a href="getBoardList.do?currentPage=${pages.startPage - 5}&searchKeyword=${bvo.searchKeyword}" class="page-link" aria-label="Previous">
+		                                        <i class="ti-angle-left"></i>
+		                                    </a>
+		                                </li>
+		                            </c:if>
+									<c:forEach var="pNo" begin="${pages.startPage}" end="${pages.endPage}">
+										<c:if test="${pNo == pages.currentPage}" >
+			                                <li class="page-item">
+			                                    <a href="getBoardList.do?currentPage=${pNo}&searchKeyword=${bvo.searchKeyword}" class="page-link">${pNo}</a>
+			                                </li>
+			                            </c:if>
+			                            <c:if test="${pNo != pages.currentPage}" >
+			                                <li class="page-item active">
+			                                    <a href="getBoardList.do?currentPage=${pNo}&searchKeyword=${bvo.searchKeyword}" class="page-link">${pNo}</a>
+			                                </li>
+	                                	</c:if>
+	                                </c:forEach>
+	                                <c:if test="${pages.endPage < pages.totalPages}">
+	                                <li class="page-item">
+	                                    <a href="getBoardList.do?currentPage=${pages.startPage + 5}&searchKeyword=${bvo.searchKeyword}" class="page-link" aria-label="Next">
+	                                        <i class="ti-angle-right"></i>
+	                                    </a>
+	                                </li>
+	                                </c:if>
+	                            </ul>
+	                        </nav>
+                        </c:if>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -350,7 +355,7 @@
         </div>
     </footer>
     <!-- footer_end  -->
-
+<a href="insertBoard.jsp" id="fixedbutton">새글 추가하기</a>
     <!-- JS here -->
     <script src="./resources/css/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="./resources/css/js/vendor/jquery-1.12.4.min.js"></script>
