@@ -9,6 +9,30 @@
 </head>
 <body>
 <jsp:include page="./hf/header.jsp"></jsp:include>
+    	<!-- slider_area_start -->
+	<div class="slider_area">
+		<div class="single_slider slider_bg_1 d-flex align-items-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5 col-md-6">
+						<div class="slider_text">
+							<h3>
+								멍이랑
+								 <br> <span>냥이랑</span>
+							</h3>
+							<p>
+								사랑스런 반려동물을 위한<br>
+								우리들만의 특별한 서비스
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="dog_thumb d-none d-lg-block">
+				<img src="./resources/css/img/banner/dog.png" alt="">
+			</div>
+		</div>
+	</div>
     	<!-- 슬라이드  -->
 	<div class="testmonial_area">
 		<div class="container">
@@ -74,33 +98,6 @@
 
 		</div>
 	</div>
-	<!-- 슬라이드_끝  -->
-    
-    	<!-- slider_area_start -->
-	<div class="slider_area">
-		<div class="single_slider slider_bg_1 d-flex align-items-center">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-5 col-md-6">
-						<div class="slider_text">
-							<h3>
-								멍이랑
-								 <br> <span>냥이랑</span>
-							</h3>
-							<p>
-								사랑스런 반려동물을 위한<br>
-								우리들만의 특별한 서비스
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="dog_thumb d-none d-lg-block">
-				<img src="./resources/css/img/banner/dog.png" alt="">
-			</div>
-		</div>
-	</div>
-	    <!--================Blog Area =================-->
 	<div class="service_area">
 		<div class="container">
 			<div class="row justify-content-center ">
