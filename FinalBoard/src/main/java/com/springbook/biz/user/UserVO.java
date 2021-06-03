@@ -5,6 +5,8 @@ package com.springbook.biz.user;
 import java.sql.Date;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,7 +21,7 @@ public class UserVO {
 	private String birth;
 	private String post;
 	private String address;
-	private String address_detail;
+	private MultipartFile file;
 	
 	
 	@Override

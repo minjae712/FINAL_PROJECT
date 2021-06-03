@@ -34,8 +34,6 @@
 	<script src="./resources/css/js/main.js"></script>
 	    
     <!-- CSS here -->
-    <link rel="stylesheet" href="./resources/css/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./resources/css/css/owl.carousel.min.css">
     <link rel="stylesheet" href="./resources/css/css/magnific-popup.css">
     <link rel="stylesheet" href="./resources/css/css/font-awesome.min.css">
     <link rel="stylesheet" href="./resources/css/css/themify-icons.css">
@@ -46,30 +44,18 @@
     <link rel="stylesheet" href="./resources/css/css/slicknav.css">
     <link rel="stylesheet" href="./resources/css/css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
-<script>
-	$('#datepicker').datepicker({
-		iconsLibrary : 'fontawesome',
-		disableDaysOfWeek : [ 0, 0 ],
-	//     icons: {
-	//      rightIcon: '<span class="fa fa-caret-down"></span>'
-	//  }
-	});
-	$('#datepicker2').datepicker({
-		iconsLibrary : 'fontawesome',
-		icons : {
-			rightIcon : '<span class="fa fa-caret-down"></span>'
-		}
-
-	});
-	var timepicker = $('#timepicker').timepicker({
-		format : 'HH.MM'
-	});
-</script>
 <style>
 a {
 	cursor: pointer;
 }
-
+div.line-orange{
+	background-color: #ed7d32;
+	height: 15;
+}
+div.line-blue{
+	background-color: #619fd7;
+	 height: 15;
+}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Header</title>
@@ -86,10 +72,9 @@ a {
                         </div>
                         <div class="col-lg-6 col-md-4 ">
                             <div class="social_media_links">
-                            	<u:isLogin>						
-									<a href="${pageContext.request.contextPath}/logout.do"><img src="./customcss/Logout_button.png">로그아웃하기</a> <br><br>
-									<a href="${pageContext.request.contextPath}/changePwdForm.jsp">암호 변경하기</a><br><br>
-									<a href="${pageContext.request.contextPath}/getBoardList.do">게시판 보기</a>
+                            	<u:isLogin>
+                            		<b style="color: white;">${user.name}님, 환영합니다!</b>						
+									<a href="${pageContext.request.contextPath}/logout.do"><img src="./customcss/Logout_button.png"></a>
 								</u:isLogin>
                                 <u:notLogin>
                                 <a href="#"> <img src="./resources/css/img/naver.png" border="0" width="30" height="30"></a> 
@@ -107,8 +92,8 @@ a {
                     <div class="row align-items-center">
                         <div class="col-xl-3 col-lg-3">
                             <div class="logo">
-                                <a onclick="location.reload()">
-                                    <img src="./customcss/main_icon.png" alt="">
+                                <a onclick="index.jsp">
+                                    <img src="./customcss/main_icon.png">
                                 </a>
                             </div>
                         </div>
@@ -134,13 +119,12 @@ a {
                                 </nav>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+	    <div class="line-orange"></div>
+        <div class="line-blue"></div>
 </body>
 </html>

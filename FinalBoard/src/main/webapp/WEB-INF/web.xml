@@ -43,7 +43,7 @@
 		<filter-name>MultipartFilter</filter-name>
 		<filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
 	</filter>
-	<filter-mapping>
+		<filter-mapping>
 		<filter-name>MultipartFilter</filter-name>
 		<url-pattern>*.do</url-pattern>
 	</filter-mapping>

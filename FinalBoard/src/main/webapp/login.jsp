@@ -13,12 +13,13 @@
     apiURL += "&state=" + state;
     session.setAttribute("state", state);
  %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
 <style>
-body{
+div.login{
 	margin-top: 10%;
+	margin-bottom: 10%;
 }
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -32,31 +33,38 @@ body{
 <title>로그인</title>
 </head>
 <body>
-	<center>
-	<div style="width: 70%">
+<jsp:include page="./hf/header.jsp"></jsp:include>
+<center>
+	<div class="login" style="width: 70%">
+
 		<h1><a onclick="location.reload()" style="cursor: pointer;"><b>로그인</b></a></h1>
 		<hr>
 		<form class="form-inline" id="loginForm" name="loginForm" action="login.do" method="post">
-			<div class="form-group" align="center">
-					<label for="exampleInputName2">아이디</label>
-					<input class="form-control" placeholder="ID" type="text" id="id" name="id" />
+			<div class="form-group" >
+					<label for="exampleInputName2">ID</label>
+					<input class="form-control" placeholder="아이디" type="text" id="id" name="id" />
 			</div>
-			<div class="form-group" align="center">
-					<label for="exampleInputName2">비밀번호</label>
-					<input type="password" id="password" name="password" class="form-control" placeholder="비밀번호"/>
+			<br>
+			<br>
+			<div class="form-group">
+					<label for="exampleInputName2">PW</label>
+					<input type="password" id="password" name="password" class="form-control" placeholder="비밀번호"/><br><br>
 					<input type="submit" id="btnLogin" value="로그인" class="btn btn-default"/>
 					<a class="btn btn-default" href="index.jsp">취소</a>
 			</div>
-			<div>
-            	<label for="autoSave">아이디/비밀번호 저장</label>
-            	<input type="checkbox" name="autoSave" id="autoSave">
-        	</div>	
+			<br>
 		</form>
-		<a href="<%=apiURL%>"><img height="50" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
 		
 		<hr>
-					<a href="find_id.jsp"><b>아이디 찾기</b></a>&nbsp;|&nbsp;<a href="findPassword.jsp"><b>비밀번호 찾기</b></a>
+			<div>
+            	<label for="autoSave">아이디/비밀번호 저장</label>
+            	<input type="checkbox" name="autoSave" id="autoSave"> |
+				<a href="find_id.jsp"><b>아이디 찾기</b></a>&nbsp;|&nbsp;<a href="findPassword.jsp"><b>비밀번호 찾기</b></a><br>
+        	</div>
+        	<br>
+		<a href="<%=apiURL%>"><img height="50" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
 	</div>
-	</center>
+</center>
+	<jsp:include page="./hf/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -1,4 +1,15 @@
-	    function execDaumPostcode() {
+function setThumbnail(event) { 
+		var reader = new FileReader();
+
+		reader.onload = function(event) { 
+			document.getElementById("pic").setAttribute("src", event.target.result);
+		};
+
+		reader.readAsDataURL(event.target.files[0]); 
+	}
+
+
+function execDaumPostcode() {
 	        new daum.Postcode({
 	            oncomplete: function(data) {
 	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -27,9 +38,9 @@
 	                }
 	 
 	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-	                document.getElementById('post').value = data.zonecode; //5자리 새우편번호 사용
-	                document.getElementById('address').value = fullRoadAddr;
-	                document.getElementById('address_detail').focus();
+	                document.getElementById('zip').value = data.zonecode; //5자리 새우편번호 사용
+	                document.getElementById('addr1').value = fullRoadAddr;
+	                document.getElementById('addr2').focus();
 	            }
 	        }).open();
 	    }

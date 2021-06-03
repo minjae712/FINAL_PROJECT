@@ -8,6 +8,8 @@
 <title>Footer</title>
 </head>
 <body>
+	    <div class="line-orange"></div>
+        <div class="line-blue"></div>
     <!-- 푸터  -->
     <footer class="footer">
         <div class="footer_top">
