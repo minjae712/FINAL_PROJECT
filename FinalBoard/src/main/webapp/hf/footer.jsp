@@ -22,7 +22,7 @@
                             </h3>
                             <ul class="address_line">
                                 <li>010-0000-0000</li>
-                                <li><a href="#">minjae@gamil.com</a></li>
+                                <li><a href="#">dogcatcompany@gmail.com</a></li>
                             </ul>
                         </div>
                     </div>
