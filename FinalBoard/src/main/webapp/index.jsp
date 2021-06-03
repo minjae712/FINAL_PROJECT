@@ -15,7 +15,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-5 col-md-6">
-						<div class="slider_text">
+						<div class="slider_text" style="margin-top: 5cm;">
 							<h3>
 								멍이랑
 								 <br> <span>냥이랑</span>
