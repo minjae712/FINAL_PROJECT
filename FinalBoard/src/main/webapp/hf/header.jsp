@@ -34,15 +34,16 @@
 	<script src="./resources/css/js/main.js"></script>
 	    
     <!-- CSS here -->
-    <link rel="stylesheet" href="./resources/css/css/magnific-popup.css">
-    <link rel="stylesheet" href="./resources/css/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./resources/css/css/themify-icons.css">
-    <link rel="stylesheet" href="./resources/css/css/nice-select.css">
-    <link rel="stylesheet" href="./resources/css/css/flaticon.css">
-    <link rel="stylesheet" href="./resources/css/css/gijgo.css">
-    <link rel="stylesheet" href="./resources/css/css/animate.css">
-    <link rel="stylesheet" href="./resources/css/css/slicknav.css">
-    <link rel="stylesheet" href="./resources/css/css/style.css">
+	<link rel="stylesheet" href="./resources/css/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="./resources/css/css/magnific-popup.css">
+	<link rel="stylesheet" href="./resources/css/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./resources/css/css/themify-icons.css">
+	<link rel="stylesheet" href="./resources/css/css/nice-select.css">
+	<link rel="stylesheet" href="./resources/css/css/flaticon.css">
+	<link rel="stylesheet" href="./resources/css/css/gijgo.css">
+	<link rel="stylesheet" href="./resources/css/css/animate.css">
+	<link rel="stylesheet" href="./resources/css/css/slicknav.css">
+	<link rel="stylesheet" href="./resources/css/css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 <style>
 a {
