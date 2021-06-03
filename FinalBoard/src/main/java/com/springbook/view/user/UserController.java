@@ -25,6 +25,8 @@ public class UserController {
 
 	@RequestMapping("/createUser.do")
 	public String userCreate(UserVO vo) {
+	
+	vo.setAddress(vo.getAddress() + " " + vo.getAddress_detail());
 		if (vo.getId() == null || vo.getId() == "") {
 			return "createUser.jsp";
 		}

@@ -19,6 +19,7 @@ public class UserVO {
 	private String birth;
 	private String post;
 	private String address;
+	private String address_detail;
 	
 	
 	@Override

@@ -87,14 +87,14 @@ a {
                         <div class="col-lg-6 col-md-4 ">
                             <div class="social_media_links">
                             	<u:isLogin>						
-									<a href="${pageContext.request.contextPath}/logout.do">로그아웃하기</a> <br><br>
+									<a href="${pageContext.request.contextPath}/logout.do"><img src="./customcss/Logout_button.png">로그아웃하기</a> <br><br>
 									<a href="${pageContext.request.contextPath}/changePwdForm.jsp">암호 변경하기</a><br><br>
 									<a href="${pageContext.request.contextPath}/getBoardList.do">게시판 보기</a>
 								</u:isLogin>
                                 <u:notLogin>
                                 <a href="#"> <img src="./resources/css/img/naver.png" border="0" width="30" height="30"></a> 
 								<a href="#"> <img src="./resources/css/img/kakao.png" border="0" width="30" height="30"></a> 
-								<a href="${pageContext.request.contextPath}/login.jsp"> <i class="fa fa-linkedin"></i></a>
+								<a href="${pageContext.request.contextPath}/login.jsp"><img src="./customcss/Login_button.png"></a>
                             	<a href="${pageContext.request.contextPath}/createUser.jsp"><img src="./customcss/sign_up.png"></a>
                             	</u:notLogin>
                             </div>
