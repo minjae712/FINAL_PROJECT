@@ -112,21 +112,28 @@ a {
                                 </a>
                             </div>
                         </div>
-                        <div class="col-xl-9 col-lg-9">
+                      <div class="col-xl-9 col-lg-9">
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
                                        <li><a href="index.jsp">홈</a></li>
-										<li><a href="#">사이트 소개</a></li>
+										<li><a href="about.jsp">사이트 소개</a></li>
+										<u:isLogin>		
+										<li><a href="#">My Page <i class="ti-angle-down"></i></a>
+											<ul class="submenu">
+												<li><a href="userUpdate.jsp">내 정보 수정</a></li>
+												<li><a href="#">나의 예약 확인</a></li>
+											</ul></li>
+										</u:isLogin>		
 										<li><a href="#">게시판 <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                 <li><a href="blog.jsp">마이펫자랑하기</a></li>
+                                                 <li><a href="blog.jsp">마이펫 자랑하기</a></li>
                                                 <li><a href="single-blog.jsp">[COMENT 소스참고]</a></li>
                                                 </ul> </li>
 											<li><a href="#">서비스 <i class="ti-angle-down"></i></a>
 											<ul class="submenu">
 										        <li><a href="service.jsp">동물병원 예약</a></li>
-										        <li><a href="blog2.jsp">펫 시터구하기</a></li>
+										        <li><a href="blog2.jsp">펫 시터 구하기</a></li>
                                                 <li><a href="blog3.jsp">펫 쇼핑</a></li>
 										        </ul></li>
 										<li><a href="contact.jsp">고객센터</a></li>
