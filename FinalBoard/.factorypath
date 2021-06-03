@@ -41,12 +41,16 @@
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\catalina-storeconfig.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\catalina-tribes.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\catalina.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\commons-dbcp2-2.8.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\commons-logging-1.2.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\commons-pool2-2.9.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\ecj-4.15.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\el-api.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\jasper-el.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\jasper.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\jaspic-api.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\jsp-api.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\jstl-1.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\servlet-api.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\tomcat-api.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\tomcat-coyote.jar" enabled="true" runInBatchMode="false"/>
