@@ -57,6 +57,12 @@ $(window).ready(function(){
 					<td colspan="1">조회수</td>
 					<td colspan="1">${board.cnt}</td>
 				</tr>
+			    <div class="inputArea">
+			 	 <label for="fileName">이미지</label>
+				 <p>원본 이미지</p>
+				 <img src="${board.fileName}" />
+				 </div>
+				
 				<tr>
 					<td colspan="6" height="400">${board.content}
 					</td>

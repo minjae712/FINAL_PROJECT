@@ -4,8 +4,8 @@
 <mapper namespace="BoardDAO">
 
 	<insert id="insertBoard" >	
-		INSERT INTO BOARD(NO,TITLE,WRITER,CONTENT)
-		VALUES((SELECT NVL(MAX(NO), 0) + 1 FROM BOARD),#{title},#{writer},#{content})
+		INSERT INTO BOARD(NO,TITLE,WRITER,CONTENT,FILENAME)
+		VALUES((SELECT NVL(MAX(NO), 0) + 1 FROM BOARD),#{title},#{writer},#{content},#{fileName})
 	</insert>
 	
 	<insert id="insertNotice" >	

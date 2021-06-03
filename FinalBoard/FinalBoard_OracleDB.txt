@@ -15,6 +15,7 @@ CREATE TABLE BOARD(
   CONTENT VARCHAR2(4000),    						 -- 게시글내용
   REGDATE DATE DEFAULT SYSDATE,        				 -- 게시글작성날짜
   CNT NUMBER DEFAULT 0,    						 -- 조회수
+  FILENAME VARCHAR2(200),						-- 이미지업로드
   CONSTRAINT BOARD_PK PRIMARY KEY(NO)
 );
 

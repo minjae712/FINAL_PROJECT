@@ -21,6 +21,7 @@ public class BoardDAOMybatis{
 	private SqlSessionTemplate mybatis;
 
 	public void insertBoard(BoardVO vo) {
+		System.out.println(vo.toString());
 		mybatis.insert("BoardDAO.insertBoard", vo);
 	}
 	

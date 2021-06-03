@@ -1,5 +1,6 @@
 package com.springbook.view.board;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.springbook.biz.board.B_MoodVO;
 import com.springbook.biz.board.BoardPages;
@@ -41,6 +43,15 @@ public class BoardController {
 	
 	@RequestMapping(value = "/insertBoard.do")
 	public String insertBoard(BoardVO vo) throws IOException {
+		
+		
+		MultipartFile uploadFile = vo.getUploadFile();
+		if(!uploadFile.isEmpty()) {
+			String fileName = uploadFile.getOriginalFilename();
+			System.out.println(fileName);
+			uploadFile.transferTo(new File("" + fileName));
+			vo.setFileName(fileName);
+		}		
 		boardService.insertBoard(vo);
 		return "redirect:getBoardList.do";
 	}
@@ -106,7 +117,7 @@ public class BoardController {
 		vo.setSearchKeyword(vo.getSearchKeyword());
 		model.addAttribute("noticeList",boardService.getNoticeList());
 		model.addAttribute("pages",result);
-		return "blog.jsp";
+		return "getBoardList.jsp";
 	}
 	
 	@RequestMapping(value = "/insertNotice.do")

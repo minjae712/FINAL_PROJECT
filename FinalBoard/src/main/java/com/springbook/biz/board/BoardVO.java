@@ -2,12 +2,18 @@ package com.springbook.biz.board;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Getter;
 import lombok.Setter;
+
 
 @Getter @Setter
 public class BoardVO {
 
+	
+	private MultipartFile uploadFile;
+	private String fileName;
 	private int no;
 	private String writer;
 	private String title;

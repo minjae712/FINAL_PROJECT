@@ -16,7 +16,7 @@ body{
 	<center>
 		<h1><a onclick="location.reload()" style="cursor: pointer;"><b>글 등록</b></a></h1>
 		<hr>
-		<form class="form-inline" action="insertBoard.do" method="post">
+		<form class="form-inline" action="insertBoard.do" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="exampleInputName2">제목</label>
 				<input type="text" name="title" class="form-control" placeholder="제목을 입력해주세요" style="width:500px" />
@@ -28,7 +28,11 @@ body{
 				<label for="exampleInputName2">내용</label>
 				<textarea name="content" class="form-control" placeholder="내용을 입력해주세요" style="width:500px;height: 300px"></textarea>
 			</div>
-			<br>
+			<br><br>
+				<div class="inputArea">
+				<label for="fileName">이미지파일</label>				
+				<input type="file" id="fileName" name="uploadFile"/></td>
+				</div>
 			<br>
 					<input class="btn btn-default" type="submit" value=" 새글 등록 " />
 					<input class="btn btn-default" type="button" onclick="history.back(-1);" value="취소">
