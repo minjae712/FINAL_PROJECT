@@ -4,8 +4,8 @@
 <mapper namespace="BoardDAO">
 
 	<insert id="insertBoard" >	
-		INSERT INTO BOARD(NO,TITLE,WRITER,CONTENT)
-		VALUES((SELECT NVL(MAX(NO), 0) + 1 FROM BOARD),#{title},#{writer},#{content})
+		INSERT INTO BOARD(NO,TITLE,WRITER,CONTENT,FILENAME)
+		VALUES((SELECT NVL(MAX(NO), 0) + 1 FROM BOARD),#{title},#{writer},#{content},#{fileName})
 	</insert>
 	
 	<insert id="insertNotice" >	
@@ -59,6 +59,16 @@
 
 	<select id="getMood" resultType="B_MOOD">
 		SELECT * FROM B_MOOD WHERE NO = #{no}
+	</select>
+	
+	<select id="getBestList" resultType="board">
+		SELECT NO, WRITER, TITLE, CONTENT, REGDATE, CNT, ROW_NUMBER() OVER
+		(ORDER BY CNT DESC, REGDATE DESC) AS RANK
+		FROM (SELECT NO, WRITER, TITLE, CONTENT, REGDATE, CNT FROM BOARD ORDER BY
+		CNT DESC)
+		<![CDATA[
+		where rownum <= 10  AND REGDATE between ADD_MONTHS ( TRUNC(sysdate, 'MM'), -1) AND LAST_DAY(SYSDATE)
+		]]>
 	</select>
 
 	<update id="increaseCount">

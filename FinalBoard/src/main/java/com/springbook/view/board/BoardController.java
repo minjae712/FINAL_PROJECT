@@ -1,10 +1,13 @@
 package com.springbook.view.board;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.springbook.biz.board.B_MoodVO;
 import com.springbook.biz.board.BoardPages;
@@ -39,6 +43,15 @@ public class BoardController {
 	
 	@RequestMapping(value = "/insertBoard.do")
 	public String insertBoard(BoardVO vo) throws IOException {
+		
+		
+		MultipartFile uploadFile = vo.getUploadFile();
+		if(!uploadFile.isEmpty()) {
+			String fileName = uploadFile.getOriginalFilename();
+			System.out.println(fileName);
+			uploadFile.transferTo(new File("" + fileName));
+			vo.setFileName(fileName);
+		}		
 		boardService.insertBoard(vo);
 		return "redirect:getBoardList.do";
 	}
@@ -112,6 +125,28 @@ public class BoardController {
 		boardService.insertNotice(vo);
 		return "redirect:getBoardList.do";
 	}
+	
+	@RequestMapping(value ="/getBestList.do")
+	public @ResponseBody String getBestList(BoardVO vo) throws JSONException {
+		List<BoardVO> result = boardService.getBestList(vo);
+		
+		JSONArray jsonArray = new JSONArray();
+		
+		for (int i = 0; i < result.size(); i++) {
+			JSONObject json = new JSONObject();
+			
+			json.put("no", result.get(i).getNo());
+			json.put("writer", result.get(i).getWriter());
+			json.put("title", result.get(i).getTitle());
+			json.put("content", result.get(i).getContent());
+			json.put("regDate", result.get(i).getRegDate());
+			json.put("cnt", result.get(i).getCnt());
+			
+			jsonArray.put(json);
+		}
+		return jsonArray.toString();
+	}
+
 
 
 }

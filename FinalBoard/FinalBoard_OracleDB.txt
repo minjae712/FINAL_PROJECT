@@ -15,6 +15,7 @@ CREATE TABLE BOARD(
   CONTENT VARCHAR2(4000),    						 -- 게시글내용
   REGDATE DATE DEFAULT SYSDATE,        				 -- 게시글작성날짜
   CNT NUMBER DEFAULT 0,    						 -- 조회수
+  FILENAME VARCHAR2(200),						-- 이미지업로드
   CONSTRAINT BOARD_PK PRIMARY KEY(NO)
 );
 
@@ -52,10 +53,10 @@ INSERT INTO NOTICE(NO,WRITER,TITLE,CONTENT,UNI) VALUES('공지','test','공지�
 DROP TABLE MEMBER CASCADE CONSTRAINT;
 CREATE TABLE MEMBER(
   ID VARCHAR2(20) ,                 					 -- 아이디
-  ROLE VARCHAR2(10),							-- 권한
+  ROLE VARCHAR2(10),									-- 권한
   PASSWORD VARCHAR2(20),                   					-- 패스워드
   EMAIL VARCHAR2(50),                    				  -- 이메일
-  IMAGE VARCHAR2(100),              					 -- 유저이미지
+  IMAGE VARCHAR2(1000),              					 -- 유저이미지
   NAME VARCHAR2(20),                   					 -- 이름
   BIRTH DATE,                 						-- 생일
   POST VARCHAR2(20),                  					 -- 우편번호

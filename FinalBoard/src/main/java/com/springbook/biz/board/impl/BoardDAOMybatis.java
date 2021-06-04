@@ -21,6 +21,7 @@ public class BoardDAOMybatis{
 	private SqlSessionTemplate mybatis;
 
 	public void insertBoard(BoardVO vo) {
+		System.out.println(vo.toString());
 		mybatis.insert("BoardDAO.insertBoard", vo);
 	}
 	
@@ -77,6 +78,9 @@ public class BoardDAOMybatis{
 	public List<BoardVO> getBoardPages(BoardVO vo) {
 		return mybatis.selectList("BoardDAO.getBoardPages",vo);
 	}
-
+	
+	public List<BoardVO> getBestList(BoardVO vo){
+		return mybatis.selectList("BoardDAO.getBestList",vo);
+	}
 
 }

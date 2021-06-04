@@ -1,17 +1,18 @@
 package com.springbook.view.user;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.springbook.biz.user.UserService;
 import com.springbook.biz.user.UserVO;
@@ -23,10 +24,24 @@ public class UserController {
 	private UserService userservice;
 	Map<String, Boolean> errors = new HashMap<String, Boolean>();
 
-	@RequestMapping("/createUser.do")
-	public String userCreate(UserVO vo) {
+	@RequestMapping(value = "/createUser.do", headers = ("content-type=multipart/*"))
+	public String userCreate(UserVO vo,HttpServletRequest request) throws IOException{
+	
 		if (vo.getId() == null || vo.getId() == "") {
 			return "createUser.jsp";
+		}
+        
+		String imgFolder ="customcss\\"; //저장할 경로
+		String realFolder = request.getRealPath("") + imgFolder; //web-inf바로전 까지 저장할 경로
+		System.out.println( "설정 경로 : " + realFolder);
+		MultipartFile uploadFile = vo.getFile(); //단일 파일 업로드
+		String fullname = uploadFile.getOriginalFilename();
+		int idx = fullname.lastIndexOf("\\");
+		String filename = fullname.substring(idx+1);
+		if(!uploadFile.isEmpty()) {
+			System.out.println("파일이름 :" + filename);
+			uploadFile.transferTo(new File(realFolder + filename));
+			vo.setImage( realFolder + filename );
 		}
 		userservice.createUser(vo);
 		return "createUserSuccess.jsp";
@@ -44,13 +59,13 @@ public class UserController {
 		}
 
 		UserVO user = userservice.getUser(vo);
-		session.setAttribute("user", user);
 
 		if (user != null && vo.matchPassword(user)) {
 			System.out.println("로그인 성공");
 			errors.clear();
+			session.setAttribute("user", user);
 			vo = null;
-			return "redirect:getBoardList.do";
+			return "index.jsp";
 		} else {
 			System.out.println("로그인 실패 : 아이디가 없거나 비밀번호가 틀립니다.");
 			vo = null;
