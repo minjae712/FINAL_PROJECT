@@ -25,6 +25,7 @@ import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.NoticeVO;
 import com.springbook.biz.comment.CommentService;
 import com.springbook.biz.comment.CommentVO;
+import com.springbook.biz.user.UserVO;
 
 @Controller
 @SessionAttributes("board")
@@ -146,7 +147,12 @@ public class BoardController {
 		}
 		return jsonArray.toString();
 	}
-
+	
+	@RequestMapping(value = "/reservation.do")
+	public String reservation(UserVO vo) {
+		boardService.reservation(vo);
+		return "reservation.jsp";
+	}
 
 
 }

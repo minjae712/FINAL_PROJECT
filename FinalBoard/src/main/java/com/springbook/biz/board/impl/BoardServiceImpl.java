@@ -11,6 +11,7 @@ import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.NoticeVO;
 import com.springbook.biz.board.PageSize;
+import com.springbook.biz.user.UserVO;
 
 @Service("boardService")
 public class BoardServiceImpl implements BoardService  {
@@ -72,6 +73,11 @@ public class BoardServiceImpl implements BoardService  {
 	
 	public List<BoardVO> getBestList(BoardVO vo){
 		return boardDAO.getBestList(vo);
+	}
+
+	@Override
+	public void reservation(UserVO vo) {
+		boardDAO.reservation(vo);
 	}
 
 

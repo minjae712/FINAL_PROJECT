@@ -118,7 +118,7 @@ div.line-blue{
                                                 </ul> </li>
 											<li><a href="#">서비스 <i class="ti-angle-down"></i></a>
 											<ul class="submenu">
-										        <li><a href="service.jsp">동물병원 예약</a></li>
+										        <li><a href="reservation.jsp">동물병원 예약</a></li>
 										        <li><a href="blog2.jsp">펫 시터 구하기</a></li>
                                                 <li><a href="blog3.jsp">펫 쇼핑</a></li>
 										        </ul></li>
