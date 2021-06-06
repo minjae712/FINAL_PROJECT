@@ -13,6 +13,7 @@ import com.springbook.biz.board.B_MoodVO;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.NoticeVO;
 import com.springbook.biz.board.PageSize;
+import com.springbook.biz.user.UserVO;
 
 @Repository
 public class BoardDAOMybatis{
@@ -21,6 +22,7 @@ public class BoardDAOMybatis{
 	private SqlSessionTemplate mybatis;
 
 	public void insertBoard(BoardVO vo) {
+		System.out.println(vo.toString());
 		mybatis.insert("BoardDAO.insertBoard", vo);
 	}
 	
@@ -80,6 +82,10 @@ public class BoardDAOMybatis{
 	
 	public List<BoardVO> getBestList(BoardVO vo){
 		return mybatis.selectList("BoardDAO.getBestList",vo);
+	}
+	
+	public void reservation(UserVO vo) {
+		mybatis.insert("BoardDAO.reservation",vo);
 	}
 
 }
