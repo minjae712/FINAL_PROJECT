@@ -1,7 +1,7 @@
 
 function getBestList(){
 	
-	$.ajax({
+	    $.ajax({
         type : "POST",
         dataType : "json",
         url : "getBestList.do",
@@ -9,14 +9,10 @@ function getBestList(){
         	
         	var str = "";
         	$.each(data,function(idx,item){
-        		
-    			
-    			str += "<center><table>";
-    			str += "<tr><td width='50'><a href='getBoard.do?no= " + item.no +"'> " + item.no + "</td>"; 
-    			str += "<td width='150'><a href='getBoard.do?no= " + item.no +"'>"+ item.title + "</td>";
-    			str += "<td width='80'>" + item.writer + "</td>";
-    			str += "<td width='100'>" + item.regDate + "</td>";
-    			str += "<td width='50'>" + item.cnt + "</td></tr></table><center>";
+    			str += "<div><table class='table table-condensed' style='width: 100%'>";
+    			str += "<tr style='font-size=2em;' color='#CCEEFF;'><td  style='background-color: #FE642E;' width='72%'><a href='getBoard.do?no= " + item.no +"'>"+ item.title + "</td>";
+    			str += "<td style='background-color:#FE642E;' width='33%'>" + item.writer + "</td>";
+    			str += "<td align='right' style='background-color: #FE642E; width='23%' >" + item.cnt + "</td></tr></table><div>";
         	$("#bestList").html(str);
         	});
         },
@@ -26,3 +22,5 @@ function getBestList(){
         }
 	});
 }
+
+
