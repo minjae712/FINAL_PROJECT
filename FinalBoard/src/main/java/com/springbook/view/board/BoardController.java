@@ -147,12 +147,4 @@ public class BoardController {
 		}
 		return jsonArray.toString();
 	}
-	
-	@RequestMapping(value = "/reservation.do")
-	public String reservation(UserVO vo) {
-		boardService.reservation(vo);
-		return "reservation.jsp";
-	}
-
-
 }

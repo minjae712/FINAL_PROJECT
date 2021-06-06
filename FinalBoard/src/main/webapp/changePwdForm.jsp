@@ -13,6 +13,7 @@ body{
 <title>암호 변경</title>
 </head>
 <body>
+	<jsp:include page="./hf/header.jsp"></jsp:include>
 	<center>
 	<div style="width: 70%">
 		<h1><a onclick="location.reload()" style="cursor: pointer;"><b>비밀번호 변경</b></a></h1>
@@ -32,5 +33,6 @@ body{
 		<hr>
 	</div>
 	</center>
+	<jsp:include page="./hf/footer.jsp"></jsp:include>
 </body>
 </html>

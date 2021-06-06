@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,7 +23,6 @@ public class UserVO {
 	private String post;
 	private String address;
 	private MultipartFile file;
-	
 	
 	@Override
 	public String toString() {

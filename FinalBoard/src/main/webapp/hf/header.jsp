@@ -63,23 +63,22 @@ div.line-blue{
 </head>
 <body>
     <header>
-        <div class="header-area">
-            <div class="header-top_area">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-8">
+        <div class="header-area" >
+            <div class="header-top_area" >
+                <div class="container" >
+                    <div class="row" >
+                        <div class="col-lg-6 col-md-8" >
                             <div class="short_contact_list">
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-4 ">
+                        <div class="col-lg-6 col-md-4 " >
                             <div class="social_media_links">
                             	<u:isLogin>
-                            		<b style="color: white;">${user.name}님, 환영합니다!</b>						
+                            		<b style="color: white;">${user.name}님, 환영합니다!</b>
+                            		<a href="getUser.do"><img src="./customcss/MyPage.png"></a>
 									<a href="${pageContext.request.contextPath}/logout.do"><img src="./customcss/Logout_button.png"></a>
 								</u:isLogin>
                                 <u:notLogin>
-                                <a href="#"> <img src="./resources/css/img/naver.png" border="0" width="30" height="30"></a> 
-								<a href="#"> <img src="./resources/css/img/kakao.png" border="0" width="30" height="30"></a> 
 								<a href="${pageContext.request.contextPath}/login.jsp"><img src="./customcss/Login_button.png"></a>
                             	<a href="${pageContext.request.contextPath}/createUser.jsp"><img src="./customcss/sign_up.png"></a>
                             	</u:notLogin>
@@ -104,13 +103,6 @@ div.line-blue{
                                     <ul id="navigation">
                                        <li><a href="index.jsp">홈</a></li>
 										<li><a href="about.jsp">사이트 소개</a></li>
-										<u:isLogin>		
-										<li><a href="#">My Page <i class="ti-angle-down"></i></a>
-											<ul class="submenu">
-												<li><a href="userUpdate.jsp">내 정보 수정</a></li>
-												<li><a href="#">나의 예약 확인</a></li>
-											</ul></li>
-										</u:isLogin>		
 										<li><a href="#">게시판 <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                  <li><a href="blog.jsp">마이펫 자랑하기</a></li>
@@ -118,7 +110,7 @@ div.line-blue{
                                                 </ul> </li>
 											<li><a href="#">서비스 <i class="ti-angle-down"></i></a>
 											<ul class="submenu">
-										        <li><a href="reservation.jsp">동물병원 예약</a></li>
+										        <li><a href="reservationPage.do">동물병원 예약</a></li>
 										        <li><a href="blog2.jsp">펫 시터 구하기</a></li>
                                                 <li><a href="blog3.jsp">펫 쇼핑</a></li>
 										        </ul></li>
