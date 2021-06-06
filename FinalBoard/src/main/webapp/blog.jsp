@@ -11,6 +11,8 @@
 	bottom: 30px;
 	right: 30px;
 }
+
+
 </style>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -37,6 +39,16 @@
 <link rel="stylesheet" href="./resources/css/css/style.css">
 <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 <!-- Channel Plugin Scripts -->
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(window).ready(function() {
+
+		getBestList();
+	});
+</script>
+<script src="${pageContext.request.contextPath}/js/board.js"
+	type="text/javascript"></script>
 </head>
 <body>
 
@@ -67,6 +79,22 @@
 			<div class="row">
 				<div class="col-lg-8 mb-5 mb-lg-0">
 					<div class="blog_left_sidebar">
+
+						<div>
+							<center>
+								<h3 class="widget_title">★베스트 글★</h3>
+							</center>
+						</div>
+									<table >
+										<tr > 
+											<td align="center" width="63%">제목</td>
+											<td align="center"  width="30%">작성자</td>
+											<td align="left" width="10%">조회수</td>
+										</tr>
+									</table>
+								
+								<div id="bestList"></div>
+											
 
 						<c:forEach items="${pages.boardList}" var="board">
 							<article class="blog_item">
@@ -160,8 +188,7 @@
 									type="submit">Search</button>
 							</form>
 						</aside>
-						<br>
-						<br>
+						<br> <br> <br>
 
 						<aside class="single_sidebar_widget post_category_widget">
 							<h4 class="widget_title">마이펫자랑하기</h4>
@@ -176,49 +203,6 @@
 								</a></li>
 
 							</ul>
-						</aside>
-						<br>
-						<br>
-
-						<!-- 베스트 게시글 -->
-						<aside class="single_sidebar_widget popular_post_widget">
-							<h3 class="widget_title">베스트 게시글</h3>
-							<div class="media post_item">
-								<img src="./resources/css/img/post/post_1.png" alt="post">
-								<div class="media-body">
-									<a href="single-blog.html">
-										<h3>베스트 게시글1</h3>
-									</a>
-									<p>January 12, 2019</p>
-								</div>
-							</div>
-							<div class="media post_item">
-								<img src="./resources/css/img/post/post_2.png" alt="post">
-								<div class="media-body">
-									<a href="single-blog.html">
-										<h3>베스트 게시글2</h3>
-									</a>
-									<p>02 Hours ago</p>
-								</div>
-							</div>
-							<div class="media post_item">
-								<img src="./resources/css/img/post/post_3.png" alt="post">
-								<div class="media-body">
-									<a href="single-blog.html">
-										<h3>베스트 게시글3</h3>
-									</a>
-									<p>03 Hours ago</p>
-								</div>
-							</div>
-							<div class="media post_item">
-								<img src="./resources/css/img/post/post_4.png" alt="post">
-								<div class="media-body">
-									<a href="single-blog.html">
-										<h3>베스트 게시글4</h3>
-									</a>
-									<p>01 Hours ago</p>
-								</div>
-							</div>
 						</aside>
 	</section>
 
