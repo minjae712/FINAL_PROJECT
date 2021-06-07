@@ -65,8 +65,8 @@ CREATE TABLE MEMBER(
 );
 
 
-INSERT INTO MEMBER VALUES('test','admin','test123','test@naver.com','none','김이박',sysdate,'08500','서울 금천구 가마산로 76(가산동)');
-INSERT INTO MEMBER VALUES('user','user','user123','user@naver.com','none','김나박',sysdate,'21510','인천 남동구 간석로 7(간석동)');
+INSERT INTO MEMBER VALUES('test','admin','test123','test@naver.com','lion_profile.png','김이박',sysdate,'08500','서울 금천구 가마산로 76(가산동)');
+INSERT INTO MEMBER VALUES('user','user','user123','user@naver.com','lion_profile.png','김나박',sysdate,'21510','인천 남동구 간석로 7(간석동)');
 
 column id format a10;
 column pw format a8;

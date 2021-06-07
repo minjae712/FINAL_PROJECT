@@ -16,7 +16,7 @@ function fn_deleteReser() {
 	
 	if(r_num != 0 && r_num != null) {
 		if(del_Reser){
-			location.href = "/deleteReser.do?no=" + r_num + "&user_id=" + r_id;
+			location.href = "deleteReser.do?no=" + r_num + "&user_id=" + r_id;
 		}else{
 			return;
 		};
