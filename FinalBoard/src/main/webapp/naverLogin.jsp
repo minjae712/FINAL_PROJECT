@@ -36,7 +36,6 @@
       con.setRequestMethod("GET");
       int responseCode = con.getResponseCode();
       BufferedReader br;
-      System.out.print("responseCode="+responseCode);
       if(responseCode==200) { // 정상 호출
         br = new BufferedReader(new InputStreamReader(con.getInputStream()));
       } else {  // 에러 발생
@@ -57,12 +56,17 @@
        session.setAttribute("access_token", access_token);
        session.setAttribute("refresh_token", refresh_token);
        System.out.println("콜백");
-       response.sendRedirect("naverLogin.do?access_token=" + access_token +"&refresh_token=" + refresh_token);
       }
     } catch (Exception e) {
       System.out.println(e);
     }
   %>
-
+	<form id="naverLogin_form" action="naverLogin.do" method="post">
+	<input type="hidden" name="access_token" value="${access_token}">
+  	<input type="hidden" name="refresh_token" value="${refresh_token}">
+	</form>
+	<script type="text/javascript">
+	this.document.getElementById("naverLogin_form").submit();
+	</script>
 </body>
 </html>
