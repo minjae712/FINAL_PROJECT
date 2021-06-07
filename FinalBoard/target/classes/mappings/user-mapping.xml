@@ -25,7 +25,7 @@
 	<select id="findPassword" resultType="user">
 		SELECT * FROM MEMBER WHERE ID = #{id}
 	</select>
-	
+
 	<!-- 회원정보 수정 -->
 	<update id="userUpdate">
 	 	UPDATE MEMBER SET 
@@ -43,4 +43,5 @@
 	<delete id="userDelete">
 		DELETE FROM MEMBER WHERE ID = #{id} AND PASSWORD = #{password}
 	</delete>
+	
 </mapper>

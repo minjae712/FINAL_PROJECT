@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="naverDAO">
+
+	<!-- 네아로 -->	
+	<select id="getNaverLoginUser" resultType="naver">
+		SELECT * FROM NAVERLOGIN WHERE EMAIL = #{email}
+	</select>
+	
+	<select id="findUserforNaverID" resultType="user">
+		SELECT * FROM MEMBER WHERE ID = (SELECT ID FROM NAVERLOGIN WHERE EMAIL = #{email})
+	</select>
+	
+	<insert id="createNaverUser">
+		INSERT INTO NAVERLOGIN(NO,ID,NAVERLOGIN_ID,EMAIL,MOBILE,PROFILE_IMAGE)
+		VALUES(NAVERLOGIN_NO.NEXTVAL,#{id},#{naverlogin_id},#{email,jdbcType=VARCHAR},#{mobile,jdbcType=VARCHAR},#{profile_image,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="deleteNaverUser">
+		DELETE FROM NAVERLOGIN WHERE ID = #{id}
+	</delete>
+	
+</mapper>
