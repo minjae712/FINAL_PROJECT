@@ -149,6 +149,12 @@ public class UserController {
 		return "index.jsp";
 	}
 	
+	@RequestMapping("/getUser.do")
+	public String getUser() {
+		return "myPage.jsp";
+	}
+
+	
 }
 
 

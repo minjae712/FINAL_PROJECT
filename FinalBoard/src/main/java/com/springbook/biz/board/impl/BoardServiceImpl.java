@@ -75,10 +75,6 @@ public class BoardServiceImpl implements BoardService  {
 		return boardDAO.getBestList(vo);
 	}
 
-	@Override
-	public void reservation(UserVO vo) {
-		boardDAO.reservation(vo);
-	}
 
 
 }

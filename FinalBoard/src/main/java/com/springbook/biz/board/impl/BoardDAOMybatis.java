@@ -84,8 +84,5 @@ public class BoardDAOMybatis{
 		return mybatis.selectList("BoardDAO.getBestList",vo);
 	}
 	
-	public void reservation(UserVO vo) {
-		mybatis.insert("BoardDAO.reservation",vo);
-	}
 
 }

@@ -7,10 +7,6 @@
 		INSERT INTO BOARD(NO,TITLE,WRITER,CONTENT,FILENAME)
 		VALUES((SELECT NVL(MAX(NO), 0) + 1 FROM BOARD),#{title},#{writer},#{content},#{fileName})
 	</insert>
-	
-	<insert id="reservation" >	
-		INSERT INTO RESERVATION VALUES(RESER_SEQ.NEXTVAL,#{id},#{name},#{r_day},#{title},#{content})
-	</insert>
 
 	<insert id="insertNotice" >	
 		INSERT INTO NOTICE(UNI,NO,TITLE,WRITER,CONTENT)
