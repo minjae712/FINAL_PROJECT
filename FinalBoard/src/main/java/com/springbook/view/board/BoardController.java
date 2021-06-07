@@ -118,7 +118,7 @@ public class BoardController {
 		vo.setSearchKeyword(vo.getSearchKeyword());
 		model.addAttribute("noticeList",boardService.getNoticeList());
 		model.addAttribute("pages",result);
-		return "getBoardList.jsp";
+		return "blog.jsp";
 	}
 	
 	@RequestMapping(value = "/insertNotice.do")
