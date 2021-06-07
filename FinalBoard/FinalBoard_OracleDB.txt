@@ -65,8 +65,8 @@ CREATE TABLE MEMBER(
 );
 
 
-INSERT INTO MEMBER VALUES('test','admin','test123','test@naver.com','none','김이박',sysdate,'none','서울시');
-INSERT INTO MEMBER VALUES('user','user','user123','user@naver.com','none','김나박',sysdate,'none','인천시');
+INSERT INTO MEMBER VALUES('test','admin','test123','test@naver.com','lion_profile.png','김이박',sysdate,'08500','서울 금천구 가마산로 76(가산동)');
+INSERT INTO MEMBER VALUES('user','user','user123','user@naver.com','lion_profile.png','김나박',sysdate,'21510','인천 남동구 간석로 7(간석동)');
 
 column id format a10;
 column pw format a8;
@@ -95,7 +95,7 @@ INSERT INTO BOARD_COMMENT VALUES((SELECT NVL(MAX(COMMENT_NO), 0) + 1 FROM BOARD_
 DROP TABLE B_MOOD CASCADE CONSTRAINT;
 CREATE TABLE B_MOOD(
   NO NUMBER,             						-- 게시판_넘버
-  GOOD NUMBER DEFAULT 0,                				-- 좋아요
+  GOOD NUMBER DEFAULT 0,                		-- 좋아요
   BAD NUMBER DEFAULT 0,							-- 싫어요
   CONSTRAINT B_MOOD_PK PRIMARY KEY(NO),
   CONSTRAINT B_MOOD_FK_BOARD FOREIGN KEY(NO) REFERENCES BOARD(NO)
@@ -124,13 +124,25 @@ CREATE SEQUENCE RESER_SEQ INCREMENT BY 1 MAXVALUE 1000;
 DROP TABLE RESERVATION CASCADE CONSTRAINT;
 CREATE TABLE RESERVATION(
   NO NUMBER,             						-- 예약_넘버
+  KIND VARCHAR2(100),							-- 동물종류
   USER_ID VARCHAR2(100),						-- 예약자 아이디
   USER_NAME VARCHAR2(100),                		-- 예약자 이름
   RESER_DATE DATE DEFAULT SYSDATE,				-- 예약 일자
   TITLE VARCHAR2(100),							-- 예약 목적
   CONTENT VARCHAR2(100),						-- 예약 내용
+  CONTENT_ELSE VARCHAR2(1000),
   CONSTRAINT RESERVATION_PK PRIMARY KEY(NO)
 );
+
+column no format 999;
+column kind format a5;
+column user_id format a10;
+column user_name format a20;
+column reser_date format a10;
+column title format a20;
+column content format a10;
+column content_else format a30;
+
 
 COMMIT;
 

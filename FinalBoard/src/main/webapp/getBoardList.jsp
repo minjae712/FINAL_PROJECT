@@ -85,7 +85,7 @@
 				</c:forEach>
 				<c:if test="${pages.hasNoArticles()}">
 					<tr>
-						<td width="650">등록된 게시물이 없습니다.</td>
+						<td colspan="5">등록된 게시물이 없습니다.</td>
 					</tr>
 				</c:if>
 				<c:forEach items="${pages.boardList}" var="board">

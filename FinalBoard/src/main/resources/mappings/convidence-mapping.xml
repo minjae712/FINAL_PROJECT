@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ConvidenceDAO">
+
+	<insert id="reservation">
+		INSERT INTO RESERVATION VALUES
+		((SELECT NVL(MAX(NO), 0) + 1 FROM RESERVATION),#{kind},#{user_id},#{user_name},#{reser_date},#{title},#{content},#{content_else})
+	</insert>
+
+	<select id="getReservation" resultType="reser">
+		SELECT * FROM RESERVATION WHERE USER_ID = #{id}
+	</select>
+
+	<select id="getReserCount" resultType="int">
+		SELECT COUNT(*) FROM RESERVATION WHERE USER_ID = #{id}
+	</select>
+
+	<delete id="deleteReser">
+		DELETE FROM RESERVATION WHERE NO = #{no}
+	</delete>
+
+
+
+</mapper>

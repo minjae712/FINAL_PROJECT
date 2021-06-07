@@ -1,15 +1,62 @@
+<%@page import="com.springbook.biz.user.UserVO"%>
 <%@page import="java.sql.Date"%>
 <%@page contentType="text/html; charset=UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<%
+if(session.getAttribute("user") != null) {
+	UserVO us = (UserVO)session.getAttribute("user");
+	String a = us.getAddress();
+	int b = 0;
+	int c = 0;
+	String addr = "";
+	String addr2 = "";
+	if(a.contains(",")) {
+		b = a.indexOf(",");
+		c = a.length();
+		if(!a.endsWith(",")){
+			addr = a.substring(0, b);
+			addr2 = a.substring(b+1, c);
+		}else {
+			addr = a.substring(0, b);
+		}
+	}else{
+		b = a.length();
+		addr = a.substring(0, b);
+	}
+	request.setAttribute("addr", addr);
+	request.setAttribute("addr2", addr2);
+}
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>회원정보 수정</title>
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+var image = '${user.image}';
+
+$(document).ready(function(){
+	fn_image();
+})
+
+
+function fn_image() {
+	if(image != null && image != "") {
+		var fullPath = "customcss\\" + image;
+		$("#pic").attr("src",fullPath);
+	}
+}
+
+</script>
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="./js/create_User.js" type="text/javascript"></script>
+<title>회원가입</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 .btn-space {
     margin-right: 5px;
@@ -18,102 +65,69 @@
     </head>
 
 <body>
+<jsp:include page="./hf/header.jsp"></jsp:include>
 	<article class="container">
-         <div class="page-header">
-				<center><h1><a onclick="location.reload()" style="cursor: pointer;"><b>회원정보 수정</b></a></h1></center>
-             <div class="col-md-6 col-md-offset-3">
-              </div>
-         </div>
+	<div class="page-header">
+		<center>
+			<h1>
+				<b>회원정보수정</b>
+			</h1>
+		</center>
+	</div>
 
-		<hr>
-		<form action="userUpdate.do" method="post">
-			<div class="col-sm-6 col-md-offset-3">
-			                
-                    <div class="form-group">
-                        <label for="inputName">이름</label>
-                        <input type="text" class="form-control" name="name" value="${user.name }">
-                    </div>
-     
-            		<div class="form-group">
-                        <label for="inputName">아이디</label>
-                        <input type="text" class="form-control" name="id" value="${user.id }" readonly="readonly">
-           			</div>
-
-					<div class="form-group">
-                        <label for="inputPassword">비밀번호</label>
-                        <input type="password" class="form-control" name="password">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="InputEmail">이메일 주소</label>
-                        <input type="email" class="form-control" name="email" value="${user.email }">
-                    </div>
-                    
-                    <div class="form-group"> 
-						<label for="inputBirth">생년월일</label>
-            			<input type="date" class="form-control" name="birth" value="${user.birth }">
-	       			</div>
-
-	       			<div class="form-group">
-						<label>가입 등급</label>
-		    			 <div class="form-control">
-							 <label class="radio-inline">
-			 					 <input type="radio" name="role" value="Admin" > Admin </label>
-			  				 <label class="radio-inline">
-			  					<input type="radio" name="role" value="User" > User </label>
-	                 	</div>
-	      			</div>
-					
-	        		<div class="form-group">
-                        <label for="profile">프로필 사진</label>
-                        <input type="text" class="form-control" name="image" >
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>주소</label>
-                        <input type="text" class="form-control" id="zipNo" name="post" value="${user.post }" >
-                        <button class="btn btn-default" type="button" onClick="goPopup();"><i class="fa fa-search"></i>주소검색</button>
- 
-                    </div>
-                    
-                    <div class="form-group" style="margin-top:0px;">
-                        <input type="text" class="form-control" id="roadFullAddr" name="address" value="${user.address }"/>
-                    </div>
+	<form action="userUpdate.do" method="post" enctype="multipart/form-data">
+		<div class="col-sm-6 col-md-offset-3">
+			<div class="form-group has-warning">
+				<label class="control-label">프로필 사진</label><br>
+				<img id="pic" style="margin-left: 15px;" height="180px" width="150px" src="${request.getRealPath('')}customcss\defaultpic.png"><br><br>
+				<input style="width: 300px" type="file" name="file" onchange="setThumbnail(event)" />
+				<input type="hidden" name="image" value="${user.image}">
+			</div>
 			
-
-                   <div class="form-group text-center">
-                        <button type="submit" id="join-submit" class="btn btn-primary btn-space">
-                            확인<i class="fa fa-check spaceLeft"></i>
-                            <button type="button" class="btn btn-danger" onClick="location.href='index.jsp'"/>
-                            취소<i class="fa fa-check spaceLeft"></i>
-                        </button>
-                       
-
-		</form>
-		</div>
-		</article>
-		<hr>
-		
-		<script>
-		function goPopup(){
-		// 주소검색을 수행할 팝업 페이지를 호출합니다.
-		// 호출된 페이지(addressAPIPopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-			var pop = window.open("/addressAPIPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
-	
-			// 모바일 웹인 경우, 호출된 페이지(addressAPIPopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
-    		//var pop = window.open("/popup/addressAPIPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
-		}
-
-
-		function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
-			// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-			
-			var address1 = document.querySelector("#zipNo");
-			address1.value = zipNo;
-	
-			var address2 = document.querySelector("#roadFullAddr");
-			address2.value = roadFullAddr;
-		}
-		</script>
+			<div class="form-group has-warning">
+				<label class="control-label">이름</label>
+				<input type="text" class="form-control" name="name" value="${user.name}" required>
+			</div>
+			<div class="form-group has-warning">
+				<label class="control-label">아이디</label>
+				<input type="text" class="form-control" name="id" value="${user.id}" readonly="readonly">
+			</div>
+			<div class="form-group has-warning">
+				<label class="control-label">비밀번호</label>
+				<input type="password" class="form-control" name="password" value="${user.password}" readonly="readonly">
+			</div>
+			<div class="form-group has-warning">
+				<label class="control-label">이메일 주소</label>
+				<input type="email" class="form-control" name="email" value="${user.email}" required>
+			</div>
+			<div class="form-group has-warning">
+				<label class="control-label">생년월일</label>
+				<input type="text" class="form-control" name="birth" value="${user.birth}" required>
+			</div>
+			<div class="form-group has-warning">
+				<input type="hidden" class="form-control" name="role" value="${user.role}">
+			</div>
+			<div class="form-group has-warning">
+				<label class="control-label">주소</label>
+				<input type="text" class="form-control" id="zip" name="post" readonly="readonly" style="width: 100px" value="${user.post}" required>
+				<input type="text" class="form-control" id="addr1" name="address" readonly="readonly" value="${addr}" required>
+				<input type="text" class="form-control" id="addr2" name="address" value="${addr2}">
+				<button class="btn btn-default" type="button" onClick="execDaumPostcode();">
+					<i class="fa fa-search"></i>주소검색
+				</button>
+			</div>
+			<div class="form-group text-center">
+				<button type="submit" id="join-submit" class="btn btn-primary btn-space">
+					정보수정<i class="fa fa-check spaceLeft"></i>
+				</button>
+				<button type="button" class="btn btn-danger" onClick="location.href='index.jsp'" >
+					취소<i class="fa fa-check spaceLeft"></i>
+				</button>
+			</div>
+			</div>
+	</form>
+	</article>
+	<hr>
+	<jsp:include page="./hf/footer.jsp"></jsp:include>
 	</body>
 </html>

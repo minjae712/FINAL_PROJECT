@@ -30,5 +30,5 @@ public interface BoardService {
 	
 	List<BoardVO> getBestList(BoardVO vo);
 	
-	void reservation(UserVO vo);
+
 }

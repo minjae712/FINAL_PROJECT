@@ -12,6 +12,7 @@
 		<typeAlias type="com.springbook.biz.comment.CommentVO" alias="Comment" />
 		<typeAlias type="com.springbook.biz.comment.C_MoodVO" alias="C_MOOD" />
 		<typeAlias type="com.springbook.biz.comment.BestCommentDTO" alias="best" />
+		<typeAlias type="com.springbook.biz.convidence.ReservationVO" alias="reser" />
 	</typeAliases>
 	
 	<!-- Sql Mapper 설정 -->
@@ -19,5 +20,6 @@
 		<mapper resource="mappings/board-mapping.xml" />
 		<mapper resource="mappings/user-mapping.xml" />
 		<mapper resource="mappings/comment-mapping.xml" />
+		<mapper resource="mappings/convidence-mapping.xml" />
 	</mappers>
 </configuration>

@@ -59,9 +59,6 @@
                             </div>
                             <div class="socail_links">
                                 <ul>
-                                    <li><a href="#"> <img src="./resources/css/img/naver.png" border="0" width="30" height="30"></a></li> 
-								    <li><a href="#"> <img src="./resources/css/img/kakao.png" border="0" width="30" height="30"></a></li>
-									<li><a href="#"> <i class="fa fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
 

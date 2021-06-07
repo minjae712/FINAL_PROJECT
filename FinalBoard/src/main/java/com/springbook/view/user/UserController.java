@@ -36,12 +36,21 @@ public class UserController {
 		System.out.println( "설정 경로 : " + realFolder);
 		MultipartFile uploadFile = vo.getFile(); //단일 파일 업로드
 		String fullname = uploadFile.getOriginalFilename();
-		int idx = fullname.lastIndexOf("\\");
-		String filename = fullname.substring(idx+1);
-		if(!uploadFile.isEmpty()) {
-			System.out.println("파일이름 :" + filename);
-			uploadFile.transferTo(new File(realFolder + filename));
-			vo.setImage( realFolder + filename );
+		int idx = 0;
+		String filename = "";
+		if(fullname.contains("\\")) {
+			idx = fullname.lastIndexOf("\\");
+			filename = fullname.substring(idx+1);
+			if(!uploadFile.isEmpty()) {
+				uploadFile.transferTo(new File(realFolder + filename));
+				vo.setImage(filename);
+			}
+		}else {
+			if(!uploadFile.isEmpty()) {
+				uploadFile.transferTo(new File(realFolder + fullname));
+				vo.setImage(fullname);
+			
+			}
 		}
 		userservice.createUser(vo);
 		return "createUserSuccess.jsp";
@@ -128,9 +137,32 @@ public class UserController {
 	}
 	
 	@RequestMapping("userUpdate.do")
-	public String userUpdate(UserVO vo) {
+	public String userUpdate(UserVO vo, HttpServletRequest request) throws IllegalStateException, IOException {
+		
+		String imgFolder ="customcss\\"; //저장할 경로
+		String realFolder = request.getRealPath("") + imgFolder; //web-inf바로전 까지 저장할 경로
+		System.out.println( "설정 경로 : " + realFolder);
+		MultipartFile uploadFile = vo.getFile(); //단일 파일 업로드
+		String fullname = uploadFile.getOriginalFilename();
+		int idx = 0;
+		String filename = "";
+		if(fullname.contains("\\")) {
+			idx = fullname.lastIndexOf("\\");
+			filename = fullname.substring(idx+1);
+			if(!uploadFile.isEmpty()) {
+				uploadFile.transferTo(new File(realFolder + filename));
+				vo.setImage(filename);
+			}
+		}else {
+			if(!uploadFile.isEmpty()) {
+				uploadFile.transferTo(new File(realFolder + fullname));
+				vo.setImage(fullname);
+			
+			}
+		}
+		
 		userservice.userUpdate(vo);
-		return "index.jsp";
+		return "userUpdateSuccess.jsp";
 	}
 	
 	@RequestMapping("/userDelete.do")
@@ -141,13 +173,19 @@ public class UserController {
 		String voPass = vo.getPassword();
 		
 		if(!(sessionPass.equals(voPass))) {
-			return "userDelete.jsp";
+			return "passwordConfirm_del.jsp";
 		}
 		
 		userservice.userDelete(vo);
 		session.invalidate();
-		return "index.jsp";
+		return "deleteUserSuccess.jsp";
 	}
+	
+	@RequestMapping("/getUser.do")
+	public String getUser() {
+		return "myPage.jsp";
+	}
+
 	
 }
 

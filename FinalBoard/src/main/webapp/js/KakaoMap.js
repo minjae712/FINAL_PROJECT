@@ -1,3 +1,13 @@
+var selectedPlace = {
+	"name" : null,
+	"road" : null,
+	"addr" : null,
+	"tell" : null
+}
+
+
+var placeList = [];
+
 // 마커를 담을 배열입니다
 var markers = [];
 
@@ -46,12 +56,12 @@ function placesSearchCB(data, status, pagination) {
 
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
 
-        alert('검색 결과가 존재하지 않습니다.');
+        alert('회원님의 주소 정보가 존재하지 않습니다.');
         return;
 
     } else if (status === kakao.maps.services.Status.ERROR) {
 
-        alert('검색 결과 중 오류가 발생했습니다.');
+        alert('검색 결과 중 알 수 없는 오류가 발생했습니다.');
         return;
 
     }
@@ -71,7 +81,7 @@ function displayPlaces(places) {
 
     // 지도에 표시되고 있는 마커를 제거합니다
     removeMarker();
-    
+    placeList = [];
     for ( var i=0; i<places.length; i++ ) {
 
         // 마커를 생성하고 지도에 표시합니다
@@ -113,11 +123,18 @@ function displayPlaces(places) {
 
     // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
     map.setBounds(bounds);
+    fn_placeList();
 }
 
 // 검색결과 항목을 Element로 반환하는 함수입니다
 function getListItem(index, places) {
 
+	placeList[index] = selectedPlace = {
+			"name" : places.place_name,
+			"road" : places.road_address_name,
+			"addr" : places.address_name,
+			"tell" : places.phone
+		};
     var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                 '<div class="info">' +
@@ -181,7 +198,6 @@ function displayPagination(pagination) {
 
     for (i=1; i<=pagination.last; i++) {
         var el = document.createElement('a');
-        el.href = "#";
         el.innerHTML = i;
 
         if (i===pagination.current) {
@@ -213,4 +229,68 @@ function removeAllChildNods(el) {
     while (el.hasChildNodes()) {
         el.removeChild (el.lastChild);
     }
+}
+
+function fn_placeList() {
+	
+	$.ajax({
+		success: function(data){
+			var str = "";
+			$(".place_List").html("");
+			str += "<label>병원/진료동물/진료내용/예약일을 선택하세요.<br><br>";
+			str += "<form action='reservation.do' method='post'>";
+			str += "<select name='title'>";
+			$.each(placeList,function(index,item){
+				str += "<option value='" + item.name + "' selected>" + item.name + "</option>";
+			});
+			str += "</select>";
+			str += "<select name='kind'>";
+			str += "<option value='cat' selected>고양이</option>";
+			str += "<option value='dog' selected>강아지</option>";
+			str += "</select>";
+			str += "<select name='content'>";
+			str += "<optgroup label='정기검진'>";
+			str += "<option>배변검사</option>";
+			str += "<option>혈액검사</option>";
+			str += "<option>구충제 처방</option>";
+	        str += "</optgroup>";
+	        str += "<optgroup label='간단진료'>";
+	        str += "<option>내과 진료</option>";
+	        str += "<option>외과 진료</option>";
+	        str += "<option>안과 진료</option>";
+	        str += "<option>치과 진료</option>";
+	        str += "<option>산과 진료</option>";
+	        str += "<option>영상 진료</option>";
+	        str += "<option>피부과 진료</option>";
+	        str += "<option>기타 진료</option>";
+	        str += "</optgroup>";
+	        str += "<optgroup label='수술진료'>";
+	        str += "<option>상담 후 수술</option>";
+	        str += "<option>바로 수술예약</option>";
+	        str += "</optgroup>";
+	        str += "<optgroup label='예방접종'>";
+	        str += "<option>종합백신 접종</option>";
+	        str += "<option>DHPP 접종</option>";
+	        str += "<option>DHLPP 접종</option>";
+	        str += "<option>광견병 예방접종</option>";
+	        str += "<option>기타 예방접종</option>";
+	        str += "</optgroup>";
+			str += "</select><br><br>";
+			str += "<input type='hidden' name='user_id' value='" + user_id + "'><br>";
+			str += "<input type='hidden' name='user_name' value='" + user_name + "'><br>";
+			str += "<input type='date' class='form-control' name='reser_date' placeholder=' ex) 20210620' required><br>";
+			str += "<label>그 외에 추가로 남기실 내용이 있다면 적어주세요.(선택)<br><br>";
+			str += "<textarea class='form-control' name='content_else' placeholder='남기실 말을 입력해주세요' style='width:400px;height: 100px'></textarea><br>";
+			str += "<input type='submit' value='예약하기' class='btn btn-default'>";
+			str += "</form>";
+			
+			$(".place_List").html(str);
+			
+		},
+		error : function(requeset,status,error) {
+			alert("통신 실패: code - " + requeset.status + "\n message :" + requeset.responseText + "\n error : " + error);
+		}
+		
+	});
+	
 }
