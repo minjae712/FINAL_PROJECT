@@ -29,18 +29,18 @@ $(document).ready(function(){
 		<br>
 		<section id="container">
 			<form action="userDelete.do" method="post">
-				<div class="form-group has-warning" style="margin-left: 40%;">
+				<div class="form-group has-warning" style="margin-left: 42%;">
 				  <label class="col-md-1 control-label">아이디</label>
 				  <input type="text" class="col-md-1 form-control" id="userId" name="id" value="${user.id}" readonly="readonly" style="width: 150px">
 				</div><br><br>
-				<div class="form-group has-warning" style="margin-left: 40%;">
+				<div class="form-group has-warning" style="margin-left: 42%;">
 				  <label class="col-md-1 control-label" >이름</label>
 				  <input type="text" class="col-md-1 form-control" id="userName" name="name" value="${user.name}" readonly="readonly" style="width: 150px">
 				</div><br><br><br>
-				<div class="form-group has-warning" style="margin-left: 40%;">
+				<div class="form-group has-warning" style="margin-left: 42%;">
 				  <label class="col-md-1 control-label">PW</label>
-				  <input type="text" class="col-md-1 form-control" type="password" id="userPass" name="password" style="width: 150px">
-				</div><br><br>	
+				  <input type="password" class="col-md-1 form-control" type="password" id="userPass" name="password" style="width: 150px">
+				</div><br><br><br>
 				<button class="btn btn-danger" type="submit" id="submit">회원탈퇴</button>
 				<a href="index.jsp"><button class="btn btn-default" type="button">취소</button></a>
 			</form>

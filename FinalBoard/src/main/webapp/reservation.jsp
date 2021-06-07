@@ -50,7 +50,7 @@ div.map_lo {
  	<jsp:include page="./hf/header.jsp"></jsp:include>
 
     <!-- bradcam_area_start -->
-    <div class="bradcam_area" style="background-image: url('./resources/css/img/banner/bradcam_RE.png');">
+    <div class="bradcam_area " style="background-image: url('./resources/css/img/banner/bradcam_RE.png');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

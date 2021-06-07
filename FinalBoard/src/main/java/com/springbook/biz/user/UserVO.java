@@ -19,7 +19,7 @@ public class UserVO {
 	private String email;
 	private String image;
 	private String name;
-	private String birth;
+	private Date birth;
 	private String post;
 	private String address;
 	private MultipartFile file;

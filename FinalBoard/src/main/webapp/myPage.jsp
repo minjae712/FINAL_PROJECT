@@ -3,7 +3,23 @@
 <!DOCTYPE>
 <html>
 <head>
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
+var image = '${user.image}';
+
+$(document).ready(function(){
+	fn_image();
+})
+
+function fn_image() {
+	if(image != null && image != "") {
+		var fullPath = "customcss\\" + image;
+		$("#pic").attr("src",fullPath);
+	}
+}
+
 function fn_delete() {
 	
 	var del_Mem = confirm("회원 탈퇴 후, 회원정보 복구는 불가능합니다. 정말로 탈퇴하시겠습니까?");
