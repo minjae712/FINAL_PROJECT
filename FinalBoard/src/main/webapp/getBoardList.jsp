@@ -26,36 +26,17 @@
 
 
 	<%@ include file="/menuBar.jsp"%>
+	
 	<center>
 		<h1>
 			<a href="getBoardList.do" onclick="location.reload()"
 				style="cursor: pointer;"><b>자유 게시판</b></a>
 		</h1>
-		<br> <br>
 	</center>
-
+	<br><br><br><br>
+	
+	
 	<center>
-		<div style="width: 50%">
-			<table class="table table-striped" width="1000">
-				<h4>
-					베스트 게시글
-					<h4>
-						<tr>
-							<td width='80'>번호</td>
-							<td width='135'>제목</td>
-							<td width='80'>작성자</td>
-							<td width='100'>등록일</td>
-							<td width='80'>조회수</td>
-						</tr>
-			</table>
-		</div>
-	</center>
-	<div id="bestList"></div>
-
-	<br>
-	<center>
-
-
 
 		<div style="width: 70%">
 			<div align="right">

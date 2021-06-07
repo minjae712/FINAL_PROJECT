@@ -67,7 +67,7 @@
 		FROM (SELECT NO, WRITER, TITLE, CONTENT, REGDATE, CNT FROM BOARD ORDER BY
 		CNT DESC)
 		<![CDATA[
-		where rownum <= 10  AND REGDATE between ADD_MONTHS ( TRUNC(sysdate, 'MM'), -1) AND LAST_DAY(SYSDATE)
+		where rownum <= 5  AND REGDATE between ADD_MONTHS ( TRUNC(sysdate, 'MM'), -1) AND LAST_DAY(SYSDATE)
 		]]>
 	</select>
 
