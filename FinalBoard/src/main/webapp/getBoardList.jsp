@@ -34,7 +34,7 @@
 		</h1>
 	</center>
 	<br><br><br><br>
-	
+	<%@ include file="/bestBoard.jsp"%>
 	
 	<center>
 

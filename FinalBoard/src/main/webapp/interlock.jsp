@@ -1,0 +1,59 @@
+<%@page contentType="text/html; charset=UTF-8"%>
+<%@page import="java.net.URLEncoder" %>
+<%@page import="java.security.SecureRandom" %>
+<%@page import="java.math.BigInteger" %>
+<!DOCTYPE>
+<html>
+<head>
+<style>
+div.login{
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- jQuery 라이브러리 참조 -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<!-- plugin 참조 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./js/login_find.js" type="text/javascript"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>로그인</title>
+</head>
+<body>
+<jsp:include page="./hf/header.jsp"></jsp:include>
+<center>
+	<div class="login" style="width: 70%">
+
+		<h1><a onclick="location.reload()" style="cursor: pointer;"><b>멍이랑 냥이랑 회원이신가요?</b></a></h1>
+		<hr>
+		<form class="form-inline" id="loginForm" name="loginForm" action="naverinterlock.do" method="post">
+			<div class="form-group" >
+					<label for="exampleInputName2">ID</label>
+					<input class="form-control" placeholder="아이디" type="text" id="id" name="id" />
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+					<label for="exampleInputName2">PW</label>
+					<input type="password" id="password" name="password" class="form-control" placeholder="비밀번호"/><br><br>
+					<input type="submit" id="btnLogin" value="로그인" class="btn btn-default"/>
+					<a class="btn btn-default" href="index.jsp">취소</a>
+			</div>
+			<br>
+		</form>
+		
+		<hr>
+			<div>
+            	<label for="autoSave">아이디/비밀번호 저장</label>
+            	<input type="checkbox" name="autoSave" id="autoSave"> |
+				<a href="find_id.jsp"><b>아이디 찾기</b></a>&nbsp;|&nbsp;<a href="findPassword.jsp"><b>비밀번호 찾기</b></a>&nbsp;|&nbsp;
+				<a href="createUser.jsp"><b>회원가입</b></a><br>
+        	</div>
+        	<br>
+	</div>
+</center>
+	<jsp:include page="./hf/footer.jsp"></jsp:include>
+</body>
+</html>

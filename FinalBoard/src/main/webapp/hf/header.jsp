@@ -72,7 +72,7 @@ div.line-blue{
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-4 " >
-                            <div class="social_media_links">
+                            <div class="social_media_links" >
                             	<u:isLogin>
                             		<b style="color: white;">${user.name}님, 환영합니다!</b>
                             		<a href="getUser.do"><img src="./customcss/MyPage.png"></a>
@@ -92,7 +92,7 @@ div.line-blue{
                     <div class="row align-items-center">
                         <div class="col-xl-3 col-lg-3">
                             <div class="logo">
-                                <a onclick="index.jsp">
+                                <a href="index.jsp">
                                     <img src="./customcss/main_icon.png">
                                 </a>
                             </div>
@@ -106,7 +106,7 @@ div.line-blue{
 										<li><a href="#">게시판 <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                  <li><a href="getBoardList.do">마이펫 자랑하기</a></li>
-                                                <li><a href="single-blog.jsp">[COMENT 소스참고]</a></li>
+                                                <li><a href="blog2.jsp">[COMENT 소스참고]</a></li>
                                                 </ul> </li>
 											<li><a href="#">서비스 <i class="ti-angle-down"></i></a>
 											<ul class="submenu">
@@ -114,7 +114,12 @@ div.line-blue{
 										        <li><a href="blog2.jsp">펫 시터 구하기</a></li>
                                                 <li><a href="blog3.jsp">펫 쇼핑</a></li>
 										        </ul></li>
-										<li><a href="contact.jsp">고객센터</a></li>
+										<li><a href="#">고객센터 <i class="ti-angle-down"></i></a>
+											<ul class="submenu">
+												<li><a href="#">공지사항</a></li>
+												<li><a href="#">1:1문의하기</a></li>
+												<li><a href="#">Q&A</a></li>
+											</ul></li>
                                     </ul>
                                 </nav>
                             </div>
