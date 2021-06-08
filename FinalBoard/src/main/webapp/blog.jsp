@@ -80,21 +80,7 @@
 				<div class="col-lg-8 mb-5 mb-lg-0">
 					<div class="blog_left_sidebar">
 
-						<div>
-							<center>
-								<h3 class="widget_title">★베스트 글★</h3>
-							</center>
-						</div>
-									<table >
-										<tr > 
-											<td align="center" width="63%">제목</td>
-											<td align="center"  width="30%">작성자</td>
-											<td align="left" width="10%">조회수</td>
-										</tr>
-									</table>
-								
-								<div id="bestList"></div>
-											
+						
 
 						<c:forEach items="${pages.boardList}" var="board">
 							<article class="blog_item">
@@ -188,7 +174,11 @@
 									type="submit">Search</button>
 							</form>
 						</aside>
-						<br> <br> <br>
+						<br> 
+						<aside class="single_sidebar_widget post_category_widget">
+						<jsp:include page="/bestBoard.jsp"></jsp:include>
+						</aside>
+						<br>
 
 						<aside class="single_sidebar_widget post_category_widget">
 							<h4 class="widget_title">마이펫자랑하기</h4>

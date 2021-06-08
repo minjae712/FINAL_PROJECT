@@ -118,7 +118,7 @@ div.line-blue{
 											<ul class="submenu">
 												<li><a href="#">공지사항</a></li>
 												<li><a href="#">1:1문의하기</a></li>
-												<li><a href="#">Q&A</a></li>
+												<li><a href="FAQ.jsp">Q&A</a></li>
 											</ul></li>
                                     </ul>
                                 </nav>
