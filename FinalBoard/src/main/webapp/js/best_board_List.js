@@ -9,9 +9,9 @@ function getBestBoard(){
         	var str = "";
         	$("#best").html("");
         	$.each(data,function(idx,item){
-    			str += "<div><table style='font-size:10px;' width='20%'>";
-    			str += "<tr><td ><a href='getBoard.do?no= " + item.no +"'>"+ item.title + "</td>";
-    			str += "<td >" + item.writer + "</td>";
+    			str += "<div style='font-size:15px;' width='120%;'><table >";
+    			str += "<tr><td width='60%'><a href='getBoard.do?no= " + item.no +"'>"+ item.title + "</td>";
+    			str += "<td width='27%'>" + item.writer + "</td>";
     			str += "<td >" + item.cnt + "</td></tr></table><div>";
         	$("#best").html(str);
         	});
