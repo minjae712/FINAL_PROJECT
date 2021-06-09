@@ -12,13 +12,13 @@ cursor: pointer;
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" language="javascript">
+<script type="text/javascript">
 
 var b_num = ${board.no};
 var modifying = 0;
 var name = '${user.name}';
 
-$(window).ready(function(){
+$(document).ready(function(){
 
 	getCommentCount();
 	getCommentList();
@@ -35,9 +35,19 @@ $(window).ready(function(){
 </head>
 <body>
 <jsp:include page="./hf/header.jsp"></jsp:include>
-	<div align="center">
-		<%@ include file="/menuBar.jsp" %>
-		<h1><a onclick="location.reload()"><b>자유 게시판</b></a></h1>
+<div class="bradcam_area " style="background-image: url('./resources/css/img/banner/bradcam_PET.png');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bradcam_text text-center">
+                    <h3>펫시터 게시판</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	<div align="center" style="margin-top: 10%;margin-bottom: 10%;">
 		<hr>
 		<div style="width: 70%">
 			<table class="table table-bordered" >

@@ -45,7 +45,7 @@ public class BoardController {
 	@RequestMapping(value = "/insertBoard.do")
 	public String insertBoard(BoardVO vo) throws IOException {
 		
-		
+		vo.setFileName("");
 		MultipartFile uploadFile = vo.getUploadFile();
 		if(!uploadFile.isEmpty()) {
 			String fileName = uploadFile.getOriginalFilename();
@@ -54,20 +54,20 @@ public class BoardController {
 			vo.setFileName(fileName);
 		}		
 		boardService.insertBoard(vo);
-		return "redirect:getBoardList.do";
+		return "InsertBoardSuccess.jsp";
 	}
 	
 
 	@RequestMapping("/updateBoard.do")
 	public String updateBoard(@ModelAttribute("board") BoardVO vo) {
 		boardService.updateBoard(vo);
-		return "redirect:getBoardList.do";
+		return "updateBoardSuccess.jsp";
 	}
 
 	@RequestMapping("/deleteBoard.do")
 	public String deleteBoard(BoardVO vo) {
 		boardService.deleteBoard(vo);
-		return "redirect:getBoardList.do";
+		return "deleteBoardSuccess.jsp";
 	}
 
 	@RequestMapping("/deleteNotice.do")

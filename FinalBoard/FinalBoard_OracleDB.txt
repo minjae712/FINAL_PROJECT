@@ -9,12 +9,12 @@ SHOW USER;
 -- 게시판
 DROP TABLE BOARD CASCADE CONSTRAINT;
 CREATE TABLE BOARD(
-  NO NUMBER,            						 -- 게시글번호
+  NO NUMBER,            						-- 게시글번호
   WRITER VARCHAR2(30),							-- 작성자
-  TITLE VARCHAR2(1000),        						-- 게시글제목
-  CONTENT VARCHAR2(4000),    						 -- 게시글내용
-  REGDATE DATE DEFAULT SYSDATE,        				 -- 게시글작성날짜
-  CNT NUMBER DEFAULT 0,    						 -- 조회수
+  TITLE VARCHAR2(1000),        					-- 게시글제목
+  CONTENT VARCHAR2(4000),    					-- 게시글내용
+  REGDATE DATE DEFAULT SYSDATE,        			-- 게시글작성날짜
+  CNT NUMBER DEFAULT 0,    						-- 조회수
   FILENAME VARCHAR2(200),						-- 이미지업로드
   CONSTRAINT BOARD_PK PRIMARY KEY(NO)
 );
@@ -38,12 +38,12 @@ CREATE SEQUENCE UNI_SEQ INCREMENT BY 1 MAXVALUE 1000;
 DROP TABLE NOTICE CASCADE CONSTRAINT;
 CREATE TABLE NOTICE(
   UNI NUMBER CONSTRAINT NOTICE_UNI_PK PRIMARY KEY,			-- 고유번호
-  NO VARCHAR2(10),            						 -- 게시글번호
-  WRITER VARCHAR2(30),							-- 작성자
-  TITLE VARCHAR2(1000),        						-- 게시글제목
-  CONTENT VARCHAR2(4000),    						 -- 게시글내용
-  REGDATE DATE DEFAULT SYSDATE,          				 -- 게시글작성날짜
-  CNT NUMBER DEFAULT 0    						 -- 조회수
+  NO VARCHAR2(10),            						 		-- 게시글번호
+  WRITER VARCHAR2(30),										-- 작성자
+  TITLE VARCHAR2(1000),        								-- 게시글제목
+  CONTENT VARCHAR2(4000),    								-- 게시글내용
+  REGDATE DATE DEFAULT SYSDATE,          					-- 게시글작성날짜
+  CNT NUMBER DEFAULT 0    									-- 조회수
 );
 
 SELECT UNI_SEQ.NEXTVAL FROM DUAL;
@@ -52,15 +52,15 @@ INSERT INTO NOTICE(NO,WRITER,TITLE,CONTENT,UNI) VALUES('공지','test','공지�
 -- 게시판 사용자
 DROP TABLE MEMBER CASCADE CONSTRAINT;
 CREATE TABLE MEMBER(
-  ID VARCHAR2(20) ,                 					 -- 아이디
+  ID VARCHAR2(20) ,                 					-- 아이디
   ROLE VARCHAR2(10),									-- 권한
-  PASSWORD VARCHAR2(20),                   					-- 패스워드
-  EMAIL VARCHAR2(50),                    				  -- 이메일
-  IMAGE VARCHAR2(1000),              					 -- 유저이미지
-  NAME VARCHAR2(20),                   					 -- 이름
-  BIRTH DATE,                 						-- 생일
-  POST VARCHAR2(20),                  					 -- 우편번호
-  ADDRESS VARCHAR2(100),                 				  -- 주소  
+  PASSWORD VARCHAR2(20),                   				-- 패스워드
+  EMAIL VARCHAR2(50),                    				-- 이메일
+  IMAGE VARCHAR2(1000),              					-- 유저이미지
+  NAME VARCHAR2(20),                   					-- 이름
+  BIRTH DATE,                 							-- 생일
+  POST VARCHAR2(20),                  					-- 우편번호
+  ADDRESS VARCHAR2(100),                 				-- 주소  
   CONSTRAINT MEMBER_ID_PK PRIMARY KEY(ID)			
 );
 
@@ -81,11 +81,11 @@ set line 120
 --댓글정보
 DROP TABLE BOARD_COMMENT CASCADE CONSTRAINT;
 CREATE TABLE BOARD_COMMENT(
-  COMMENT_NO NUMBER PRIMARY KEY	,					-- 댓글 번호
+  COMMENT_NO NUMBER PRIMARY KEY	,				-- 댓글 번호
   NO NUMBER,            					 	-- 게시글번호
   WRITER VARCHAR2(30),							-- 작성자
-  CONTENT VARCHAR2(1000),         					-- 댓글내용
-  REGDATE DATE DEFAULT SYSDATE,           				-- 댓글날짜	
+  CONTENT VARCHAR2(1000),         				-- 댓글내용
+  REGDATE DATE DEFAULT SYSDATE,           		-- 댓글날짜	
   CONSTRAINT B_COMMENT_FK_BOARD FOREIGN KEY(NO) REFERENCES BOARD(NO)
 );
 

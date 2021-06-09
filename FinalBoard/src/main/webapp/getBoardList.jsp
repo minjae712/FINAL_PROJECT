@@ -36,14 +36,13 @@
 		<div align="center">
 			<h3><i class="glyphicon glyphicon-signal"></i><b> 베스트 게시글</b></h3>
 		</div>
-			<table class="table table-bordered">
+			<table id="best_data" class="table table-bordered">
 				<tr>
 					<td width="100">순위</td>
 					<td width="400">제목</td>
 					<td width="100">작성자</td>
 					<td width="100">조회수</td>
 				</tr>
-				<tr id="best" class="warning"></tr>
 			</table>
 		</div>
 	</div>

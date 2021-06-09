@@ -57,7 +57,6 @@ function getCommentList(){
         url : "getCommentList.do",
         data : {"no" :b_num},
         success : function(data){
-        	alert("통신성공" + data);
             var str="";
             $(".commentList").html("");
             $.each(data,function(idx,item){

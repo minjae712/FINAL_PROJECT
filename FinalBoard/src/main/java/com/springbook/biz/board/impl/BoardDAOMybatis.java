@@ -49,8 +49,8 @@ public class BoardDAOMybatis{
 		mybatis.delete("BoardDAO.deleteBoard", vo);
 	}
 
-	public void deleteMood(BoardVO vo) {
-		mybatis.delete("BoardDAO.deleteMood", vo);
+	public void deleteB_Mood(BoardVO vo) {
+		mybatis.delete("BoardDAO.deleteB_Mood", vo);
 	}
 
 	public void deleteNotice(NoticeVO nvo) {
@@ -84,5 +84,11 @@ public class BoardDAOMybatis{
 		return mybatis.selectList("BoardDAO.getBestList",vo);
 	}
 	
+	public void deleteAllComment(BoardVO vo){
+		mybatis.delete("CommentDAO.deleteAllComment",vo);
+	}
 
+	public void deleteAllC_Mood(BoardVO vo){
+		mybatis.delete("CommentDAO.deleteAllC_Mood",vo);
+	}
 }

@@ -38,7 +38,9 @@ public class BoardServiceImpl implements BoardService  {
 	}
 
 	public void deleteBoard(BoardVO vo) {
-		boardDAO.deleteMood(vo);
+		boardDAO.deleteAllC_Mood(vo);
+		boardDAO.deleteAllComment(vo);
+		boardDAO.deleteB_Mood(vo);
 		boardDAO.deleteBoard(vo);
 	}
 

@@ -59,10 +59,18 @@
 		DELETE FROM BOARD_COMMENT WHERE NO = #{no} AND COMMENT_NO = #{commentNo}
 	</delete>
 	
+	<delete id="deleteAllComment">
+		DELETE FROM BOARD_COMMENT WHERE NO = #{no}
+	</delete>
+
 	<delete id="deleteMood">
 		DELETE FROM C_MOOD WHERE NO = #{no} AND COMMENT_NO = #{commentNo} 
 	</delete>
 	
+	<delete id="deleteAllC_Mood">
+		DELETE FROM C_MOOD WHERE NO = #{no}
+	</delete>
+
 	<resultMap id="CommentResult" type="Comment">
 		<id property="commentNo" column="COMMENT_NO"/>
 		<result property="no" column="NO" />

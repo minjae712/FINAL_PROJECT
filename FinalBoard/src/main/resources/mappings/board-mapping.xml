@@ -98,8 +98,8 @@
 		DELETE FROM NOTICE WHERE UNI = #{uni}
 	</delete>
 
-	<delete id="deleteMood">
-		DELETE FROM MOOD WHERE NO = #{no}
+	<delete id="deleteB_Mood">
+		DELETE FROM B_MOOD WHERE NO = #{no}
 	</delete>
 
 	<resultMap id="boardResult" type="board">
