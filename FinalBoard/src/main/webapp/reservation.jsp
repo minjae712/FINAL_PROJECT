@@ -44,7 +44,7 @@ div.map_lo {
 }
 </style>
 <meta name="description" content="">
-<link rel="stylesheet" href="./resources/css/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
  	<jsp:include page="./hf/header.jsp"></jsp:include>

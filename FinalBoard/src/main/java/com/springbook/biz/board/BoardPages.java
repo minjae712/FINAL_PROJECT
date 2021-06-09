@@ -6,11 +6,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class BoardPages {
+public class BoardPages<T> {
 	
 	private int totalBoard;							
 	private int currentPage;					
-	private List<BoardVO> boardList;
+	private List<T> boardList;
 	
 	private int totalPages;
 	private int startPage;
@@ -20,7 +20,7 @@ public class BoardPages {
 		currentPage = 0;
 	}
 	
-	public BoardPages(int totalBoard, int currentPage,int sizePerPage, List<BoardVO> boardList) {
+	public BoardPages(int totalBoard, int currentPage,int sizePerPage, List<T> boardList) {
 		this.totalBoard = totalBoard;
 		this.currentPage = currentPage;
 		this.boardList = boardList;

@@ -4,7 +4,6 @@
 <!DOCTYPE>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- JS here -->
 	<script src="./resources/css/js/vendor/modernizr-3.5.0.min.js"></script>
 	<script src="./resources/css/js/vendor/jquery-1.12.4.min.js"></script>
@@ -93,14 +92,14 @@ div.line-blue{
                         <div class="col-xl-3 col-lg-3">
                             <div class="logo">
                                 <a href="index.jsp">
-                                    <img src="./customcss/main_icon.png">
+                                    <img src="./customcss/main_icon.png" style="min-width: 280px;min-height: 138px;">
                                 </a>
                             </div>
                         </div>
                       <div class="col-xl-9 col-lg-9">
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
-                                    <ul id="navigation">
+                                    <ul id="navigation" >
                                        <li><a href="index.jsp">홈</a></li>
 										<li><a href="about.jsp">사이트 소개</a></li>
 										<li><a href="#">게시판 <i class="ti-angle-down"></i></a>
@@ -116,9 +115,9 @@ div.line-blue{
 										        </ul></li>
 										<li><a href="#">고객센터 <i class="ti-angle-down"></i></a>
 											<ul class="submenu">
-												<li><a href="#">공지사항</a></li>
+												<li><a href="getNoticeList.do">공지사항</a></li>
 												<li><a href="#">1:1문의하기</a></li>
-												<li><a href="FAQ.jsp">Q&A</a></li>
+												<li><a href="FAQ.jsp">FAQ</a></li>
 											</ul></li>
                                     </ul>
                                 </nav>

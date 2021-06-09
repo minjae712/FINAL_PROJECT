@@ -1,43 +1,26 @@
 <%@ page contentType="text/html; charset=utf-8"%>
-<!DOCTYPE html>
+<!DOCTYPE>
 <html class="no-js" lang="zxx">
 
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>고객센터</title>
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="shortcut icon" type="image/x-icon"
-	href="./resources/css/img/favicon.png">
-
 <!-- CSS here -->
-<link rel="stylesheet" type="text/css" href="./resources/css/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="./resources/css/css/owl.carousel.min.css">
-<link rel="stylesheet" type="text/css" href="./resources/css/css/magnific-popup.css">
-<link rel="stylesheet" type="text/css" href="./resources/css/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="./resources/css/css/themify-icons.css">
-<link rel="stylesheet" type="text/css" href="./resources/css/css/nice-select.css">
-<link rel="stylesheet" type="text/css" href="./resources/css/css/flaticon.css">
-<link rel="stylesheet" type="text/css" href="./resources/css/css/gijgo.css">
-<link rel="stylesheet" type="text/css" href="./resources/css/css/animate.css">
-<link rel="stylesheet" type="text/css" href="./resources/css/css/slicknav.css">
-<link rel="stylesheet" type="text/css" href="./resources/css/css/style.css">
+<link rel="stylesheet" href="./resources/css/css/bootstrap.min.css">
 <link rel="stylesheet" href="./resources/css/assets/css/style.css">
-<!-- <link rel="stylesheet" href="css/responsive.css"> -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script>document.getElementsByTagName("html")[0].className += " js";</script>
 </head>
-<body>
+<body style="background-color: white;">
 	<jsp:include page="./hf/header.jsp"></jsp:include>
 
-	<div class="bradcam_area breadcam_bg">
+	<div class="bradcam_area" style="background-image: url('./resources/css/img/banner/bradcam_CE.png');">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="bradcam_text text-center">
-						<h3>무엇이든물어보세요!!</h3>
+						<h3>무엇이든 물어보세요</h3>
 					</div>
 				</div>
 			</div>
@@ -45,24 +28,36 @@
 	</div>
 	<br>
 	<br>
-<header class="cd-header flex flex-column flex-center">
+<header class="cd-header flex flex-column flex-center" style="width: 50%;height: 10%;margin-left: 25%">
   <div class="text-component text-center">
     <h1>FAQ</h1>
   </div>
 </header>
-
-<section class="cd-faq js-cd-faq container max-width-md margin-top-lg margin-bottom-lg">
-	<ul class="cd-faq__categories">
-		<li><a class="cd-faq__category cd-faq__category-selected truncate" href="#FAQ1">자주 묻는 질문</a></li>
-		<li><a class="cd-faq__category truncate" href="#FAQ2">회원/정보</a></li>
-		<li><a class="cd-faq__category truncate" href="#FAQ3">주문/결제</a></li>
-		<li><a class="cd-faq__category truncate" href="#FAQ4">상품문의</a></li>
-		<li><a class="cd-faq__category truncate" href="#FAQ5">취소/반품/교환</a></li>
-		<li><a class="cd-faq__category truncate" href="#FAQ6">기타</a></li>
-	</ul> <!-- cd-faq__categories -->
-
-	<div class="cd-faq__items">
-		<ul id="FAQ1" class="cd-faq__group">
+<div class="col-lg-3 cd-faq js-cd-faq container max-width-md margin-top-lg margin-bottom-lg">
+	<div class="blog_right_sidebar" style="width: 14%;">
+	<aside class="single_sidebar_widget post_category_widget" style="border: 2px dashed; border-color: #ed7d32;">
+	    <h4 class="widget_title"><b>고객센터</b></h4>
+	    <ul class="list cat-list">
+	        <li>
+	            <a href="getNoticeList.do" class="d-flex" style="color: #619fd7;">
+	                	공지사항
+	            </a>
+	        </li>
+	        <li>
+	            <a href="#" class="d-flex" style="color: #619fd7;">
+	                1:1 문의하기
+	            </a>
+	        </li>
+	        <li>
+	            <a href="FAQ.jsp" class="d-flex" style="color: #619fd7;">
+	                FAQ
+	            </a>
+	        </li>
+	    </ul>
+	</aside>
+	</div>
+	<div class="cd-faq__items" style="background-color: gray; margin-left: 2%">
+		<ul id="FAQ1" class="cd-faq__group" style="width: 95%">
 			<li class="cd-faq__title"><h2>자주 묻는 질문</h2></li>
 			<li class="cd-faq__item">
 				<a class="cd-faq__trigger" href="#0"><span>아이디와 비밀번호가 기억 나지 않아요.</span></a>
@@ -102,7 +97,7 @@
 			</li>
 		</ul> <!-- cd-faq__group -->
 
-		<ul id="FAQ2" class="cd-faq__group">
+		<ul id="FAQ2" class="cd-faq__group" style="width: 95%">
 			<li class="cd-faq__title"><h2>회원/정보</h2></li>
 			<li class="cd-faq__item">
 				<a class="cd-faq__trigger" href="#0"><span>아이디와 비밀번호가 기억 나지 않아요.</span></a>
@@ -133,7 +128,7 @@
 			</li>
 		</ul> <!-- cd-faq__group -->
 
-		<ul id="FAQ3" class="cd-faq__group">
+		<ul id="FAQ3" class="cd-faq__group" style="width: 95%">
 			<li class="cd-faq__title"><h2>주문/결제</h2></li>
 			<li class="cd-faq__item">
 				<a class="cd-faq__trigger" href="#0"><span>주문한 상품을 변경할 수 있나요?</span></a>
@@ -172,7 +167,7 @@
 			</li>
 		</ul> <!-- cd-faq__group -->
 
-		<ul id="FAQ4" class="cd-faq__group">
+		<ul id="FAQ4" class="cd-faq__group" style="width: 95%">
 			<li class="cd-faq__title"><h2>상품문의</h2></li>
 			<li class="cd-faq__item">
 				<a class="cd-faq__trigger" href="#0"><span>상품에 대해서 물어보고 싶어요. 어디서 물어볼 수 있나요?</span></a>
@@ -202,7 +197,7 @@
 			</li>
 		</ul> <!-- cd-faq__group -->
 
-		<ul id="FAQ5" class="cd-faq__group">
+		<ul id="FAQ5" class="cd-faq__group" style="width: 95%">
 			<li class="cd-faq__title"><h2>취소/반품/교환</h2></li>
 			<li class="cd-faq__item">
 				<a class="cd-faq__trigger" href="#0"><span>반품 처리에 소요되는 기간은 얼마나 되나요?</span></a>
@@ -253,7 +248,7 @@
 			</li>
 		</ul> <!-- cd-faq__group -->
 
-		<ul id="FAQ6" class="cd-faq__group">
+		<ul id="FAQ6" class="cd-faq__group" style="width: 95%">
 			<li class="cd-faq__title"><h2>기타</h2></li>
 			<li class="cd-faq__item">
 				<a class="cd-faq__trigger" href="#0"><span>고객센터에 전화 연결이 되지 않을 경우는 어떻게 해야 하나요?</span></a>
@@ -290,17 +285,20 @@
           </div>
 				</div> <!-- cd-faq__content -->
 			</li>
-
-
-
-
 		</ul> <!-- cd-faq__group -->
+	<br><br>
 	</div> <!-- cd-faq__items -->
-
 	<a href="#0" class="cd-faq__close-panel text-replace">Close</a>
-  
   <div class="cd-faq__overlay" aria-hidden="true"></div>
-</section> <!-- cd-faq -->
+	<ul class="cd-faq__categories">
+		<li><a class="cd-faq__category cd-faq__category-selected truncate" href="#FAQ1">자주 묻는 질문</a></li>
+		<li><a class="cd-faq__category truncate" href="#FAQ2">회원/정보</a></li>
+		<li><a class="cd-faq__category truncate" href="#FAQ3">주문/결제</a></li>
+		<li><a class="cd-faq__category truncate" href="#FAQ4">상품문의</a></li>
+		<li><a class="cd-faq__category truncate" href="#FAQ5">취소/반품/교환</a></li>
+		<li><a class="cd-faq__category truncate" href="#FAQ6">기타</a></li>
+	</ul> <!-- cd-faq__categories -->
+</div> <!-- cd-faq -->
 <script src="./resources/css/assets/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
 <script src="./resources/css/assets/js/main.js"></script> 
 

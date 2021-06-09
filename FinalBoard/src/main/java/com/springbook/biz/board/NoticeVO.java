@@ -15,12 +15,24 @@ public class NoticeVO {
 	private String content;
 	private Date regDate;
 	private int cnt;
+	private String SearchCondition;
+	private String SearchKeyword;
+	private int startRow;
+	private int endRow;
 	
 	@Override
 	public String toString() {
 		return "NoticeVO [no=" + no + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regDate="
 				+ regDate + ", cnt=" + cnt + "]";
 	}
-
+	
+	public void searchNullCheck(NoticeVO vo) {
+		if(vo.getSearchCondition() == null || vo.getSearchCondition().equals("")) {
+			vo.setSearchCondition("TITLE");
+		}
+		if(vo.getSearchKeyword() == null || vo.getSearchKeyword().equals("")) {
+			vo.setSearchKeyword("");
+		}
+	}
 	
 }

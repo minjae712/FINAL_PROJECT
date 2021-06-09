@@ -106,13 +106,13 @@ img, video, svg {
 	-component-padding: var(- -space-md)
 }
 
-:root { -
-	-max-width-xxs: 32rem; -
-	-max-width-xs: 38rem; -
-	-max-width-sm: 48rem; -
-	-max-width-md: 64rem; -
-	-max-width-lg: 80rem; -
-	-max-width-xl: 90rem; -
+:root { 
+	-max-width-xxs: 32rem; 
+	-max-width-xs: 38rem; 
+	-max-width-sm: 48rem; 
+	-max-width-md: 64rem; 
+	-max-width-lg: 80rem; 
+	-max-width-xl: 90rem; 
 	-max-width-xxl: 120rem
 }
 
@@ -139,7 +139,7 @@ img, video, svg {
 }
 
 .max-width-md {
-	max-width: 64rem;
+	max-width: 77rem;
 	max-width: var(- -max-width-md)
 }
 
@@ -1012,24 +1012,16 @@ small, .text-sm {
 a, .link {
 	color: hsl(220, 90%, 56%);
 	color: var(- -color-primary, #2a6df4);
-	text-decoration: underline
 }
 
 strong, .text-bold {
 	font-weight: bold
 }
 
-s {
-	text-decoration: line-through
-}
 
-u, .text-underline {
-	text-decoration: underline
-}
 
-.text-component { -
+.text-component {
 	-component-body-line-height: calc(var(- -body-line-height)*var(- -line-height-multiplier, 1));
-	-
 	-component-heading-line-height: calc(var(- -heading-line-height)*var(- -line-height-multiplier, 1))
 }
 
@@ -3470,18 +3462,18 @@ mark {
 		align-self: flex-start;
 		-ms-flex-negative: 0;
 		flex-shrink: 0;
-		top: 20px;
+		top: 80px;
 		width: 20%;
 		box-shadow: 0 1px 2px rgba(0, 0, 0, .085), 0 1px 8px rgba(0, 0, 0, .1);
 		box-shadow: var(- -shadow-sm);
-		margin-top: 1.25em;
+		margin-top: 25%;
 		margin-top: var(- -space-md)
 	}
 }
 
 @media ( min-width : 80rem) {
 	.cd-faq__categories {
-		width: 200px
+		width: 150px
 	}
 }
 
@@ -3874,7 +3866,7 @@ body {
 	background-color: var(- -color-contrast-lower)
 }
 
-.cd-header { -
+.cd-header { 
 	-header-height: 180px;
 	height: 180px;
 	height: var(- -header-height);

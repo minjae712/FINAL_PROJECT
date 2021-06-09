@@ -99,7 +99,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/getNotice.do")
-	public String getNotice(NoticeVO nvo, Model model) {
+	public String getNotice(NoticeVO nvo,@ModelAttribute("back") Integer back, Model model) {
 		NoticeVO result = boardService.getNotice(nvo);
 		model.addAttribute("nvo", result);
 		return "getNotice.jsp"; 
@@ -107,18 +107,31 @@ public class BoardController {
 
 
 	@RequestMapping(value ="/getBoardList.do")
-	public String getBoardList(@ModelAttribute("bvo")BoardVO vo,BoardPages pages,Model model) {
+	public String getBoardList(@ModelAttribute("bvo")BoardVO vo,BoardPages<BoardVO> pages,Model model) {
 		
 		int pageNo = 1;
 		if(pages.getCurrentPage() == 0) {
 			pages.setCurrentPage(pageNo);
 		}
 		vo.searchNullCheck(vo);
-		BoardPages result = boardService.getBoardPages(pages.getCurrentPage(),vo);
+		BoardPages<BoardVO> result = boardService.getBoardPages(pages.getCurrentPage(),vo);
 		vo.setSearchKeyword(vo.getSearchKeyword());
 		model.addAttribute("noticeList",boardService.getNoticeList());
 		model.addAttribute("pages",result);
 		return "getBoardList.jsp";
+	}
+	@RequestMapping(value ="/getNoticeList.do")
+	public String getNoticeList(NoticeVO nvo,BoardPages<NoticeVO> pages,Model model) {
+		
+		int pageNo = 1;
+		if(pages.getCurrentPage() == 0) {
+			pages.setCurrentPage(pageNo);
+		}
+		nvo.searchNullCheck(nvo);
+		BoardPages<NoticeVO> result = boardService.getNoticePages(pages.getCurrentPage(),nvo);
+		nvo.setSearchKeyword(nvo.getSearchKeyword());
+		model.addAttribute("pages",result);
+		return "getNoticeList.jsp";
 	}
 	
 	@RequestMapping(value = "/insertNotice.do")

@@ -76,8 +76,17 @@ public class BoardDAOMybatis{
 	public int getBoardCount() {
 		return mybatis.selectOne("BoardDAO.getBoardCount");
 	}
+
+	public int getNoticeCount() {
+		return mybatis.selectOne("BoardDAO.getNoticeCount");
+	}
+
 	public List<BoardVO> getBoardPages(BoardVO vo) {
 		return mybatis.selectList("BoardDAO.getBoardPages",vo);
+	}
+
+	public List<NoticeVO> getNoticePages(NoticeVO vo) {
+		return mybatis.selectList("BoardDAO.getNoticePages",vo);
 	}
 	
 	public List<BoardVO> getBestList(BoardVO vo){

@@ -28,6 +28,16 @@
 	AND CONTENT LIKE '%'||#{searchKeyword}||'%'
 	</if>
 	</select>
+
+	<select id="getNoticeCount" resultType="int">
+	SELECT COUNT(*) FROM NOTICE WHERE 1 = 1
+	<if test="searchCondition == 'TITLE'">
+	AND TITLE LIKE '%'||#{searchKeyword}||'%'
+	</if>
+	<if test="searchCondition == 'CONTENT'">
+	AND CONTENT LIKE '%'||#{searchKeyword}||'%'
+	</if>
+	</select>
 	
 	<select id="getBoardPages" resultMap="boardResult">
 	SELECT a.*,(SELECT count(*) from BOARD_COMMENT where no = a.no) comment_cnt FROM 
@@ -44,7 +54,22 @@
 	]]>
 	</select>
 	
-	<select id="getNoticeList" resultType="nvo">
+	<select id="getNoticePages" resultMap="noticeResult">
+	SELECT * FROM 
+	(SELECT N.*,ROWNUM AS R FROM (SELECT * FROM NOTICE WHERE 1 = 1
+	<if test="searchCondition == 'TITLE'">
+	AND TITLE LIKE '%'||#{searchKeyword}||'%'
+	</if>
+	<if test="searchCondition == 'CONTENT'">
+	AND CONTENT LIKE '%'||#{searchKeyword}||'%'
+	</if>
+	ORDER BY UNI DESC) N)
+	<![CDATA[
+	WHERE R >= #{startRow} AND R <= #{endRow}
+	]]>
+	</select>
+
+	<select id="getNoticeList" resultType="notice">
 	SELECT * FROM NOTICE ORDER BY UNI DESC
 	</select>
 	
@@ -53,7 +78,7 @@
 		SELECT * FROM BOARD WHERE NO = #{no}
 	</select>
 
-	<select id="getNotice" resultType="nvo">
+	<select id="getNotice" resultType="notice">
 		SELECT * FROM NOTICE WHERE UNI = #{uni}
 	</select>
 
@@ -110,6 +135,15 @@
 		<result property="regDate" column="REGDATE" />
 		<result property="cnt" column="CNT" />
 		<result property="comment_cnt" column="comment_cnt"/>
+	</resultMap>
+
+	<resultMap id="noticeResult" type="notice">
+		<id property="uni" column="UNI" />
+		<result property="writer" column="WRITER" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="regDate" column="REGDATE" />
+		<result property="cnt" column="CNT" />
 	</resultMap>
 
 </mapper>

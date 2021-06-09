@@ -1,7 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,9 +9,19 @@
 <title>글 상세</title>
 </head>
 <body>
-	<center>
-		<%@ include file="/menuBar.jsp" %>
-		<h1><a onclick="location.reload()" style="cursor: pointer;"><b>자유 게시판</b></a></h1>
+<jsp:include page="./hf/header.jsp"></jsp:include>
+<div class="bradcam_area " style="background-image: url('./resources/css/img/banner/bradcam.png');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bradcam_text text-center">
+                    <h3>공지사항</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	<div align="center" style="margin-top: 10%;margin-bottom: 10%;">
 		<hr>
 		<div style="width: 70%">
 			<table class="table table-bordered" >
@@ -46,7 +55,15 @@
 		<a class="btn btn-default" href="insertNotice.jsp">공지등록</a>&nbsp;&nbsp;&nbsp; 
 		<a class="btn btn-default" href="deleteNotice.do?uni=${nvo.uni}">공지 삭제</a>&nbsp;&nbsp;&nbsp;
 		</c:if>
-		<a class="btn btn-default" href="getBoardList.do">글목록</a>
-	</center>
+		<c:choose>
+		<c:when test="${back == 1}">
+			<a class="btn btn-default" href="getNoticeList.do">글목록</a>
+		</c:when>
+		<c:when test="${back == 0}">
+			<a class="btn btn-default" href="getBoardList.do">글목록</a>
+		</c:when>
+		</c:choose>
+	</div>
+<jsp:include page="./hf/footer.jsp"></jsp:include>
 </body>
 </html>

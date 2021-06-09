@@ -7,7 +7,7 @@
 	<typeAliases>
 		<typeAlias type="com.springbook.biz.board.BoardVO" alias="board" />
 		<typeAlias type="com.springbook.biz.board.B_MoodVO" alias="B_MOOD" />
-		<typeAlias type="com.springbook.biz.board.NoticeVO" alias="nvo" />
+		<typeAlias type="com.springbook.biz.board.NoticeVO" alias="notice" />
 		<typeAlias type="com.springbook.biz.user.UserVO" alias="user" />
 		<typeAlias type="com.springbook.biz.comment.CommentVO" alias="Comment" />
 		<typeAlias type="com.springbook.biz.comment.C_MoodVO" alias="C_MOOD" />

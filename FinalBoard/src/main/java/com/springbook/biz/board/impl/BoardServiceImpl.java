@@ -64,17 +64,25 @@ public class BoardServiceImpl implements BoardService  {
 		return boardDAO.getMood(mvo);
 	}
 	
-	public BoardPages getBoardPages(int pageNo,BoardVO vo) {
+	public BoardPages<BoardVO> getBoardPages(int pageNo,BoardVO vo) {
 		int totalBoardCount = boardDAO.getBoardCount();
 		vo.setStartRow(((pageNo-1) * 10)+1);
 		vo.setEndRow((pageNo * 10));
 		List<BoardVO> boardList = boardDAO.getBoardPages(vo);
-		return new BoardPages(totalBoardCount, pageNo, 10, boardList);
-		
+		return new BoardPages<BoardVO>(totalBoardCount, pageNo, 10, boardList);
 	}
 	
 	public List<BoardVO> getBestList(BoardVO vo){
 		return boardDAO.getBestList(vo);
+	}
+
+	@Override
+	public BoardPages<NoticeVO> getNoticePages(int pageNo, NoticeVO vo) {
+		int totalBoardCount = boardDAO.getNoticeCount();
+		vo.setStartRow(((pageNo-1) * 10)+1);
+		vo.setEndRow((pageNo * 10));
+		List<NoticeVO> boardList = boardDAO.getNoticePages(vo);
+		return new BoardPages<NoticeVO>(totalBoardCount, pageNo, 10, boardList);
 	}
 
 

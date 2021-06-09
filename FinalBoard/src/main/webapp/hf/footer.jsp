@@ -32,8 +32,8 @@
                                 	제공 서비스
                             </h3>
                             <ul class="links">
-                                <li><a href="#">마이펫 자랑하기</a></li>
-                                <li><a href="#">마이펫 시터</a></li>
+                                <li><a href="reservationPage.do">동물병원 예약</a></li>
+                                <li><a href="getBoardList.do">마이펫 시터</a></li>
                                 <li><a href="#">마이펫 쇼핑</a></li>
                             </ul>
                         </div>
@@ -46,7 +46,7 @@
                             <ul class="links">
                                 <li><a href="#">공지사항</a></li>
                                 <li><a href="#">1:1 문의하기</a></li>
-                                <li><a href="#">Q&amp;A</a></li>
+                                <li><a href="FAQ.jsp">FAQ</a></li>
                             </ul>
                         </div>
                     </div>
