@@ -46,7 +46,7 @@
                             <ul class="links">
                                 <li><a href="#">공지사항</a></li>
                                 <li><a href="#">1:1 문의하기</a></li>
-                                <li><a href="#">Q&amp;A</a></li>
+                                <li><a href="FAQ.jsp">Q&amp;A</a></li>
                             </ul>
                         </div>
                     </div>
