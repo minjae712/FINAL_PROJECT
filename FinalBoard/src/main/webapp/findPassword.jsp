@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 div#line {
-	margin-top : 5%;
+	margin-top : 10%;
+	margin-bottom: 10%;
 }
 </style>
 <meta charset="UTF-8">
@@ -16,7 +17,7 @@ div#line {
 <title>암호 찾기</title>
 </head>
 <body>
-
+		<jsp:include page="./hf/header.jsp"></jsp:include>
 		<div id="line">
 		<div align="center">
 		<h1><a onclick="location.reload()" style="cursor: pointer;"><b>비밀번호 찾기</b></a></h1>
@@ -38,9 +39,10 @@ div#line {
  		<c:if test="${error.email}">
 			<center><br><label>일치하는 정보가 존재하지 않습니다.</label></center>
 		</c:if>
-				</form>
-				</div>
-				<hr>
+			</form>
 			</div>
+			<hr>
+		</div>
+	<jsp:include page="./hf/footer.jsp"></jsp:include>
 </body>
 </html>

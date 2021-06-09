@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 <head>
 <style>
  div#line {
- 	margin-top : 5%;
+ 	margin-top : 10%;
+ 	margin-bottom: 10%;
  }
  
 </style>
@@ -18,6 +19,7 @@
 <title>아이디 찾기</title>
 </head>
 <body>
+	<jsp:include page="./hf/header.jsp"></jsp:include>
 	<div id="line" align="center">
 	
 		<h1><a onclick="location.reload()" style="cursor: pointer;"><b>아이디 찾기</b></a></h1>
@@ -36,11 +38,11 @@
 					</c:if>
 			</form>
 			
-			<hr>
-			<a href="index.jsp">메인 화면으로</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-			<a href="findPassword.jsp">비밀번호 찾기</a>
-			<hr>
-		
-			</div>
+		<hr>
+		<a href="index.jsp">메인 화면으로</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		<a href="findPassword.jsp">비밀번호 찾기</a>
+		<hr>
+	</div>
+	<jsp:include page="./hf/footer.jsp"></jsp:include>
 </body>
 </html>

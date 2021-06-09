@@ -1,43 +1,54 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" language="javascript">
-	$(window).ready(function() {
-
-		getBestList();
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		getBestBoard();
 	});
 </script>
-<script src="${pageContext.request.contextPath}/js/board.js"
-	type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/best_board_List.js" type="text/javascript"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>글 목록</title>
 </head>
 <body>
+<jsp:include page="./hf/header.jsp"></jsp:include>
 
-
-
-	<%@ include file="/menuBar.jsp"%>
-	
-	<center>
-		<h1>
-			<a href="getBoardList.do" onclick="location.reload()"
-				style="cursor: pointer;"><b>자유 게시판</b></a>
-		</h1>
-	</center>
-	<br><br><br><br>
-	<jsp:include page="/bestBoard.jsp"></jsp:include>
-	
-	<center>
-
+<div class="bradcam_area " style="background-image: url('./resources/css/img/banner/bradcam_PET.png');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bradcam_text text-center">
+                    <h3>펫시터 게시판</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div align="center">
+<div style="font-size:12px;border: 2px dashed;width: 50%; margin-top: 10%"   >
+	<div style="border: 1px dashed;">
+		<div align="center">
+			<h3><i class="glyphicon glyphicon-signal"></i><b> 베스트 게시글</b></h3>
+		</div>
+			<table class="table table-bordered">
+				<tr>
+					<td width="100">순위</td>
+					<td width="400">제목</td>
+					<td width="100">작성자</td>
+					<td width="100">조회수</td>
+				</tr>
+				<tr id="best" class="warning"></tr>
+			</table>
+		</div>
+	</div>
+</div>
+	<div align="center" style="margin-top: 10%;">
 		<div style="width: 70%">
 			<div align="right">
 				<c:if test="${user.isEmpty()}">
@@ -47,7 +58,7 @@
 					</c:if>
 				</c:if>
 			</div>
-			<table class="table table-striped" width="650">
+			<table class="table table-striped">
 				<tr>
 					<th width="50">번호</th>
 					<th width="400">제목</th>
@@ -107,8 +118,8 @@
 				</c:if>
 			</table>
 		</div>
-	</center>
-	<center>
+	</div>
+	<div align="center" style="margin-bottom: 10%;">
 		<form class="form-inline" action="getBoardList.do" method="post">
 			<div class="form-group">
 				<select class="form-control" name="searchCondition">
@@ -119,6 +130,7 @@
 					type="submit" value="검색" />
 			</div>
 		</form>
-	</center>
+	</div>
+<jsp:include page="./hf/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -44,5 +44,6 @@ public class ConvidenceController {
 		return "redirect:getReservation.do?id=" + vo.getUser_id();
 	}
 	
+	
 
 }

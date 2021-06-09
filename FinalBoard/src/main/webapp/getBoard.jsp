@@ -1,8 +1,7 @@
 <%@page import="com.springbook.biz.user.UserVO"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="u" tagdir="/WEB-INF/tags/" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
 <style type="text/css">
@@ -35,7 +34,8 @@ $(window).ready(function(){
 <title>글 상세</title>
 </head>
 <body>
-	<center>
+<jsp:include page="./hf/header.jsp"></jsp:include>
+	<div align="center">
 		<%@ include file="/menuBar.jsp" %>
 		<h1><a onclick="location.reload()"><b>자유 게시판</b></a></h1>
 		<hr>
@@ -84,6 +84,7 @@ $(window).ready(function(){
 		<a class="btn btn-default" href="deleteBoard.do?no=${board.no}">글삭제</a>&nbsp;&nbsp;&nbsp;
 		</u:isLogin>
 		<a class="btn btn-default" href="getBoardList.do">글목록</a>
-	</center>
+	</div>
+	<jsp:include page="./hf/footer.jsp"></jsp:include>
 </body>
 </html>

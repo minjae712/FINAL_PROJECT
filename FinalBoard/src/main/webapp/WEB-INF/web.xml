@@ -59,7 +59,7 @@
 			<url-pattern>/reservationPage.do</url-pattern>
 			<url-pattern>/getUser.do</url-pattern>
 			<url-pattern>/getReservation.do</url-pattern>
-			
+			<url-pattern>/getBoardList.do</url-pattern>
 	</filter-mapping>
 	
 </web-app>

@@ -1,6 +1,5 @@
 
 function getBestBoard(){
-	
 	    $.ajax({
         type : "POST",
         dataType : "json",
@@ -9,10 +8,10 @@ function getBestBoard(){
         	var str = "";
         	$("#best").html("");
         	$.each(data,function(idx,item){
-    			str += "<div style='font-size:15px;' width='120%;'><table >";
-    			str += "<tr><td width='60%'><a href='getBoard.do?no= " + item.no +"'>"+ item.title + "</td>";
-    			str += "<td width='27%'>" + item.writer + "</td>";
-    			str += "<td >" + item.cnt + "</td></tr></table><div>";
+        		str += "<td>" + (idx + 1) + "</td>";
+        		str += "<td><a href='getBoard.do?no=" + item.no +"'>"+ item.title + "</a></td>";
+    			str += "<td>" + item.writer + "</td>";
+    			str += "<td>" + item.cnt + "</td>";
         	$("#best").html(str);
         	});
         },
@@ -22,5 +21,3 @@ function getBestBoard(){
         }
 	});
 }
-
-

@@ -10,8 +10,6 @@
 	$(document).ready(function() {
 		getBestBoard();
 	});
-	
-
 </script>
 <script src="./js/best_board_List.js" type="text/javascript"></script>
 <meta charset="UTF-8">
@@ -20,17 +18,16 @@
 <body>
 <div class="table table-condensed" align="center"  style="font-size:12px;"  >
 	<div >
-			<h3>★베스트 글★</h3>
+		<h3>★베스트 글★</h3>
 	</div>
-	<table >
-		<tr >
+	<table>
+		<tr>
 			<td align="center" width="50%">제목</td>
 			<td align="right"  width="28%">작성자</td>
 			<td >조회수</td>
 		</tr>
 	</table>
 
-	<div id="best"></div>
-	</div>
+</div>
 </body>
 </html>
