@@ -156,7 +156,6 @@
 		</div>
 	</div>
 	<!-- service_area_end -->
-	    
 	<jsp:include page="./hf/footer.jsp"></jsp:include>
 </body>
 </html>
