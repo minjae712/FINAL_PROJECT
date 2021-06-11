@@ -14,4 +14,6 @@ public interface ConvidenceService {
 	
 	void deleteReser(ReservationVO vo);
 	
+	List<ProductVO> getShopList();
+	
 }

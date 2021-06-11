@@ -105,13 +105,12 @@ div.line-blue{
 										<li><a href="#">게시판 <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                  <li><a href="getBoardList.do">마이펫 자랑하기</a></li>
-                                                <li><a href="blog2.jsp">[COMENT 소스참고]</a></li>
                                                 </ul> </li>
 											<li><a href="#">서비스 <i class="ti-angle-down"></i></a>
 											<ul class="submenu">
 										        <li><a href="reservationPage.do">동물병원 예약</a></li>
 										        <li><a href="getBoardList.do">펫 시터 게시판</a></li>
-                                                <li><a href="blog3.jsp">펫 쇼핑</a></li>
+                                                <li><a href="petShopPage.do">펫 쇼핑</a></li>
 										        </ul></li>
 										<li><a href="#">고객센터 <i class="ti-angle-down"></i></a>
 											<ul class="submenu">

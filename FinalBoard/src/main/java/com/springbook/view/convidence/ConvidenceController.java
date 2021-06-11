@@ -23,6 +23,12 @@ public class ConvidenceController {
 		return "reservation.jsp";
 	}
 
+	@RequestMapping(value = "/petShopPage.do")
+	public String petShopPage() {
+//		convidenceService.getShopList();
+		return "petShop.jsp";
+	}
+
 	@RequestMapping(value = "/getReservation.do")
 	public String getReservation(UserVO vo,Model model) {
 		List<ReservationVO> result = convidenceService.getReservation(vo);

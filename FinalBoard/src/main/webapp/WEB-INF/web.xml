@@ -64,6 +64,7 @@
 			<url-pattern>/insertBoard.do</url-pattern>
 			<url-pattern>/deleteBoard.do</url-pattern>
 			<url-pattern>/getNoticeList.do</url-pattern>
+			<url-pattern>/petShopPage.do</url-pattern>
 	</filter-mapping>
 	
 </web-app>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springbook.biz.convidence.ConvidenceService;
+import com.springbook.biz.convidence.ProductVO;
 import com.springbook.biz.convidence.ReservationVO;
 import com.springbook.biz.user.UserVO;
 
@@ -31,5 +32,10 @@ public class ConvidenceServiceImpl implements ConvidenceService {
 	@Override
 	public void deleteReser(ReservationVO vo) {
 		convidenceDAO.deleteReser(vo);
+	}
+
+	@Override
+	public List<ProductVO> getShopList() {
+		return convidenceDAO.getShopList();
 	}
 }

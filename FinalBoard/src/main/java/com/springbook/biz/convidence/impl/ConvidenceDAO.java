@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.springbook.biz.convidence.ProductVO;
 import com.springbook.biz.convidence.ReservationVO;
 import com.springbook.biz.user.UserVO;
 
@@ -29,5 +30,9 @@ public class ConvidenceDAO {
 	public void deleteReser(ReservationVO vo) {
 		mybatis.delete("ConvidenceDAO.deleteReser",vo);
 	}
-
+	
+	public List<ProductVO> getShopList() {
+		return mybatis.selectList("ConvidenceDAO.getShopList");
+	}
+	
 }

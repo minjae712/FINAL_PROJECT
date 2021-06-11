@@ -46,11 +46,7 @@
                             <ul class="links">
                                 <li><a href="#">공지사항</a></li>
                                 <li><a href="#">1:1 문의하기</a></li>
-<<<<<<< HEAD
                                 <li><a href="FAQ.jsp">FAQ</a></li>
-=======
-                                <li><a href="FAQ.jsp">Q&amp;A</a></li>
->>>>>>> branch 'master' of https://github.com/minjae712/FINAL_PROJECT.git
                             </ul>
                         </div>
                     </div>

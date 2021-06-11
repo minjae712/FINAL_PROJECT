@@ -6,8 +6,9 @@
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>고객센터</title>
+<meta name="description" content="">
 <!-- CSS here -->
-<link rel="stylesheet" href="./resources/css/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="./resources/css/css/bootstrap.min.css">
 <link rel="stylesheet" href="./resources/css/assets/css/style.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script>document.getElementsByTagName("html")[0].className += " js";</script>
