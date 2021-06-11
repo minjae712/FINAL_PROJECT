@@ -60,13 +60,14 @@ CREATE TABLE MEMBER(
   NAME VARCHAR2(20),                   					-- 이름
   BIRTH DATE,                 							-- 생일
   POST VARCHAR2(20),                  					-- 우편번호
-  ADDRESS VARCHAR2(100),                 				-- 주소  
-  CONSTRAINT MEMBER_ID_PK PRIMARY KEY(ID)			
+  ADDRESS VARCHAR2(100),                 				-- 주소
+  MEM_CODE VARCHAR2(100),  
+  CONSTRAINT MEMBER_ID_PK PRIMARY KEY(ID,MEM_CODE)			
 );
 
 
-INSERT INTO MEMBER VALUES('test','admin','test123','test@naver.com','lion_profile.png','김이박',sysdate,'08500','서울 금천구 가마산로 76(가산동)');
-INSERT INTO MEMBER VALUES('user','user','user123','user@naver.com','lion_profile.png','김나박',sysdate,'21510','인천 남동구 간석로 7(간석동)');
+INSERT INTO MEMBER VALUES('test','admin','test123','test@naver.com','lion_profile.png','김이박',sysdate,'08500','서울 금천구 가마산로 76(가산동)','NONE');
+INSERT INTO MEMBER VALUES('user','user','user123','user@naver.com','lion_profile.png','김나박',sysdate,'21510','인천 남동구 간석로 7(간석동)','NONE');
 
 column id format a10;
 column pw format a8;
@@ -161,6 +162,59 @@ column reser_date format a10;
 column title format a20;
 column content format a10;
 column content_else format a30;
+
+-- 물품 시퀀스
+DROP SEQUENCE PRODUCT_SEQ;
+CREATE SEQUENCE PRODUCT_SEQ;
+
+-- 판매 시퀀스
+DROP SEQUENCE SELL_SEQ;
+CREATE SEQUENCE SELL_SEQ;
+
+-- 장바구니 시퀀스
+DROP SEQUENCE CART_SEQ;
+CREATE SEQUENCE CART_SEQ;
+
+
+--제품정보
+DROP TABLE PRODUCT CASCADE CONSTRAINT;
+CREATE TABLE PRODUCT(
+  PRO_CODE VARCHAR2(20),                  -- 제품코드
+  IMAGE VARCHAR2(70),                -- 제품이미지
+  NAME VARCHAR2(200),                -- 제품명
+  PRICE NUMBER,			-- 제품단가
+  REG_DATE VARCHAR2(20),             -- 제품등록일
+  CONSTRAINT PRODUCT_PK PRIMARY KEY(PRO_CODE)
+);
+
+--판매내역정보
+DROP TABLE BILL CASCADE CONSTRAINT;
+CREATE TABLE BILL(
+  SELL_CODE VARCHAR2(20),			-- 판매내역코드
+  PRO_CODE VARCHAR2(20),			-- 제품코드
+  MEM_CODE VARCHAR2(20),		-- 유저코드
+  PRICE NUMBER,				-- 판매총가격
+  COUNT NUMBER,				-- 판매총수량
+  YN VARCHAR2(1) DEFAULT 'N',		-- 판매여부
+  SELL_DATE VARCHAR2(30),			-- 판매일
+  CONSTRAINT BILL_PK PRIMARY KEY(SELL_CODE,MEM_CODE),
+  CONSTRAINT BILL_FK_PRODUCT FOREIGN KEY(PRO_CODE) REFERENCES PRODUCT(PRO_CODE)
+);
+
+--장바구니정보
+DROP TABLE CART CASCADE CONSTRAINT;
+CREATE TABLE CART(
+  CART_CODE VARCHAR2(20),	-- 장바구니코드
+  PRO_CODE VARCHAR2(20),		-- 제품코드
+  MEM_CODE VARCHAR2(20),	-- 유저코드
+  PRICE NUMBER,			-- 해당제품총가격
+  COUNT NUMBER,			-- 해당제품총수량
+  SAVE_DATE VARCHAR2(30),	-- 장바구니 저장일
+  CONSTRAINT CART_PK PRIMARY KEY(CART_CODE),
+  CONSTRAINT CART_FK_PRODUCT FOREIGN KEY(PRO_CODE) REFERENCES PRODUCT(PRO_CODE)
+);
+
+
 
 
 COMMIT;
