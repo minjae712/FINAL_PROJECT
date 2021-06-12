@@ -8,8 +8,29 @@
 		((SELECT NVL(MAX(NO), 0) + 1 FROM RESERVATION),#{kind},#{user_id},#{user_name},#{reser_date},#{title},#{content},#{content_else})
 	</insert>
 
+	<insert id="insertOrder">
+		INSERT INTO BILL VALUES
+		((SELECT NVL(MAX(SELL_CODE), 0) + 1 FROM BILL),#{pro_code},#{pro_name},#{mem_code},#{price},#{count},SYSDATE,#{address},#{phone},#{name},#{req})
+	</insert>
+
 	<select id="getReservation" resultType="reser">
 		SELECT * FROM RESERVATION WHERE USER_ID = #{id}
+	</select>
+
+	<select id="getShopList" resultType="product">
+		SELECT * FROM PRODUCT ORDER BY PRO_CODE DESC
+	</select>
+
+	<select id="getProduct" resultType="product">
+		SELECT * FROM PRODUCT WHERE PRO_CODE = #{pro_code}
+	</select>
+
+	<select id="getOrderList" resultType="bill">
+		SELECT * FROM BILL WHERE MEM_CODE = #{mem_code}
+	</select>
+
+	<select id="getOrderCount" resultType="int">
+		SELECT COUNT(*) FROM BILL WHERE MEM_CODE = #{mem_code}
 	</select>
 
 	<select id="getReserCount" resultType="int">
@@ -20,6 +41,9 @@
 		DELETE FROM RESERVATION WHERE NO = #{no}
 	</delete>
 
+	<delete id="deleteOrder">
+		DELETE FROM BILL WHERE SELL_CODE = #{sell_code}
+	</delete>
 
 
 </mapper>

@@ -105,6 +105,10 @@ function fn_image() {
 				<input type="text" class="form-control" name="birth" value="${user.birth}" required>
 			</div>
 			<div class="form-group has-warning">
+				<label class="control-label">휴대폰번호</label>
+				<input type="text" class="form-control" name="phone" value="${user.phone}" required>
+			</div>
+			<div class="form-group has-warning">
 				<input type="hidden" class="form-control" name="role" value="${user.role}">
 			</div>
 			<div class="form-group has-warning">

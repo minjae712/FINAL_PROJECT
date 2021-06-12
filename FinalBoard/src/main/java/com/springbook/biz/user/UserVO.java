@@ -22,6 +22,8 @@ public class UserVO {
 	private Date birth;
 	private String post;
 	private String address;
+	private String mem_code;
+	private String phone;
 	private MultipartFile file;
 	
 	@Override

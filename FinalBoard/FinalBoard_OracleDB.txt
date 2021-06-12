@@ -49,7 +49,14 @@ CREATE TABLE NOTICE(
 SELECT UNI_SEQ.NEXTVAL FROM DUAL;
 INSERT INTO NOTICE(NO,WRITER,TITLE,CONTENT,UNI) VALUES('공지','test','공지사항입니다. 필독 바랍니다. ','냉무',(UNI_SEQ.CURRVAL));
 
--- 게시판 사용자
+
+-- 사용자 고유번호 시퀀스
+DROP SEQUENCE MEM_SEQ;
+CREATE SEQUENCE MEM_SEQ;
+
+SELECT MEM_SEQ.NEXTVAL FROM DUAL;
+
+-- 사용자
 DROP TABLE MEMBER CASCADE CONSTRAINT;
 CREATE TABLE MEMBER(
   ID VARCHAR2(20) ,                 					-- 아이디
@@ -61,13 +68,14 @@ CREATE TABLE MEMBER(
   BIRTH DATE,                 							-- 생일
   POST VARCHAR2(20),                  					-- 우편번호
   ADDRESS VARCHAR2(100),                 				-- 주소
-  MEM_CODE VARCHAR2(100),  
-  CONSTRAINT MEMBER_ID_PK PRIMARY KEY(ID,MEM_CODE)			
+  MEM_CODE VARCHAR2(100),								-- 고유코드
+  PHONE VARCHAR2(100),									-- 휴대폰번호
+  CONSTRAINT MEMBER_ID_PK PRIMARY KEY(ID)			
 );
 
 
-INSERT INTO MEMBER VALUES('test','admin','test123','test@naver.com','lion_profile.png','김이박',sysdate,'08500','서울 금천구 가마산로 76(가산동)','NONE');
-INSERT INTO MEMBER VALUES('user','user','user123','user@naver.com','lion_profile.png','김나박',sysdate,'21510','인천 남동구 간석로 7(간석동)','NONE');
+INSERT INTO MEMBER VALUES('test','admin','test123','test@naver.com','lion_profile.png','김이박',sysdate,'08500','서울 금천구 가마산로 76(가산동)',CONCAT('ME00',TO_CHAR(MEM_SEQ.CURRVAL)),'010-0000-0000');
+INSERT INTO MEMBER VALUES('user','user','user123','user@naver.com','lion_profile.png','김나박',sysdate,'21510','인천 남동구 간석로 7(간석동)',CONCAT('ME00',TO_CHAR(MEM_SEQ.NEXTVAL)),'010-0000-0000');
 
 column id format a10;
 column pw format a8;
@@ -76,7 +84,9 @@ column email format a20;
 column image format a10;
 column name format a10;
 column address format a8;
-set line 120
+column MEM_CODE format a8;
+SET LINE 150
+SET PAGES 50
 
 
 --댓글정보
@@ -163,9 +173,11 @@ column title format a20;
 column content format a10;
 column content_else format a30;
 
+
+
 -- 물품 시퀀스
-DROP SEQUENCE PRODUCT_SEQ;
-CREATE SEQUENCE PRODUCT_SEQ;
+DROP SEQUENCE PRO_SEQ;
+CREATE SEQUENCE PRO_SEQ;
 
 -- 판매 시퀀스
 DROP SEQUENCE SELL_SEQ;
@@ -179,25 +191,44 @@ CREATE SEQUENCE CART_SEQ;
 --제품정보
 DROP TABLE PRODUCT CASCADE CONSTRAINT;
 CREATE TABLE PRODUCT(
-  PRO_CODE VARCHAR2(20),                  -- 제품코드
-  IMAGE VARCHAR2(70),                -- 제품이미지
-  NAME VARCHAR2(200),                -- 제품명
-  PRICE NUMBER,			-- 제품단가
-  REG_DATE VARCHAR2(20),             -- 제품등록일
+  PRO_CODE VARCHAR2(20),            -- 제품코드
+  IMAGE VARCHAR2(70),               -- 제품이미지
+  IMAGE_DETAIL VARCHAR2(70),		-- 제품 상세이미지
+  NAME VARCHAR2(200),               -- 제품명
+  PRICE NUMBER,						-- 제품단가
+  REG_DATE DATE,             		-- 제품등록일
+  CONTENT VARCHAR2(1000),
   CONSTRAINT PRODUCT_PK PRIMARY KEY(PRO_CODE)
 );
+
+
+SELECT PRO_SEQ.NEXTVAL FROM DUAL;
+
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.CURRVAL)),'dog_pad.png','','강아지 배변패드 200매',26000,'2021/05/04','향기와 흡수를 모두 갖춘 강아지 맞춤 배변패드');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_tower.png','','원목 캣타워',32400,'2021/04/11','고양이들을 위한 놀이터/보금자리');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_sand.png','','고양이 모래 4.5kg',17600,'2021/03/03','탈취력이 우수하고 먼지날림이 없는 고양이 모래');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'dog_food.png','','강아지 사료 7kg',48000,'2021/05/23','유해성분 Zero ! 안전한 강아지 사료');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_scratcher.png','','고양이 스크래쳐',18000,'2021/04/27','고양이들의 본능을 지켜줄 안성맞춤 스크래쳐');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_toy.png','','고양이 자동장난감',22000,'2021/03/15','심심한 고양이의 시간을 책임질 캣토이');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'dog_tissue.png','','강아지 노즈워크 멍티슈',9800,'2021/02/11','강아지의 후각발달을 책임질 노즈워크 장난감');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'dog_snack.png','','강아지 영양간식 100개입',35000,'2021/04/19','강아지의 치아건강을 위한 영양간식');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_snack.png','','고양이 츄르 100개입',31000,'2021/05/09','1일 1츄르의 공식,마성의 고양이 간식');
 
 --판매내역정보
 DROP TABLE BILL CASCADE CONSTRAINT;
 CREATE TABLE BILL(
-  SELL_CODE VARCHAR2(20),			-- 판매내역코드
+  SELL_CODE NUMBER,					-- 판매내역코드
   PRO_CODE VARCHAR2(20),			-- 제품코드
-  MEM_CODE VARCHAR2(20),		-- 유저코드
-  PRICE NUMBER,				-- 판매총가격
-  COUNT NUMBER,				-- 판매총수량
-  YN VARCHAR2(1) DEFAULT 'N',		-- 판매여부
-  SELL_DATE VARCHAR2(30),			-- 판매일
-  CONSTRAINT BILL_PK PRIMARY KEY(SELL_CODE,MEM_CODE),
+  PRO_NAME VARCHAR2(20),			-- 제품이름
+  MEM_CODE VARCHAR2(20),			-- 유저코드
+  PRICE NUMBER,						-- 판매총가격
+  COUNT NUMBER,						-- 판매총수량
+  SELL_DATE DATE,					-- 결제일
+  ADDRESS VARCHAR2(100),			-- 배송지
+  PHONE VARCHAR2(100),				-- 주문자 연락처
+  NAME VARCHAR2(100),				-- 주문자 이름
+  REQ VARCHAR2(100),				-- 요청사항
+  CONSTRAINT BILL_PK PRIMARY KEY(SELL_CODE),
   CONSTRAINT BILL_FK_PRODUCT FOREIGN KEY(PRO_CODE) REFERENCES PRODUCT(PRO_CODE)
 );
 
@@ -215,6 +246,22 @@ CREATE TABLE CART(
 );
 
 
+column PRO_CODE format a10;
+column IMAGE format a20;
+column NAME format a15;
+column PRICE format 99999;
+column REG_DATE format a15;
+column CONTENT format a20;
+column SELL_CODE format 999;
+column CART_CODE format a10;
+column PHONE format a10;
+column REQ format a20;
+
+column PRO_CODE format a10;
+column MEM_CODE format a10;
+column COUNT format 99;
+column SAVE_DATE format a15;
+column SELL_DATE format a15;
 
 
 COMMIT;

@@ -45,6 +45,7 @@ function fn_delete() {
 				    	<ul class="nav navbar-nav">
 				        	<li class="active"><a href="getUser.do">회원정보 <span class="sr-only">(current)</span></a></li>
 				        	<li><a href="getReservation.do?id=${user.id}">예약정보</a></li>
+				        	<li><a href="getOrderList.do?mem_code=${user.mem_code}">주문정보</a></li>
 						</ul>
 				    </div>
 				</div>

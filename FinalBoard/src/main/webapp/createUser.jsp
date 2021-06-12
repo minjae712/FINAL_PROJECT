@@ -63,6 +63,11 @@
 				<input type="date" class="form-control" name="birth" placeholder=" ex) 19990101" required>
 			</div>
 
+			<div class="form-group has-warning">
+				<label class="control-label">휴대폰번호</label>
+				<input type="text" class="form-control" name="phone" placeholder=" ex) 01012345678" required>
+			</div>
+
 			<div class="form-group">
 				<label>가입 등급</label>
 				<div class="form-control">

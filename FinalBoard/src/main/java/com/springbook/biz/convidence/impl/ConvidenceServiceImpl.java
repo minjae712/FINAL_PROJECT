@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springbook.biz.convidence.BillVO;
 import com.springbook.biz.convidence.ConvidenceService;
 import com.springbook.biz.convidence.ProductVO;
 import com.springbook.biz.convidence.ReservationVO;
@@ -37,5 +38,29 @@ public class ConvidenceServiceImpl implements ConvidenceService {
 	@Override
 	public List<ProductVO> getShopList() {
 		return convidenceDAO.getShopList();
+	}
+
+	@Override
+	public ProductVO getProduct(ProductVO vo) {
+		return convidenceDAO.getProduct(vo);
+	}
+
+	@Override
+	public void insertOrder(BillVO vo) {
+		convidenceDAO.insertOrder(vo);
+	}
+
+	@Override
+	public List<BillVO> getOrderList(BillVO vo) {
+		return convidenceDAO.getOrderList(vo);
+	}
+
+	@Override
+	public void deleteOrder(BillVO vo) {
+		convidenceDAO.deleteOrder(vo);
+	}
+	@Override
+	public Integer getOrderCount(BillVO vo) {
+		return convidenceDAO.getOrderCount(vo);
 	}
 }

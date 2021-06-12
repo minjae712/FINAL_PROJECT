@@ -65,6 +65,10 @@
 			<url-pattern>/deleteBoard.do</url-pattern>
 			<url-pattern>/getNoticeList.do</url-pattern>
 			<url-pattern>/petShopPage.do</url-pattern>
+			<url-pattern>/getProduct.do</url-pattern>
+			<url-pattern>/getOrder.do</url-pattern>
+			<url-pattern>/getOrderList.do</url-pattern>
+			<url-pattern>/deleteOrder.do</url-pattern>
 	</filter-mapping>
 	
 </web-app>

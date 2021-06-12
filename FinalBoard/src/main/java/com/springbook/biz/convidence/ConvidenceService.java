@@ -16,4 +16,14 @@ public interface ConvidenceService {
 	
 	List<ProductVO> getShopList();
 	
+	ProductVO getProduct(ProductVO vo);
+	
+	void insertOrder(BillVO vo);
+	
+	List<BillVO> getOrderList(BillVO vo);
+	
+	void deleteOrder(BillVO vo);
+	
+	Integer getOrderCount(BillVO vo);
+	
 }
