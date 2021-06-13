@@ -12,6 +12,8 @@ public interface ConvidenceService {
 	
 	Integer getReserCount(UserVO vo);
 	
+	Integer getCartCount(CartVO vo);
+
 	void deleteReser(ReservationVO vo);
 	
 	List<ProductVO> getShopList();
@@ -24,6 +26,24 @@ public interface ConvidenceService {
 	
 	void deleteOrder(BillVO vo);
 	
+	void deleteCart(CartVO vo);
+
 	Integer getOrderCount(BillVO vo);
+	
+	void insertCart(CartVO vo);
+	
+	List<CartVO> getCartList(CartVO vo);
+	
+	List<CartVO> getSelectedCartList(CartVO vo);
+
+	void updateCart(CartVO vo);
+	
+	void checkProduct(CartVO vo);
+	
+	Integer totalCheck(CartVO vo);
+	
+	void insertOrderAll(CartVO cvo,BillVO bvo);
+	
+	void insertOrderSel(CartVO cvo,BillVO bvo);
 	
 }

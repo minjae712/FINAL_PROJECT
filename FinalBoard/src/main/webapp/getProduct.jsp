@@ -20,6 +20,7 @@ cursor: pointer;
 	var pro_name = '${product.name}';
 	var pro_image = '${product.image}';
 	var pro_price = ${product.price};
+	var mem_code = '${user.mem_code}';
 	
 
 	function fn_up(){
@@ -55,8 +56,39 @@ cursor: pointer;
 		pro_num = $("#Pro_num").val();
 		var cart_pro = confirm("해당 상품을 장바구니에 담으시겠습니까?");
 		
-		if(buy_pro){
+		var formData = new FormData();
+		formData.append("pro_code",pro_code);
+		formData.append("pro_name",pro_name);
+		formData.append("mem_code",mem_code);
+		formData.append("count",pro_num);
+		formData.append("price",pro_price);
+		formData.append("image",pro_image);
+		
+		if(cart_pro){
 			
+			$.ajax({
+		        type : "POST",
+		        dataType : "text",
+		        url : "insertCart.do",
+		        data : formData,
+	            contentType : false,
+	            processData : false,
+		        success : function(data){
+		        	var cart_con = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");
+		        	
+		        	if(cart_con){
+		        		location.href = "myCartPage.do?mem_code=" + mem_code;
+		        	}else {
+		        		return;
+		        	}
+		        	
+		        },
+		        error : function(request,status,error){
+		        	console.log("통신실패 - " + "code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		        	alert("통신실패 - " + "code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		        }
+			});	
+
 		}else{
 			return;
 		}
@@ -122,7 +154,7 @@ cursor: pointer;
 							<span class="input-group-btn data-dwn">
 								<button class="btn btn-default" data-dir="dwn" id="down" onclick="fn_down()"><span class="glyphicon glyphicon-minus"></span></button>
 							</span>
-							<input id="Pro_num" type="text" class="form-control text-center" value="1" min="1" max="100">
+							<input id="Pro_num" type="text" class="form-control text-center" value="1" min="1" max="100" readonly="readonly">
 							<span class="input-group-btn data-up">
 								<button class="btn btn-default" data-dir="up" id="up" onclick="fn_up()" ><span class="glyphicon glyphicon-plus"></span></button>
 							</span>

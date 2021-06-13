@@ -74,6 +74,7 @@ div.line-blue{
                             <div class="social_media_links" >
                             	<u:isLogin>
                             		<b style="color: white;">${user.name}님, 환영합니다!</b>
+                            		<a href="myCartPage.do?mem_code=${user.mem_code}"><button style="width: 10%;height: 5%"><i class="glyphicon glyphicon-shopping-cart"></i></button></a>
                             		<a href="getUser.do"><img src="./customcss/MyPage.png"></a>
 									<a href="${pageContext.request.contextPath}/logout.do"><img src="./customcss/Logout_button.png"></a>
 								</u:isLogin>

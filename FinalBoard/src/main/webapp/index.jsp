@@ -18,7 +18,7 @@
 						<div class="slider_text" style="margin-top: 5cm;">
 							<h3>
 								멍이랑
-								 <br> <span>냥이랑</span>
+								 <br><span>냥이랑</span>
 							</h3>
 							<p>
 								사랑스런 반려동물을 위한<br>
@@ -29,7 +29,7 @@
 				</div>
 			</div>
 			<div class="dog_thumb d-none d-lg-block">
-				<img src="./resources/css/img/banner/dog.png" alt="">
+				<img src="./resources/css/img/banner/dog.png">
 			</div>
 		</div>
 	</div>

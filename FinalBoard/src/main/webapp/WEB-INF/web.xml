@@ -69,6 +69,8 @@
 			<url-pattern>/getOrder.do</url-pattern>
 			<url-pattern>/getOrderList.do</url-pattern>
 			<url-pattern>/deleteOrder.do</url-pattern>
+			<url-pattern>/getCart.do</url-pattern>
+			<url-pattern>/myCartPage.do</url-pattern>
 	</filter-mapping>
 	
 </web-app>
