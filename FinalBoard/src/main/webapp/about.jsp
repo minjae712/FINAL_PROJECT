@@ -3,6 +3,14 @@
 <html class="no-js" lang="zxx">
 
 <head>
+<style>
+.title {
+	color:#FF4000;
+	font-size:19px;
+	font-weight:bold;
+}
+
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Animal</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -37,8 +45,9 @@
                     <div class="pet_info">
                         <div class="section_title">
                             <h3>멍냥 컴퍼니  <br></h3>
-                            <p><b>반려동물을 사랑한다면 누구나 함께할 수 있는 소통 커뮤니티 </b><br> 사랑스러운 나만의 펫을 자랑해보세요 <br> 반려동물을 위한 돌봄서비스가 필요하다면 펫시터를 구해보세요 <br>
-                                어디서든 쉽게 애완용품 온라인 쇼핑을 즐길 수 있습니다</p>
+                            <p><span class="title">반려동물을 사랑하는 누구나 함께할 수 있는 공간을 제공합니다 </span><br><br>
+                            	사랑스러운 나의 반려동물을 자랑해보세요 <br> 반려동물을 위한 돌봄서비스! 믿을 수 있는 펫 시터 구하기! <br>
+                                                        멍냥이들의 소중한 건강관리를 위해 동물병원 예약 서비스 제공! <br>빠르고 편하게 애완용품 온라인 쇼핑까지 한 번에!</p>
                         </div>
                     </div>
                 </div>
@@ -54,7 +63,7 @@
 			<div class="row justify-content-center ">
 				<div class="col-lg-7 col-md-10">
 					<div class="section_title text-center mb-95">
-						<h3>반려동물을 위한 케어서비스</h3>
+						<h3>반려동물을 위한 케어 서비스</h3>
 						<p>우리 동네에 있는 동물병원 예약부터, 바쁜 나를 대신해 케어해 줄 펫시터 구하기,
 							그리고 멍냥이들을 위한 특별한 선물까지!</p>
 					</div>
@@ -106,102 +115,6 @@
 		</div>
 	</div>
 	<!-- service_area_end -->
-
-    <!-- team_area_start  -->
-    <div class="team_area">
-        <div class="container">
-            <div class="row justify-content-center ">
-                <div class="col-lg-6 col-md-10">
-                    <div class="section_title text-center mb-95">
-                        <h3>Our Team</h3>
-                        <p>반려동물을 사랑하는 분들에게 소중한 쉼터가 될 수 있는 서비스를 제공하고자 합니다</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_team">
-                        <div class="thumb">
-                            <img src="./resources/css/img/team/jang_profile.png" alt="">
-                        </div>
-                        <div class="member_name text-center">
-                            <div class="mamber_inner">
-                                <h4>Hyejin Jang</h4>
-                                <p>BackEnd Developer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_team">
-                        <div class="thumb">
-                            <img src="./resources/css/img/team/2.png" alt="">
-                        </div>
-                        <div class="member_name text-center">
-                            <div class="mamber_inner">
-                                <h4>Minjae Kim</h4>
-                                <p>BackEnd Developer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_team">
-                        <div class="thumb">
-                            <img src="./resources/css/img/team/3.png" alt="">
-                        </div>
-                        <div class="member_name text-center">
-                            <div class="mamber_inner">
-                                <h4>Kyeongsik Shim</h4>
-                                <p>BackEnd Developer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                              <div class="col-lg-4 col-md-6">
-                    <div class="single_team">
-                        <div class="thumb">
-                            <img src="./resources/css/img/team/1.png" alt="">
-                        </div>
-                        <div class="member_name text-center">
-                            <div class="mamber_inner">
-                                <h4>Hojin Park</h4>
-                                <p>BackEnd Developer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_team">
-                        <div class="thumb">
-                            <img src="./resources/css/img/team/2.png" alt="">
-                        </div>
-                        <div class="member_name text-center">
-                            <div class="mamber_inner">
-                                <h4>Hyunmyung Lee</h4>
-                                <p>BackEnd Developer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_team">
-                        <div class="thumb">
-                            <img src="./resources/css/img/team/3.png" alt="">
-                        </div>
-                        <div class="member_name text-center">
-                            <div class="mamber_inner">
-                                <h4>Hyeongbin Cha</h4>
-                                <p>BackEnd Developer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- team_area_start  -->
-
 
 	<jsp:include page="./hf/footer.jsp"></jsp:include>
 </body>
