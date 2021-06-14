@@ -7,10 +7,12 @@
 	<typeAliases>
 		<typeAlias type="com.springbook.biz.board.BoardVO" alias="board" />
 		<typeAlias type="com.springbook.biz.board.B_MoodVO" alias="B_MOOD" />
+		<typeAlias type="com.springbook.biz.board.B_HistoryDTO" alias="B_HISTORY" />
 		<typeAlias type="com.springbook.biz.board.NoticeVO" alias="notice" />
 		<typeAlias type="com.springbook.biz.user.UserVO" alias="user" />
 		<typeAlias type="com.springbook.biz.comment.CommentVO" alias="Comment" />
 		<typeAlias type="com.springbook.biz.comment.C_MoodVO" alias="C_MOOD" />
+		<typeAlias type="com.springbook.biz.comment.C_HistoryDTO" alias="C_HISTORY" />
 		<typeAlias type="com.springbook.biz.comment.BestCommentDTO" alias="best" />
 		<typeAlias type="com.springbook.biz.convidence.ReservationVO" alias="reser" />
 		<typeAlias type="com.springbook.biz.convidence.ProductVO" alias="product" />

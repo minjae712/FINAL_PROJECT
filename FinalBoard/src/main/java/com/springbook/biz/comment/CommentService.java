@@ -6,7 +6,7 @@ public interface CommentService {
 
 	void insertComment(CommentVO vo);
 	
-	void goodOrBad(C_MoodVO vo);
+	void goodOrBad(C_MoodVO vo,C_HistoryDTO dto) throws Exception;
 	
 	void updateComment(CommentVO vo);
 
