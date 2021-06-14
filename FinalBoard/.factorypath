@@ -43,7 +43,7 @@
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\catalina-storeconfig.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\catalina-tribes.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\catalina.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\ecj-4.15.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\ecj-4.18.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\el-api.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\jasper-el.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\jasper.jar" enabled="true" runInBatchMode="false"/>

@@ -180,8 +180,8 @@ cursor: pointer;
           <div class="panel-heading" style="background-color: gray;">
              <h3 class="panel-title" align="center"><b style="color: white;">제품 상세이미지</b></h3>
            </div>
-			<div class="panel-body">
-			
+			<div class="panel-body" align="center">
+				<img src="./productimage/${product.image_detail}">
 			</div>
 		</div>
 	</div>
@@ -197,7 +197,7 @@ cursor: pointer;
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-3" align="center">
-								<img alt="image_not_found" id="userImage" src="" height="180px" width="150px" class="img-circle">
+								<img alt="image_not_found" id="userImage" src="./customcss/defaultpic.png" height="180px" width="150px" class="img-circle">
 							</div>
 							<div class="col-md-9">
 								<table class="table table-user-information">

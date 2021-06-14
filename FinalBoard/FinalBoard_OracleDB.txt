@@ -196,15 +196,15 @@ CREATE TABLE PRODUCT(
 
 SELECT PRO_SEQ.NEXTVAL FROM DUAL;
 
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.CURRVAL)),'dog_pad.png','','강아지 배변패드 200매',26000,'2021/05/04','향기와 흡수를 모두 갖춘 강아지 맞춤 배변패드');
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_tower.png','','원목 캣타워',32400,'2021/04/11','고양이들을 위한 놀이터/보금자리');
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_sand.png','','고양이 모래 4.5kg',17600,'2021/03/03','탈취력이 우수하고 먼지날림이 없는 고양이 모래');
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'dog_food.png','','강아지 사료 7kg',48000,'2021/05/23','유해성분 Zero ! 안전한 강아지 사료');
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_scratcher.png','','고양이 스크래쳐',18000,'2021/04/27','고양이들의 본능을 지켜줄 안성맞춤 스크래쳐');
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_toy.png','','고양이 자동장난감',22000,'2021/03/15','심심한 고양이의 시간을 책임질 캣토이');
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'dog_tissue.png','','강아지 노즈워크 멍티슈',9800,'2021/02/11','강아지의 후각발달을 책임질 노즈워크 장난감');
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'dog_snack.png','','강아지 영양간식 100개입',35000,'2021/04/19','강아지의 치아건강을 위한 영양간식');
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_snack.png','','고양이 츄르 100개입',31000,'2021/05/09','1일 1츄르의 공식,마성의 고양이 간식');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.CURRVAL)),'dog_pad.png','dog_pad_detail.png','강아지 배변패드 200매',26000,'2021/05/04','향기와 흡수를 모두 갖춘 강아지 맞춤 배변패드');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_tower.png','cat_tower_detail.jpg','원목 캣타워',32400,'2021/04/11','고양이들을 위한 놀이터/보금자리');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_sand.png','cat_sand_detail.png','고양이 모래 4.5kg',17600,'2021/03/03','탈취력이 우수하고 먼지날림이 없는 고양이 모래');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'dog_food.png','dog_food_detail.png','강아지 사료 7kg',48000,'2021/05/23','유해성분 Zero ! 안전한 강아지 사료');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_scratcher.png','cat_scratcher_detail.jpg','고양이 스크래쳐',18000,'2021/04/27','고양이들의 본능을 지켜줄 안성맞춤 스크래쳐');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_toy.png','cat_toy_detail.jpg','고양이 자동장난감',22000,'2021/03/15','심심한 고양이의 시간을 책임질 캣토이');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'dog_tissue.png','dog_tissue_detail.png','강아지 노즈워크 멍티슈',9800,'2021/02/11','강아지의 후각발달을 책임질 노즈워크 장난감');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'dog_snack.png','dog_snack_detail.png','강아지 영양간식 100개입',35000,'2021/04/19','강아지의 치아건강을 위한 영양간식');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_snack.png','cat_snack_detail.jpg','고양이 츄르 100개입',31000,'2021/05/09','1일 1츄르의 공식,마성의 고양이 간식');
 
 --판매내역정보
 DROP TABLE BILL CASCADE CONSTRAINT;
