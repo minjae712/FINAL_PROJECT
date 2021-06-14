@@ -57,6 +57,4 @@
 		<constructor-arg ref="sqlSession"></constructor-arg>
 	</bean>
 	
-
-	
 </beans>

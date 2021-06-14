@@ -28,6 +28,8 @@ public interface BoardService {
 	
 	BoardPages<BoardVO> getBoardPages(int pageNo,BoardVO vo);
 	
+	BoardPages<BoardVO> getBoardUserPages(int pageNo,BoardVO vo,String name);
+	
 	List<BoardVO> getBestList(BoardVO vo);
 	
 	BoardPages<NoticeVO> getNoticePages(int pageNo,NoticeVO vo);

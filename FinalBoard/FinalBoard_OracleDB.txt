@@ -76,7 +76,6 @@ CREATE TABLE MEMBER(
 
 INSERT INTO MEMBER VALUES('test','admin','test123','test@naver.com','lion_profile.png','김이박',sysdate,'08500','서울 금천구 가마산로 76(가산동)',CONCAT('ME00',TO_CHAR(MEM_SEQ.CURRVAL)),'010-0000-0000');
 INSERT INTO MEMBER VALUES('user','user','user123','user@naver.com','lion_profile.png','김나박',sysdate,'21510','인천 남동구 간석로 7(간석동)',CONCAT('ME00',TO_CHAR(MEM_SEQ.NEXTVAL)),'010-0000-0000');
-
 column id format a10;
 column pw format a8;
 column post format a10;
@@ -239,6 +238,19 @@ CREATE TABLE CART(
   CONSTRAINT CART_PK PRIMARY KEY(CART_CODE),
   CONSTRAINT CART_FK_PRODUCT FOREIGN KEY(PRO_CODE) REFERENCES PRODUCT(PRO_CODE)
 );
+
+DROP TABLE STORY CASCADE CONSTRAINT;
+CREATE TABLE STORY(
+  NO NUMBER,            						-- 게시글번호
+  WRITER VARCHAR2(30),							-- 작성자
+  TITLE VARCHAR2(1000),        					-- 게시글제목
+  CONTENT VARCHAR2(4000),    					-- 게시글내용
+  REGDATE DATE DEFAULT SYSDATE,        			-- 게시글작성날짜
+  CNT NUMBER DEFAULT 0,    						-- 조회수
+  IMAGE VARCHAR2(200),						-- 이미지업로드
+  CONSTRAINT STORY_PK PRIMARY KEY(NO)
+);
+
 
 
 column PRO_CODE format a10;

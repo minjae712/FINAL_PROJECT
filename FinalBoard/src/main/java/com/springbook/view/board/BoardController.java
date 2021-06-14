@@ -2,9 +2,10 @@ package com.springbook.view.board;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
+import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,9 +25,6 @@ import com.springbook.biz.board.BoardPages;
 import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.NoticeVO;
-import com.springbook.biz.comment.CommentService;
-import com.springbook.biz.comment.CommentVO;
-import com.springbook.biz.user.UserVO;
 
 @Controller
 @SessionAttributes("board")
@@ -50,7 +49,7 @@ public class BoardController {
 		if(!uploadFile.isEmpty()) {
 			String fileName = uploadFile.getOriginalFilename();
 			System.out.println(fileName);
-			uploadFile.transferTo(new File("" + fileName));
+			uploadFile.transferTo(new File("D:/" + fileName));
 			vo.setFileName(fileName);
 		}		
 		boardService.insertBoard(vo);
@@ -120,6 +119,22 @@ public class BoardController {
 		model.addAttribute("pages",result);
 		return "getBoardList.jsp";
 	}
+	
+	@RequestMapping(value ="/getBoardUserList.do")
+	public String getBoardUserList(@ModelAttribute("bvo")BoardVO vo,BoardPages<BoardVO> pages,Model model,@RequestParam String name) {
+		
+		int pageNo = 1;
+		if(pages.getCurrentPage() == 0) {
+			pages.setCurrentPage(pageNo);
+		}
+		vo.searchNullCheck(vo);
+		BoardPages<BoardVO> result = boardService.getBoardUserPages(pageNo, vo, name);
+		vo.setSearchKeyword(vo.getSearchKeyword());
+		model.addAttribute("noticeList",boardService.getNoticeList());
+		model.addAttribute("pages",result);
+		return "getBoardUserPage.jsp";
+	}
+	
 	@RequestMapping(value ="/getNoticeList.do")
 	public String getNoticeList(NoticeVO nvo,BoardPages<NoticeVO> pages,Model model) {
 		
