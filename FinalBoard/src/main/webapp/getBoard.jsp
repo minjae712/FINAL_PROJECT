@@ -18,13 +18,18 @@ var b_num = ${board.no};
 var modifying = 0;
 var name = '${user.name}';
 
+var user_code = '${user.mem_code}';
+
+
 $(document).ready(function(){
 
 	getCommentCount();
-	getCommentList();
+	getCommentList(user_code);
 	getBestList();
 	getB_Mood();
 });
+
+
 
 </script>
 <script src="${pageContext.request.contextPath}/js/board_comment.js" type="text/javascript"></script>
@@ -80,10 +85,10 @@ $(document).ready(function(){
 				<tr>
 				</tr>
 			</table>
-					<center>
- 					<a id="B_good${board.no}"class="glyphicon glyphicon-thumbs-up" onclick="b_checkGoodOrBad(1,0)" >추천 </a>&nbsp;&nbsp;
- 					<a id="B_bad${board.no}" class="glyphicon glyphicon-thumbs-down" onclick="b_checkGoodOrBad(0,1)" >반대 </a> 
-					</center>
+					<div align="center">
+ 					<button class="btn btn-danger"><i id="B_good${board.no}" onclick="b_checkGoodOrBad(1,0,'${user.mem_code}')" class="glyphicon glyphicon-thumbs-up"></i></button>&nbsp;&nbsp;
+ 					<button class="btn btn-primary"><i id="B_bad${board.no}" onclick="b_checkGoodOrBad(0,1,'${user.mem_code}')" class="glyphicon glyphicon-thumbs-down"></i></button> 
+					</div>
 			<hr>
 			<%@ include file="/comment.jsp" %>
 	</div>

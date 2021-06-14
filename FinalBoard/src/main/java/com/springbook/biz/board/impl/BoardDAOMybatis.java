@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.springbook.biz.board.B_HistoryDTO;
 import com.springbook.biz.board.B_MoodVO;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.NoticeVO;
@@ -30,8 +31,11 @@ public class BoardDAOMybatis{
 		mybatis.insert("BoardDAO.insertNotice", nvo);
 	}
 
-	public void insertMood() {
-		mybatis.insert("BoardDAO.insertMood");
+	public void insertB_Mood() {
+		mybatis.insert("BoardDAO.insertB_Mood");
+	}
+	public void insertB_History(B_HistoryDTO dto) {
+		mybatis.insert("BoardDAO.insertB_History",dto);
 	}
 	
 	public void goodOrBad(B_MoodVO vo) {
@@ -68,6 +72,10 @@ public class BoardDAOMybatis{
 	public List<NoticeVO> getNoticeList() {
 		return mybatis.selectList("BoardDAO.getNoticeList");
 	}
+
+	public List<B_HistoryDTO> b_historyCheck() {
+		return mybatis.selectList("BoardDAO.b_historyCheck");
+	}
 	
 	public B_MoodVO getMood(B_MoodVO mvo) {
 		return mybatis.selectOne("BoardDAO.getMood", mvo);
@@ -95,6 +103,13 @@ public class BoardDAOMybatis{
 	
 	public void deleteAllComment(BoardVO vo){
 		mybatis.delete("CommentDAO.deleteAllComment",vo);
+	}
+
+	public void deleteB_History(BoardVO vo){
+		mybatis.delete("BoardDAO.deleteB_History",vo);
+	}
+	public void deleteAllC_History(BoardVO vo){
+		mybatis.delete("CommentDAO.deleteAllC_History",vo);
 	}
 
 	public void deleteAllC_Mood(BoardVO vo){

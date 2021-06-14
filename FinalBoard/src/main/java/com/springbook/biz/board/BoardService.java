@@ -10,7 +10,7 @@ public interface BoardService {
 	
 	void insertNotice(NoticeVO nvo);
 	
-	void goodOrBad(B_MoodVO vo);
+	void goodOrBad(B_MoodVO vo,B_HistoryDTO dto) throws Exception;
 
 	void updateBoard(BoardVO vo);
 
