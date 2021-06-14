@@ -102,11 +102,11 @@ function fn_image() {
 			</div>
 			<div class="form-group has-warning">
 				<label class="control-label">생년월일</label>
-				<input type="text" class="form-control" name="birth" value="${user.birth}" required>
+				<input type="date" class="form-control" name="birth" value="${user.birth}" readonly="readonly">
 			</div>
 			<div class="form-group has-warning">
 				<label class="control-label">휴대폰번호</label>
-				<input type="text" class="form-control" name="phone" value="${user.phone}" required>
+				<input type="tel" class="form-control" name="phone" value="${user.phone}" required>
 			</div>
 			<div class="form-group has-warning">
 				<input type="hidden" class="form-control" name="role" value="${user.role}">
