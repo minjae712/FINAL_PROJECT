@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springbook.biz.board.B_HistoryDTO;
 import com.springbook.biz.board.B_MoodVO;
 import com.springbook.biz.board.BoardPages;
 import com.springbook.biz.board.BoardService;
@@ -21,7 +22,7 @@ public class BoardServiceImpl implements BoardService  {
 
 	public void insertBoard(BoardVO vo) {
 		boardDAO.insertBoard(vo);
-		boardDAO.insertMood();
+		boardDAO.insertB_Mood();
 	}
 
 	public void insertNotice(NoticeVO nvo) {
@@ -29,8 +30,25 @@ public class BoardServiceImpl implements BoardService  {
 		
 	}
 	
-	public void goodOrBad(B_MoodVO vo) {
-		boardDAO.goodOrBad(vo);
+	public void goodOrBad(B_MoodVO vo,B_HistoryDTO dto) throws Exception {
+		List<B_HistoryDTO> result = boardDAO.b_historyCheck();
+		dto.setNo(vo.getNo());
+		if(result.isEmpty()) {
+			boardDAO.goodOrBad(vo);
+			boardDAO.insertB_History(dto);
+		}else if(!result.isEmpty()) {
+			
+			for (int j = 0; j < result.size(); j++) {
+				if(result.get(j).getMem_code().equals(dto.getMem_code()) && result.get(j).getNo() == vo.getNo()) {
+					throw new IllegalAccessError();
+				}else {
+					boardDAO.goodOrBad(vo);
+					boardDAO.insertB_History(dto);
+					break;
+					
+				}
+			}
+		}
 	}
 	
 	public void updateBoard(BoardVO vo) {
@@ -38,6 +56,8 @@ public class BoardServiceImpl implements BoardService  {
 	}
 
 	public void deleteBoard(BoardVO vo) {
+		boardDAO.deleteB_History(vo);
+		boardDAO.deleteAllC_History(vo);
 		boardDAO.deleteAllC_Mood(vo);
 		boardDAO.deleteAllComment(vo);
 		boardDAO.deleteB_Mood(vo);

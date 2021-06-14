@@ -11,6 +11,11 @@
 	<insert id="insertMood">	
 		INSERT INTO C_MOOD(NO,COMMENT_NO) VALUES(#{no},(SELECT NVL(MAX(COMMENT_NO), 0) FROM BOARD_COMMENT))
 	</insert>
+	
+	<insert id="insertC_History" >	
+		INSERT INTO C_MOOD_HISTORY
+		VALUES(#{no},#{comment_no},#{mem_code})
+	</insert>
 
 	<select id="textAreaSet" resultType="Comment">
 	SELECT * FROM BOARD_COMMENT WHERE NO = #{no} AND COMMENT_NO = #{commentNo}
@@ -30,6 +35,10 @@
 	<![CDATA[
 	 WHERE R >= 1 AND R <= 3
 	]]>
+	</select>
+	
+	<select id="c_historyCheck" resultType="C_HISTORY">
+		SELECT * FROM C_MOOD_HISTORY
 	</select>
 	
 	<select id="getCommentMood" resultMap="C_MoodResult">
@@ -67,8 +76,16 @@
 		DELETE FROM C_MOOD WHERE NO = #{no} AND COMMENT_NO = #{commentNo} 
 	</delete>
 	
+	<delete id="deleteC_History">
+		DELETE FROM C_MOOD_HISTORY WHERE NO = #{no} AND COMMENT_NO = #{commentNo} 
+	</delete>
+
 	<delete id="deleteAllC_Mood">
 		DELETE FROM C_MOOD WHERE NO = #{no}
+	</delete>
+
+	<delete id="deleteAllC_History">
+		DELETE FROM C_MOOD_HISTORY WHERE NO = #{no}
 	</delete>
 
 	<resultMap id="CommentResult" type="Comment">

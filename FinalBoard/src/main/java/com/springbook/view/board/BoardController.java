@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.springbook.biz.board.B_HistoryDTO;
 import com.springbook.biz.board.B_MoodVO;
 import com.springbook.biz.board.BoardPages;
 import com.springbook.biz.board.BoardService;
@@ -35,8 +36,9 @@ public class BoardController {
 	
 	
 	@RequestMapping("/b_goodOrBad.do")
-	public @ResponseBody String ajax_b_goodOrBad(B_MoodVO vo) throws IOException {
-		boardService.goodOrBad(vo);
+	public @ResponseBody String ajax_b_goodOrBad(B_MoodVO vo,B_HistoryDTO dto) throws Exception {
+		System.out.println("진입성공");
+		boardService.goodOrBad(vo,dto);
 		vo.clear();
 		return "success";
 	}

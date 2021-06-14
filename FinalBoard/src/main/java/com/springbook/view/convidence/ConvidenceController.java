@@ -95,6 +95,7 @@ public class ConvidenceController {
 	public String getProduct(ProductVO vo,Model model) {
 		ProductVO result = convidenceService.getProduct(vo);
 		model.addAttribute("product", result);
+		System.out.println(result.getImage_detail());
 		return "getProduct.jsp";
 	}
 	

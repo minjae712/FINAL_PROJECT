@@ -13,11 +13,15 @@
 		VALUES(UNI_SEQ.NEXTVAL,'공지',#{title},#{writer},#{content})
 	</insert>
 
-	<insert id="insertMood" >	
+	<insert id="insertB_Mood" >	
 		INSERT INTO B_MOOD(no)
 		VALUES((SELECT NVL(MAX(NO), 0) FROM BOARD))
 	</insert>
 	
+	<insert id="insertB_History" >	
+		INSERT INTO B_MOOD_HISTORY
+		VALUES(#{no},#{mem_code})
+	</insert>
 	
 	<select id="getBoardCount" resultType="int">
 	SELECT COUNT(*) FROM BOARD WHERE 1 = 1
@@ -101,6 +105,10 @@
 		SELECT * FROM B_MOOD WHERE NO = #{no}
 	</select>
 	
+	<select id="b_historyCheck" resultType="B_HISTORY">
+		SELECT * FROM B_MOOD_HISTORY
+	</select>
+
 	<select id="getBestList" resultType="board">
 		SELECT NO, WRITER, TITLE, CONTENT, REGDATE, CNT, ROW_NUMBER() OVER
 		(ORDER BY CNT DESC, REGDATE DESC) AS RANK
@@ -134,6 +142,10 @@
 		DELETE FROM BOARD WHERE NO = #{no}
 	</delete>
 	
+	<delete id="deleteB_History">
+		DELETE FROM B_MOOD_HISTORY WHERE NO = #{no}
+	</delete>
+
 	<delete id="deleteNotice">
 		DELETE FROM NOTICE WHERE UNI = #{uni}
 	</delete>

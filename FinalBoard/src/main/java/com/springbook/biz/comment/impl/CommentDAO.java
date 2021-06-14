@@ -6,7 +6,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.springbook.biz.board.B_HistoryDTO;
 import com.springbook.biz.comment.BestCommentDTO;
+import com.springbook.biz.comment.C_HistoryDTO;
 import com.springbook.biz.comment.C_MoodVO;
 import com.springbook.biz.comment.CommentVO;
 
@@ -23,6 +25,9 @@ public class CommentDAO{
 	public void insertMood(CommentVO vo) {
 		mybatis.insert("CommentDAO.insertMood", vo);
 	}
+	public void insertC_History(C_HistoryDTO dto) {
+		mybatis.insert("CommentDAO.insertC_History", dto);
+	}
 	
 	public void updateComment(CommentVO vo) {
 		mybatis.update("CommentDAO.updateComment", vo);
@@ -36,8 +41,16 @@ public class CommentDAO{
 		mybatis.delete("CommentDAO.deleteMood", vo);
 	}
 
+	public void deleteC_History(CommentVO vo) {
+		mybatis.delete("CommentDAO.deleteC_History", vo);
+	}
+
 	public CommentVO textAreaSet(CommentVO vo) {
 		return (CommentVO) mybatis.selectOne("CommentDAO.textAreaSet", vo);
+	}
+
+	public List<C_HistoryDTO> c_historyCheck() {
+		return mybatis.selectList("CommentDAO.c_historyCheck");
 	}
 	
 	public int getCommentCount(CommentVO vo) {

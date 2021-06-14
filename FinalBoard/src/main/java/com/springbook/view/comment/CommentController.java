@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.springbook.biz.comment.BestCommentDTO;
+import com.springbook.biz.comment.C_HistoryDTO;
 import com.springbook.biz.comment.C_MoodVO;
 import com.springbook.biz.comment.CommentService;
 import com.springbook.biz.comment.CommentVO;
@@ -31,8 +32,8 @@ public class CommentController {
 	}
 
 	@RequestMapping(value = "/c_goodOrBad.do")
-	public @ResponseBody String ajax_c_goodOrBad(C_MoodVO vo) {
-		CommentService.goodOrBad(vo);
+	public @ResponseBody String ajax_c_goodOrBad(C_MoodVO vo,C_HistoryDTO dto) throws Exception {
+		CommentService.goodOrBad(vo,dto);
 		vo.clear();
 		return "success";
 	}
