@@ -33,7 +33,7 @@ $(document).ready(function(){
 	
 	uploadfile();
 	getCommentCount();
-	getCommentList(user_code);
+	getCommentList();
 	getBestList();
 	getB_Mood();
 });
