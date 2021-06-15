@@ -44,16 +44,30 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/insertBoard.do")
-	public String insertBoard(BoardVO vo) throws IOException {
+	public String insertBoard(BoardVO vo,HttpServletRequest request) throws IOException {
 		
 		vo.setFileName("");
+		String upload ="uploadfile\\"; //저장할 경로
+		String realFolder = request.getRealPath("") + upload; //web-inf바로전 까지 저장할 경로
+		System.out.println( "설정 경로 : " + realFolder);
 		MultipartFile uploadFile = vo.getUploadFile();
-		if(!uploadFile.isEmpty()) {
-			String fileName = uploadFile.getOriginalFilename();
-			System.out.println(fileName);
-			uploadFile.transferTo(new File("D:/" + fileName));
-			vo.setFileName(fileName);
-		}		
+		String fullname = uploadFile.getOriginalFilename();
+		int idx = 0;
+		String filename = "";
+		if(fullname.contains("\\")) {
+			idx = fullname.lastIndexOf("\\");
+			filename = fullname.substring(idx+1);
+			if(!uploadFile.isEmpty()) {
+				uploadFile.transferTo(new File(realFolder + filename));
+				vo.setFileName(filename);
+			}
+		}else {
+			if(!uploadFile.isEmpty()) {
+				uploadFile.transferTo(new File(realFolder + fullname));
+				vo.setFileName(fullname);
+			
+			}
+		}	
 		boardService.insertBoard(vo);
 		return "InsertBoardSuccess.jsp";
 	}
