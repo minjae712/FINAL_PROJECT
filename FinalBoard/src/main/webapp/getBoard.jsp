@@ -20,9 +20,18 @@ var name = '${user.name}';
 
 var user_code = '${user.mem_code}';
 
+var fileName = '${board.fileName}';
+
+function uploadfile() {
+	if(fileName != null && fileName != "") {
+		var fullPath = "uploadfile\\" + fileName;
+		$("#getfile").attr("src",fullPath);
+	}
+}
 
 $(document).ready(function(){
-
+	
+	uploadfile();
 	getCommentCount();
 	getCommentList(user_code);
 	getBestList();
@@ -75,7 +84,7 @@ $(document).ready(function(){
 			    <div class="inputArea">
 			 	 <label for="fileName">이미지</label>
 				 <p>원본 이미지</p>
-				 <img src="${board.fileName}" />
+				 <img id="getfile" src="${request.getRealPath('')}" />
 				 </div>
 				
 				<tr>
