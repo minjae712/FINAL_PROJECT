@@ -55,7 +55,7 @@ public class BoardController {
 			vo.setFileName(fileName);
 		}		
 		boardService.insertBoard(vo);
-		return "InsertBoardSuccess.jsp";
+		return "redirect:InsertBoardSuccess.jsp";
 	}
 	
 

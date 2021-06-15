@@ -48,6 +48,8 @@ cursor: pointer;
 
 function fn_payment() {
 	
+	var sum = ${totalPrice};
+	
 	var user_email = '${user.email}';
 	var user_post = '${user.post}';
 	var bill_phone = '${user.phone}';
@@ -68,8 +70,8 @@ function fn_payment() {
 		    pay_method : 'card',
 		    merchant_uid : 'merchant_' + new Date().getTime(),
 		    name : bill_pro_name + " 외 "+ (bill_pro_count - 1) +"건 결제",
-		    amount : 100,
-		    buyer_email : "boreds@daum.net",
+		    amount : sum,
+		    buyer_email : user_email,
 		    buyer_name : bill_name,
 		    buyer_tel : bill_phone,
 		    buyer_addr : bill_address,

@@ -78,7 +78,6 @@ function fn_payment() {
 	formData.append('name',bill_name);
 	formData.append('req',bill_req);
 	
-	
 	var payment = confirm("정말로 결제를 하시겠습니까 ?");
 	
 	if(payment) {
@@ -88,8 +87,8 @@ function fn_payment() {
 		    pay_method : 'card',
 		    merchant_uid : 'merchant_' + new Date().getTime(),
 		    name : bill_pro_name + " 결제",
-		    amount : 100,
-		    buyer_email : "boreds@daum.net",
+		    amount : pro_sum,
+		    buyer_email : user_email,
 		    buyer_name : bill_name,
 		    buyer_tel : bill_phone,
 		    buyer_addr : bill_address,
