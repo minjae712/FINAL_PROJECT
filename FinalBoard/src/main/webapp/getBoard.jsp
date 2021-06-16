@@ -1,9 +1,11 @@
 <%@page import="com.springbook.biz.user.UserVO"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="u" tagdir="/WEB-INF/tags/" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE>
 <html>
 <head>
+<% pageContext.setAttribute("replaceChar", "\n"); %>
 <style type="text/css">
 a {
 cursor: pointer;
@@ -88,7 +90,7 @@ $(document).ready(function(){
 				 </div>
 				
 				<tr>
-					<td colspan="6" height="400">${board.content}
+					<td colspan="6" height="400">${fn:replace(board.content, replaceChar, "<br/>")}
 					</td>
 				</tr>
 				<tr>
