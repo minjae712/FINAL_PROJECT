@@ -99,7 +99,7 @@ cursor: pointer;
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<title>주문 상세</title>
+<title>PET SHOP</title>
 </head>
 <body>
 <jsp:include page="./hf/header.jsp"></jsp:include>
@@ -108,7 +108,7 @@ cursor: pointer;
         <div class="row">
             <div class="col-lg-12">
                 <div class="bradcam_text text-center">
-                    <h3>펫샵</h3>
+                    <h3>PET SHOP</h3>
                 </div>
             </div>
         </div>
