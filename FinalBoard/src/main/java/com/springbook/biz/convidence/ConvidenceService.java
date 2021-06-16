@@ -30,6 +30,12 @@ public interface ConvidenceService {
 
 	Integer getOrderCount(BillVO vo);
 	
+	void insertReviewList(ReviewVO vo);
+	
+	List<ReviewVO> getReview(ReviewVO vo);
+	
+	Integer getReviewCount(BillVO vo);
+	
 	void insertCart(CartVO vo);
 	
 	List<CartVO> getCartList(CartVO vo);

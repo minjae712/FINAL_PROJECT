@@ -13,10 +13,12 @@
 		<typeAlias type="com.springbook.biz.comment.CommentVO" alias="Comment" />
 		<typeAlias type="com.springbook.biz.comment.C_MoodVO" alias="C_MOOD" />
 		<typeAlias type="com.springbook.biz.comment.C_HistoryDTO" alias="C_HISTORY" />
+		<typeAlias type="com.springbook.biz.convidence.Review_HistoryDTO" alias="Re_history" />
 		<typeAlias type="com.springbook.biz.comment.BestCommentDTO" alias="best" />
 		<typeAlias type="com.springbook.biz.convidence.ReservationVO" alias="reser" />
 		<typeAlias type="com.springbook.biz.convidence.ProductVO" alias="product" />
 		<typeAlias type="com.springbook.biz.convidence.BillVO" alias="bill" />
+		<typeAlias type="com.springbook.biz.convidence.ReviewVO" alias="review" />
 		<typeAlias type="com.springbook.biz.convidence.CartVO" alias="cart" />
 		<typeAlias type="com.springbook.biz.user.NaverLoginVO" alias="naver"/>
 	</typeAliases>

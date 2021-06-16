@@ -26,7 +26,7 @@
 					<input type="hidden" name="writer" id="writer" value="${user.name}"/>
 					<div>
 						<label for="content">댓글</label>
-						<textarea rows="3" cols="100" name="content" id="content" class="form-control"></textarea>
+						<textarea rows="3" cols="100" name="content" id="content" class="form-control" style="resize: none;"></textarea>
 					</div>
 					<div align="right">
 						<button class="btn btn-primary" onclick="insertComment()">등록</button>

@@ -87,7 +87,7 @@ function fn_payment() {
 		    pay_method : 'card',
 		    merchant_uid : 'merchant_' + new Date().getTime(),
 		    name : bill_pro_name + " 결제",
-		    amount : pro_sum,
+		    amount : 100,
 		    buyer_email : user_email,
 		    buyer_name : bill_name,
 		    buyer_tel : bill_phone,

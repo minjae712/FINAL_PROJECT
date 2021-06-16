@@ -3,6 +3,8 @@ package com.springbook.view.convidence;
 import java.util.List;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import com.springbook.biz.convidence.CartVO;
 import com.springbook.biz.convidence.ConvidenceService;
 import com.springbook.biz.convidence.ProductVO;
 import com.springbook.biz.convidence.ReservationVO;
+import com.springbook.biz.convidence.ReviewVO;
 import com.springbook.biz.user.UserVO;
 
 import oracle.net.aso.b;
@@ -92,9 +95,13 @@ public class ConvidenceController {
 	}
 
 	@RequestMapping(value = "/getProduct.do")
-	public String getProduct(ProductVO vo,Model model) {
-		ProductVO result = convidenceService.getProduct(vo);
+	public String getProduct(BillVO bvo, ProductVO pvo,Model model) {
+		ProductVO result = convidenceService.getProduct(pvo);
+		Integer result1 = convidenceService.getReviewCount(bvo);
+		List<BillVO> result2 = convidenceService.getOrderList(bvo);
 		model.addAttribute("product", result);
+		model.addAttribute("reCount",result1);
+		model.addAttribute("billList", result2);
 		System.out.println(result.getImage_detail());
 		return "getProduct.jsp";
 	}
@@ -162,6 +169,35 @@ public class ConvidenceController {
 		return "redirect:getOrderList.do?mem_code=" + vo.getMem_code();
 	}
 	
+	@RequestMapping(value = "/insertReviewList.do")
+	public String insertReviewList(ReviewVO vo) {
+		convidenceService.insertReviewList(vo);
+		return "redirect:getProduct.do?pro_code=" + vo.getPro_code() + "&mem_code=" + vo.getMem_code();
+	}
+	
+	@RequestMapping(value = "/getReviewList.do")
+	public @ResponseBody String getReviewList(ReviewVO vo) throws JSONException {
+		List<ReviewVO> result = convidenceService.getReview(vo);
+		JSONArray jsonArray = new JSONArray();
+		for (int i = 0; i < result.size(); i++) {
+			JSONObject json = new JSONObject();
+			
+			json.put("review_code", result.get(i).getReview_code());
+			json.put("pro_code", result.get(i).getPro_code());
+			json.put("pro_name", result.get(i).getPro_name());
+			json.put("mem_code", result.get(i).getMem_code());
+			json.put("price", result.get(i).getPrice());
+			json.put("review_date", result.get(i).getReview_date());
+			json.put("name", result.get(i).getName());
+			json.put("content", result.get(i).getContent());
+		
+			jsonArray.put(json);
+			System.out.println(jsonArray.toString());
+		}
+		
+		return jsonArray.toString();
+
+	}
 	@RequestMapping(value = "/deleteCart.do")
 	public String deleteCart(CartVO vo) {
 		convidenceService.deleteCart(vo);

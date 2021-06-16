@@ -29,6 +29,14 @@
 		INSERT INTO BILL VALUES
 		((SELECT NVL(MAX(SELL_CODE), 0) + 1 FROM BILL),#{pro_code},#{pro_name},#{mem_code},#{price},#{count},SYSDATE,#{address},#{phone},#{name},#{req})
 	</insert>
+	
+	<insert id="insertReviewList">
+	INSERT INTO REVIEW VALUES((SELECT NVL(MAX(REVIEW_CODE), 0) + 1 FROM REVIEW),#{pro_code},#{pro_name},#{mem_code},#{price},SYSDATE,#{name},#{content})
+	</insert>
+	
+	<insert id="insertReview_history">
+	INSERT INTO REVIEW_HISTORY VALUES((SELECT NVL(MAX(HISTORY_CODE), 0) + 1 FROM REVIEW_HISTORY),#{pro_code},#{mem_code},(SELECT MAX(SELL_CODE) FROM BILL))
+	</insert>
 
 	<insert id="insertCart">
 		INSERT INTO CART VALUES
@@ -66,6 +74,18 @@
 	<select id="getReserCount" resultType="int">
 		SELECT COUNT(*) FROM RESERVATION WHERE USER_ID = #{id}
 	</select>
+	
+	<select id="getReview" resultType="review">
+		SELECT * FROM REVIEW WHERE MEM_CODE = #{mem_code}
+	</select>
+	
+	<select id="getReviewCount" resultType="int">
+	select count(*) from REVIEW_HISTORY where pro_code = #{pro_code} and MEM_CODE = #{mem_code}
+	</select>
+	
+	<select id="getHistory" resultType="Re_history">
+		SELECT * FROM REVIEW_HISTORY WHERE MEM_CODE = #{mem_code} and PRO_CODE = #{pro_code}
+	</select>
 
 	<select id="getCartCount" resultType="int">
 		SELECT COUNT(*) FROM CART WHERE MEM_CODE = #{mem_code}
@@ -89,6 +109,10 @@
 
 	<delete id="deleteOrder">
 		DELETE FROM BILL WHERE SELL_CODE = #{sell_code}
+	</delete>
+	
+	<delete id="deleteReview_history">
+		DELETE FROM REVIEW_HISTORY WHERE SELL_CODE = #{sell_code}
 	</delete>
 
 	<delete id="deleteCart">
