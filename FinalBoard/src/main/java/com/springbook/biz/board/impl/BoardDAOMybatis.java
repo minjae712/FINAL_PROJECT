@@ -93,6 +93,10 @@ public class BoardDAOMybatis{
 		return mybatis.selectList("BoardDAO.getBoardPages",vo);
 	}
 
+	public List<BoardVO> getBoardUserPages(BoardVO vo) {
+		return mybatis.selectList("BoardDAO.getBoardUserPages",vo);
+	}
+	
 	public List<NoticeVO> getNoticePages(NoticeVO vo) {
 		return mybatis.selectList("BoardDAO.getNoticePages",vo);
 	}

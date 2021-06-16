@@ -73,9 +73,15 @@ CREATE TABLE MEMBER(
   CONSTRAINT MEMBER_ID_PK PRIMARY KEY(ID)			
 );
 
+<<<<<<< HEAD
 INSERT INTO MEMBER VALUES('test','admin','test123','test@naver.com','lion_profile.png','이지훈',sysdate,'08500','서울 금천구 가마산로 76(가산동)',CONCAT('ME00',TO_CHAR(MEM_SEQ.CURRVAL)),'010-0000-0000');
 INSERT INTO MEMBER VALUES('user','user','user123','user@naver.com','lion_profile.png','김해민',sysdate,'21510','인천 남동구 간석로 7(간석동)',CONCAT('ME00',TO_CHAR(MEM_SEQ.NEXTVAL)),'010-0000-0000');
 
+=======
+
+INSERT INTO MEMBER VALUES('test','admin','test123','test@naver.com','lion_profile.png','김이박',sysdate,'08500','서울 금천구 가마산로 76(가산동)',CONCAT('ME00',TO_CHAR(MEM_SEQ.CURRVAL)),'010-0000-0000');
+INSERT INTO MEMBER VALUES('user','user','user123','user@naver.com','lion_profile.png','김나박',sysdate,'21510','인천 남동구 간석로 7(간석동)',CONCAT('ME00',TO_CHAR(MEM_SEQ.NEXTVAL)),'010-0000-0000');
+>>>>>>> branch 'master' of https://github.com/minjae712/FINAL_PROJECT.git
 column id format a10;
 column pw format a8;
 column post format a10;
@@ -255,7 +261,6 @@ CREATE TABLE C_MOOD_HISTORY(
   CONSTRAINT C_MOOD_HISTORY_PK PRIMARY KEY(NO,COMMENT_NO),
   CONSTRAINT C_MOOD_HISTORY_FK_COMMENT FOREIGN KEY(COMMENT_NO) REFERENCES BOARD_COMMENT(COMMENT_NO)
 );
-
 
 column PRO_CODE format a10;
 column IMAGE format a20;

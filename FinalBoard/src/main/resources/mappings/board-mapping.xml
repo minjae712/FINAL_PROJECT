@@ -7,7 +7,7 @@
 		INSERT INTO BOARD(NO,TITLE,WRITER,CONTENT,FILENAME)
 		VALUES((SELECT NVL(MAX(NO), 0) + 1 FROM BOARD),#{title},#{writer},#{content},#{fileName})
 	</insert>
-
+	
 	<insert id="insertNotice" >	
 		INSERT INTO NOTICE(UNI,NO,TITLE,WRITER,CONTENT)
 		VALUES(UNI_SEQ.NEXTVAL,'공지',#{title},#{writer},#{content})
@@ -46,6 +46,21 @@
 	<select id="getBoardPages" resultMap="boardResult">
 	SELECT a.*,(SELECT count(*) from BOARD_COMMENT where no = a.no) comment_cnt FROM 
 	(SELECT B.*,ROWNUM AS R FROM (SELECT * FROM BOARD WHERE 1 = 1
+	<if test="searchCondition == 'TITLE'">
+	AND TITLE LIKE '%'||#{searchKeyword}||'%'
+	</if>
+	<if test="searchCondition == 'CONTENT'">
+	AND CONTENT LIKE '%'||#{searchKeyword}||'%'
+	</if>
+	ORDER BY NO DESC) B) a
+	<![CDATA[
+	WHERE R >= #{startRow} AND R <= #{endRow}
+	]]>
+	</select>
+	
+	<select id="getBoardUserPages" resultMap="boardResult">
+	SELECT a.*,(SELECT count(*) from BOARD_COMMENT where no = a.no) comment_cnt FROM 
+	(SELECT B.*,ROWNUM AS R FROM (SELECT * FROM BOARD WHERE 1 = 1 AND WRITER = #{name}
 	<if test="searchCondition == 'TITLE'">
 	AND TITLE LIKE '%'||#{searchKeyword}||'%'
 	</if>

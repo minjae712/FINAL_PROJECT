@@ -25,7 +25,8 @@ public class BoardVO {
 	private String searchKeyword;
 	private int startRow;
 	private int endRow;
-
+	private String name;
+	
 	@Override
 	public String toString() {
 		return "BoardVO [no=" + no + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regDate="

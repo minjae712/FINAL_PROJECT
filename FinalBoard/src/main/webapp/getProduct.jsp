@@ -46,7 +46,8 @@ cursor: pointer;
 		var buy_pro = confirm("해당 상품을 바로 구매하시겠습니까?");
 		
 		if(buy_pro){
-			location.href = "getOrder.do?pro_code=" + pro_code + "&name=" + pro_name + "&price=" + pro_price + "&count=" + pro_num + "&image=" + pro_image;
+			location.href = "getOrder.do?pro_code=" + pro_code + "&name=" + pro_name +
+					"&price=" + pro_price + "&count=" + pro_num + "&image=" + pro_image;
 		}else{
 			return;
 		}
@@ -139,8 +140,8 @@ cursor: pointer;
                      <tr>
                        <td><b style="color: #619fd7;">평점</b></td>
                        <td>
-                       	<%-- <c:if test=""> --%>없음<%-- </c:if> --%>
-                       	<%-- <c:if test=""> --%>00점&nbsp;&nbsp;<%-- </c:if> --%>
+                       	<%-- <c:if test=""> 없음 </c:if> --%>
+                       	<%-- <c:if test=""> --%>4/5점&nbsp;&nbsp;<%-- </c:if> --%>
                        </td>
                      </tr>
                      <tr>

@@ -105,6 +105,16 @@ public class BoardServiceImpl implements BoardService  {
 		return new BoardPages<NoticeVO>(totalBoardCount, pageNo, 10, boardList);
 	}
 
+	@Override
+	public BoardPages<BoardVO> getBoardUserPages(int pageNo, BoardVO vo, String name) {
+		int totalBoardCount = boardDAO.getBoardCount();
+		vo.setStartRow(((pageNo-1) * 10)+1);
+		vo.setEndRow((pageNo * 10));
+		vo.setName(name);
+		List<BoardVO> boardList = boardDAO.getBoardUserPages(vo);
+		return new BoardPages<BoardVO>(totalBoardCount, pageNo, 10, boardList);
+	}
+
 
 
 }

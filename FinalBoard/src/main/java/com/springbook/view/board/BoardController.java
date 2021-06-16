@@ -2,9 +2,10 @@ package com.springbook.view.board;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
+import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,9 +26,6 @@ import com.springbook.biz.board.BoardPages;
 import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.NoticeVO;
-import com.springbook.biz.comment.CommentService;
-import com.springbook.biz.comment.CommentVO;
-import com.springbook.biz.user.UserVO;
 
 @Controller
 @SessionAttributes("board")
@@ -45,18 +44,32 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/insertBoard.do")
-	public String insertBoard(BoardVO vo) throws IOException {
+	public String insertBoard(BoardVO vo,HttpServletRequest request) throws IOException {
 		
 		vo.setFileName("");
+		String upload ="uploadfile\\"; //저장할 경로
+		String realFolder = request.getRealPath("") + upload; //web-inf바로전 까지 저장할 경로
+		System.out.println( "설정 경로 : " + realFolder);
 		MultipartFile uploadFile = vo.getUploadFile();
-		if(!uploadFile.isEmpty()) {
-			String fileName = uploadFile.getOriginalFilename();
-			System.out.println(fileName);
-			uploadFile.transferTo(new File("" + fileName));
-			vo.setFileName(fileName);
-		}		
+		String fullname = uploadFile.getOriginalFilename();
+		int idx = 0;
+		String filename = "";
+		if(fullname.contains("\\")) {
+			idx = fullname.lastIndexOf("\\");
+			filename = fullname.substring(idx+1);
+			if(!uploadFile.isEmpty()) {
+				uploadFile.transferTo(new File(realFolder + filename));
+				vo.setFileName(filename);
+			}
+		}else {
+			if(!uploadFile.isEmpty()) {
+				uploadFile.transferTo(new File(realFolder + fullname));
+				vo.setFileName(fullname);
+			
+			}
+		}	
 		boardService.insertBoard(vo);
-		return "InsertBoardSuccess.jsp";
+		return "redirect:InsertBoardSuccess.jsp";
 	}
 	
 
@@ -122,6 +135,22 @@ public class BoardController {
 		model.addAttribute("pages",result);
 		return "getBoardList.jsp";
 	}
+	
+	@RequestMapping(value ="/getBoardUserList.do")
+	public String getBoardUserList(@ModelAttribute("bvo")BoardVO vo,BoardPages<BoardVO> pages,Model model,@RequestParam String name) {
+		
+		int pageNo = 1;
+		if(pages.getCurrentPage() == 0) {
+			pages.setCurrentPage(pageNo);
+		}
+		vo.searchNullCheck(vo);
+		BoardPages<BoardVO> result = boardService.getBoardUserPages(pageNo, vo, name);
+		vo.setSearchKeyword(vo.getSearchKeyword());
+		model.addAttribute("noticeList",boardService.getNoticeList());
+		model.addAttribute("pages",result);
+		return "getBoardUserPage.jsp";
+	}
+	
 	@RequestMapping(value ="/getNoticeList.do")
 	public String getNoticeList(NoticeVO nvo,BoardPages<NoticeVO> pages,Model model) {
 		
