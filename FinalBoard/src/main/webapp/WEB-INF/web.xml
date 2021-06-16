@@ -33,6 +33,7 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/config/presentation-layer.xml</param-value>
 		</init-param>
+			<load-on-startup>1</load-on-startup>			
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>action</servlet-name>
@@ -69,6 +70,8 @@
 			<url-pattern>/getOrder.do</url-pattern>
 			<url-pattern>/getOrderList.do</url-pattern>
 			<url-pattern>/deleteOrder.do</url-pattern>
+			<url-pattern>/getCart.do</url-pattern>
+			<url-pattern>/myCartPage.do</url-pattern>
 	</filter-mapping>
-	
+		
 </web-app>

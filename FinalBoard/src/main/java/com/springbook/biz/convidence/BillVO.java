@@ -3,9 +3,11 @@ package com.springbook.biz.convidence;
 
 import java.sql.Date;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+@AllArgsConstructor
 @Getter @Setter
 public class BillVO {
 	
@@ -20,5 +22,9 @@ public class BillVO {
 	private String phone;
 	private String name;
 	private String req;
+	
+	public BillVO(){
+		
+	}
 	
 }

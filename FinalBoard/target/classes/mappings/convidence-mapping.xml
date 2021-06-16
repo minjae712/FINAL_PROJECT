@@ -8,6 +8,23 @@
 		((SELECT NVL(MAX(NO), 0) + 1 FROM RESERVATION),#{kind},#{user_id},#{user_name},#{reser_date},#{title},#{content},#{content_else})
 	</insert>
 
+	<update id="insertOrderAll">
+		<foreach collection="list" item="item" open="INSERT ALL" close="SELECT * FROM DUAL" separator=" ">
+		INTO BILL VALUES(
+		(SELECT NVL(MAX(SELL_CODE), 0) + 1 FROM BILL),
+		#{item.pro_code},
+		#{item.pro_name},
+		#{item.mem_code},
+		#{item.price},
+		#{item.count},
+		SYSDATE,
+		#{item.address},
+		#{item.phone},
+		#{item.name},
+		#{item.req})
+		</foreach>
+	</update>
+
 	<insert id="insertOrder">
 		INSERT INTO BILL VALUES
 		((SELECT NVL(MAX(SELL_CODE), 0) + 1 FROM BILL),#{pro_code},#{pro_name},#{mem_code},#{price},#{count},SYSDATE,#{address},#{phone},#{name},#{req})
@@ -21,12 +38,25 @@
 	INSERT INTO REVIEW_HISTORY VALUES((SELECT NVL(MAX(HISTORY_CODE), 0) + 1 FROM REVIEW_HISTORY),#{pro_code},#{mem_code},(SELECT MAX(SELL_CODE) FROM BILL))
 	</insert>
 
+	<insert id="insertCart">
+		INSERT INTO CART VALUES
+		((SELECT NVL(MAX(CART_CODE), 0) + 1 FROM CART),#{pro_code},#{pro_name},#{mem_code},#{price},#{count},SYSDATE,#{image},0)
+	</insert>
+
 	<select id="getReservation" resultType="reser">
 		SELECT * FROM RESERVATION WHERE USER_ID = #{id}
 	</select>
 
 	<select id="getShopList" resultType="product">
 		SELECT * FROM PRODUCT ORDER BY PRO_CODE DESC
+	</select>
+
+	<select id="getCartList" resultType="cart">
+		SELECT * FROM CART WHERE MEM_CODE = #{mem_code} ORDER BY CART_CODE DESC
+	</select>
+
+	<select id="getSelectedCartList" resultType="cart">
+		SELECT * FROM CART WHERE MEM_CODE = #{mem_code} AND PRO_CHECK = 1 ORDER BY CART_CODE DESC
 	</select>
 
 	<select id="getProduct" resultType="product">
@@ -57,6 +87,22 @@
 		SELECT * FROM REVIEW_HISTORY WHERE MEM_CODE = #{mem_code} and PRO_CODE = #{pro_code}
 	</select>
 
+	<select id="getCartCount" resultType="int">
+		SELECT COUNT(*) FROM CART WHERE MEM_CODE = #{mem_code}
+	</select>
+
+	<select id="totalCheck" resultType="int">
+		SELECT COUNT(*) FROM CART WHERE MEM_CODE = #{mem_code} AND PRO_CHECK = 1
+	</select>
+	
+	<update id="updateCart" >
+		UPDATE CART SET COUNT = #{count} WHERE CART_CODE = #{cart_code}
+	</update>
+
+	<update id="checkProduct" >
+		UPDATE CART SET PRO_CHECK = #{pro_check} WHERE CART_CODE = #{cart_code}
+	</update>
+
 	<delete id="deleteReser">
 		DELETE FROM RESERVATION WHERE NO = #{no}
 	</delete>
@@ -69,5 +115,8 @@
 		DELETE FROM REVIEW_HISTORY WHERE SELL_CODE = #{sell_code}
 	</delete>
 
+	<delete id="deleteCart">
+		DELETE FROM CART WHERE MEM_CODE = #{mem_code} AND CART_CODE = #{cart_code}
+	</delete>
 
 </mapper>

@@ -1,3 +1,4 @@
+<%@page import="com.springbook.biz.user.UserVO"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 
@@ -53,7 +54,7 @@
 				<c:if test="${user.isEmpty()}">
 					<a class="btn btn-default" href="insertBoard.jsp">새글 등록</a>
 					<c:if test="${user.isAdmin()}">
-						<a class="btn btn-danger" href="insertNotice.jsp">공지사항 등록</a>
+						<a class="btn btn-danger" href="getBoardUserList.do?name=${user.name}" >내가 쓴 글</a>
 					</c:if>
 				</c:if>
 			</div>

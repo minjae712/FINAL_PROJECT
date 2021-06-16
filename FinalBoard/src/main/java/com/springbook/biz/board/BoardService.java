@@ -10,7 +10,7 @@ public interface BoardService {
 	
 	void insertNotice(NoticeVO nvo);
 	
-	void goodOrBad(B_MoodVO vo);
+	void goodOrBad(B_MoodVO vo,B_HistoryDTO dto) throws Exception;
 
 	void updateBoard(BoardVO vo);
 
@@ -27,6 +27,8 @@ public interface BoardService {
 	B_MoodVO getMood(B_MoodVO mvo);
 	
 	BoardPages<BoardVO> getBoardPages(int pageNo,BoardVO vo);
+	
+	BoardPages<BoardVO> getBoardUserPages(int pageNo,BoardVO vo,String name);
 	
 	List<BoardVO> getBestList(BoardVO vo);
 	

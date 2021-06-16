@@ -41,7 +41,7 @@ public class UserController {
 		if (vo.getId() == null || vo.getId() == "") {
 			return "createUser.jsp";
 		}
-		
+		vo.setImage("");
 		String imgFolder ="customcss\\"; //저장할 경로
 		String realFolder = request.getRealPath("") + imgFolder; //web-inf바로전 까지 저장할 경로
 		System.out.println( "설정 경로 : " + realFolder);

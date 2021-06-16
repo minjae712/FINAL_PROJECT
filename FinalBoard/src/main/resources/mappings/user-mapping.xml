@@ -7,7 +7,7 @@
 
 	<insert id="createUser">
 		INSERT INTO MEMBER(ID,ROLE,PASSWORD,EMAIL,IMAGE,NAME,BIRTH,POST,ADDRESS,MEM_CODE,PHONE)
-		VALUES(#{id},#{role},#{password},#{email},#{image},#{name},#{birth},#{post},#{address},CONCAT('ME00',TO_CHAR(MEM_SEQ.NEXTVAL)),#{phone})
+		VALUES(#{id,jdbcType=VARCHAR},#{role},#{password},#{email},#{image},#{name},#{birth},#{post},#{address},CONCAT('ME00',TO_CHAR(MEM_SEQ.NEXTVAL)),#{phone})
 	</insert>
 
 	<select id="getUser" resultType="user">
@@ -34,7 +34,7 @@
 	 	EMAIL = #{email}, 
 	 	IMAGE = #{image},
 	 	POST = #{post},
-	 	ADDRESS = #{address}
+	 	ADDRESS = #{address},
 	 	PHONE = #{phone}
 	 	WHERE ID= #{id}
 	</update>

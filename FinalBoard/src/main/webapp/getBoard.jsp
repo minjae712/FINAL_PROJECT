@@ -1,9 +1,11 @@
 <%@page import="com.springbook.biz.user.UserVO"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="u" tagdir="/WEB-INF/tags/" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE>
 <html>
 <head>
+<% pageContext.setAttribute("replaceChar", "\n"); %>
 <style type="text/css">
 a {
 cursor: pointer;
@@ -18,13 +20,27 @@ var b_num = ${board.no};
 var modifying = 0;
 var name = '${user.name}';
 
-$(document).ready(function(){
+var user_code = '${user.mem_code}';
 
+var fileName = '${board.fileName}';
+
+function uploadfile() {
+	if(fileName != null && fileName != "") {
+		var fullPath = "uploadfile\\" + fileName;
+		$("#getfile").attr("src",fullPath);
+	}
+}
+
+$(document).ready(function(){
+	
+	uploadfile();
 	getCommentCount();
 	getCommentList();
 	getBestList();
 	getB_Mood();
 });
+
+
 
 </script>
 <script src="${pageContext.request.contextPath}/js/board_comment.js" type="text/javascript"></script>
@@ -70,20 +86,20 @@ $(document).ready(function(){
 			    <div class="inputArea">
 			 	 <label for="fileName">이미지</label>
 				 <p>원본 이미지</p>
-				 <img src="${board.fileName}" />
+				 <img id="getfile" src="${request.getRealPath('')}" />
 				 </div>
 				
 				<tr>
-					<td colspan="6" height="400">${board.content}
+					<td colspan="6" height="400">${fn:replace(board.content, replaceChar, "<br/>")}
 					</td>
 				</tr>
 				<tr>
 				</tr>
 			</table>
-					<center>
- 					<a id="B_good${board.no}"class="glyphicon glyphicon-thumbs-up" onclick="b_checkGoodOrBad(1,0)" >추천 </a>&nbsp;&nbsp;
- 					<a id="B_bad${board.no}" class="glyphicon glyphicon-thumbs-down" onclick="b_checkGoodOrBad(0,1)" >반대 </a> 
-					</center>
+					<div align="center">
+ 					<button class="btn btn-danger"><i id="B_good${board.no}" onclick="b_checkGoodOrBad(1,0,'${user.mem_code}')" class="glyphicon glyphicon-thumbs-up"></i></button>&nbsp;&nbsp;
+ 					<button class="btn btn-primary"><i id="B_bad${board.no}" onclick="b_checkGoodOrBad(0,1,'${user.mem_code}')" class="glyphicon glyphicon-thumbs-down"></i></button> 
+					</div>
 			<hr>
 			<%@ include file="/comment.jsp" %>
 	</div>

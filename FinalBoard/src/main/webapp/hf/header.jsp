@@ -74,6 +74,7 @@ div.line-blue{
                             <div class="social_media_links" >
                             	<u:isLogin>
                             		<b style="color: white;">${user.name}님, 환영합니다!</b>
+                            		<a href="myCartPage.do?mem_code=${user.mem_code}"><button style="width: 10%;height: 5%"><i class="glyphicon glyphicon-shopping-cart"></i></button></a>
                             		<a href="getUser.do"><img src="./customcss/MyPage.png"></a>
 									<a href="${pageContext.request.contextPath}/logout.do"><img src="./customcss/Logout_button.png"></a>
 								</u:isLogin>
@@ -109,13 +110,13 @@ div.line-blue{
 											<li><a href="#">서비스 <i class="ti-angle-down"></i></a>
 											<ul class="submenu">
 										        <li><a href="reservationPage.do">동물병원 예약</a></li>
-										        <li><a href="getBoardList.do">펫 시터 게시판</a></li>
-                                                <li><a href="petShopPage.do">펫 쇼핑</a></li>
+										        <li><a href="getBoardList.do">펫 시터 구하기</a></li>
+                                                <li><a href="petShopPage.do">PET SHOP</a></li>
 										        </ul></li>
 										<li><a href="#">고객센터 <i class="ti-angle-down"></i></a>
 											<ul class="submenu">
 												<li><a href="getNoticeList.do">공지사항</a></li>
-												<li><a href="#">1:1문의하기</a></li>
+												<li><a href="contact.jsp">회사 위치</a></li>
 												<li><a href="FAQ.jsp">FAQ</a></li>
 											</ul></li>
                                     </ul>

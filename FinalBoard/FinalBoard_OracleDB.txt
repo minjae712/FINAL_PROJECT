@@ -74,8 +74,12 @@ CREATE TABLE MEMBER(
 );
 
 
+INSERT INTO MEMBER VALUES('test','admin','test123','test@naver.com','lion_profile.png','멍냥컴퍼니 관리1팀',sysdate,'08500','서울 금천구 가마산로 76(가산동)',CONCAT('ME00',TO_CHAR(MEM_SEQ.CURRVAL)),'010-0000-0000');
+INSERT INTO MEMBER VALUES('user','user','user123','user@naver.com','lion_profile.png','김해민',sysdate,'21510','인천 남동구 간석로 7(간석동)',CONCAT('ME00',TO_CHAR(MEM_SEQ.NEXTVAL)),'010-0000-0000');
+
 INSERT INTO MEMBER VALUES('test','admin','test123','test@naver.com','lion_profile.png','김이박',sysdate,'08500','서울 금천구 가마산로 76(가산동)',CONCAT('ME00',TO_CHAR(MEM_SEQ.CURRVAL)),'010-0000-0000');
 INSERT INTO MEMBER VALUES('user','user','user123','user@naver.com','lion_profile.png','김나박',sysdate,'21510','인천 남동구 간석로 7(간석동)',CONCAT('ME00',TO_CHAR(MEM_SEQ.NEXTVAL)),'010-0000-0000');
+
 
 column id format a10;
 column pw format a8;
@@ -175,17 +179,9 @@ column content_else format a30;
 
 
 
--- 물품 시퀀스
+-- 제품 시퀀스
 DROP SEQUENCE PRO_SEQ;
 CREATE SEQUENCE PRO_SEQ;
-
--- 판매 시퀀스
-DROP SEQUENCE SELL_SEQ;
-CREATE SEQUENCE SELL_SEQ;
-
--- 장바구니 시퀀스
-DROP SEQUENCE CART_SEQ;
-CREATE SEQUENCE CART_SEQ;
 
 
 --제품정보
@@ -204,15 +200,15 @@ CREATE TABLE PRODUCT(
 
 SELECT PRO_SEQ.NEXTVAL FROM DUAL;
 
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.CURRVAL)),'dog_pad.png','','강아지 배변패드 200매',26000,'2021/05/04','향기와 흡수를 모두 갖춘 강아지 맞춤 배변패드');
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_tower.png','','원목 캣타워',32400,'2021/04/11','고양이들을 위한 놀이터/보금자리');
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_sand.png','','고양이 모래 4.5kg',17600,'2021/03/03','탈취력이 우수하고 먼지날림이 없는 고양이 모래');
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'dog_food.png','','강아지 사료 7kg',48000,'2021/05/23','유해성분 Zero ! 안전한 강아지 사료');
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_scratcher.png','','고양이 스크래쳐',18000,'2021/04/27','고양이들의 본능을 지켜줄 안성맞춤 스크래쳐');
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_toy.png','','고양이 자동장난감',22000,'2021/03/15','심심한 고양이의 시간을 책임질 캣토이');
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'dog_tissue.png','','강아지 노즈워크 멍티슈',9800,'2021/02/11','강아지의 후각발달을 책임질 노즈워크 장난감');
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'dog_snack.png','','강아지 영양간식 100개입',35000,'2021/04/19','강아지의 치아건강을 위한 영양간식');
-INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_snack.png','','고양이 츄르 100개입',31000,'2021/05/09','1일 1츄르의 공식,마성의 고양이 간식');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.CURRVAL)),'dog_pad.png','dog_pad_detail.png','강아지 배변패드 200매',26000,'2021/05/04','향기와 흡수를 모두 갖춘 강아지 맞춤 배변패드');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_tower.png','cat_tower_detail.jpg','원목 캣타워',32400,'2021/04/11','고양이들을 위한 놀이터/보금자리');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_sand.png','cat_sand_detail.png','고양이 모래 4.5kg',17600,'2021/03/03','탈취력이 우수하고 먼지날림이 없는 고양이 모래');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'dog_food.png','dog_food_detail.png','강아지 사료 7kg',48000,'2021/05/23','유해성분 Zero ! 안전한 강아지 사료');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_scratcher.png','cat_scratcher_detail.jpg','고양이 스크래쳐',18000,'2021/04/27','고양이들의 본능을 지켜줄 안성맞춤 스크래쳐');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_toy.png','cat_toy_detail.jpg','고양이 자동장난감',22000,'2021/03/15','심심한 고양이의 시간을 책임질 캣토이');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'dog_tissue.png','dog_tissue_detail.png','강아지 노즈워크 멍티슈',9800,'2021/02/11','강아지의 후각발달을 책임질 노즈워크 장난감');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'dog_snack.png','dog_snack_detail.png','강아지 영양간식 100개입',35000,'2021/04/19','강아지의 치아건강을 위한 영양간식');
+INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_snack.png','cat_snack_detail.jpg','고양이 츄르 100개입',31000,'2021/05/09','1일 1츄르의 공식,마성의 고양이 간식');
 
 --판매내역정보
 DROP TABLE BILL CASCADE CONSTRAINT;
@@ -228,23 +224,27 @@ CREATE TABLE BILL(
   PHONE VARCHAR2(100),				-- 주문자 연락처
   NAME VARCHAR2(100),				-- 주문자 이름
   REQ VARCHAR2(100),				-- 요청사항
-  CONSTRAINT BILL_PK PRIMARY KEY(SELL_CODE),
+  CONSTRAINT BILL_PK PRIMARY KEY(SELL_CODE,PRO_CODE),
   CONSTRAINT BILL_FK_PRODUCT FOREIGN KEY(PRO_CODE) REFERENCES PRODUCT(PRO_CODE)
 );
 
 --장바구니정보
 DROP TABLE CART CASCADE CONSTRAINT;
 CREATE TABLE CART(
-  CART_CODE VARCHAR2(20),	-- 장바구니코드
+  CART_CODE NUMBER,				-- 장바구니코드
   PRO_CODE VARCHAR2(20),		-- 제품코드
-  MEM_CODE VARCHAR2(20),	-- 유저코드
-  PRICE NUMBER,			-- 해당제품총가격
-  COUNT NUMBER,			-- 해당제품총수량
-  SAVE_DATE VARCHAR2(30),	-- 장바구니 저장일
+  PRO_NAME VARCHAR2(100),		-- 제품이름
+  MEM_CODE VARCHAR2(20),		-- 유저코드
+  PRICE NUMBER,					-- 해당제품총가격
+  COUNT NUMBER,					-- 해당제품총수량
+  SAVE_DATE DATE,				-- 장바구니 저장일
+  IMAGE VARCHAR2(100),			-- 이미지
+  PRO_CHECK NUMBER,				-- 장바구니 선택유무
   CONSTRAINT CART_PK PRIMARY KEY(CART_CODE),
   CONSTRAINT CART_FK_PRODUCT FOREIGN KEY(PRO_CODE) REFERENCES PRODUCT(PRO_CODE)
 );
 
+<<<<<<< HEAD
 DROP TABLE REVIEW CASCADE CONSTRAINT;   
 CREATE TABLE REVIEW(
   REVIEW_CODE NUMBER,				-- 리뷰 번호
@@ -269,6 +269,24 @@ CREATE TABLE REVIEW_HISTORY(
   CONSTRAINT HISTORY_FK_BILL FOREIGN KEY(SELL_CODE) REFERENCES BILL(SELL_CODE)
 );
 
+=======
+DROP TABLE B_MOOD_HISTORY CASCADE CONSTRAINT;
+CREATE TABLE B_MOOD_HISTORY(
+  NO NUMBER,             						-- 게시판_넘버
+  MEM_CODE VARCHAR2(100),						-- 사용자 코드
+  CONSTRAINT B_MOOD_HISTORY_PK PRIMARY KEY(NO),
+  CONSTRAINT B_MOOD_HISTORY_FK_BOARD FOREIGN KEY(NO) REFERENCES BOARD(NO)
+);
+
+DROP TABLE C_MOOD_HISTORY CASCADE CONSTRAINT;
+CREATE TABLE C_MOOD_HISTORY(
+  NO NUMBER,             						-- 게시판_넘버
+  COMMENT_NO NUMBER,							-- 댓글 넘버
+  MEM_CODE VARCHAR2(100),						-- 사용자 코드
+  CONSTRAINT C_MOOD_HISTORY_PK PRIMARY KEY(NO,COMMENT_NO),
+  CONSTRAINT C_MOOD_HISTORY_FK_COMMENT FOREIGN KEY(COMMENT_NO) REFERENCES BOARD_COMMENT(COMMENT_NO)
+);
+>>>>>>> branch 'master' of https://github.com/minjae712/FINAL_PROJECT.git
 
 column PRO_CODE format a10;
 column IMAGE format a20;
@@ -277,7 +295,7 @@ column PRICE format 99999;
 column REG_DATE format a15;
 column CONTENT format a20;
 column SELL_CODE format 999;
-column CART_CODE format a10;
+column CART_CODE format 99;
 column PHONE format a10;
 column REQ format a20;
 

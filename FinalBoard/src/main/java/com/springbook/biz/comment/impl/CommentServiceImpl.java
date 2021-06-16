@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springbook.biz.board.B_HistoryDTO;
 import com.springbook.biz.comment.BestCommentDTO;
+import com.springbook.biz.comment.C_HistoryDTO;
 import com.springbook.biz.comment.C_MoodVO;
 import com.springbook.biz.comment.CommentPages;
 import com.springbook.biz.comment.CommentService;
@@ -28,6 +30,7 @@ public class CommentServiceImpl implements CommentService{
 	}
 
 	public void deleteComment(CommentVO vo) {
+		CommentDAO.deleteC_History(vo);
 		CommentDAO.deleteMood(vo);
 		CommentDAO.deleteComment(vo);
 	}
@@ -54,8 +57,28 @@ public class CommentServiceImpl implements CommentService{
 	}
 
 	@Override
-	public void goodOrBad(C_MoodVO vo) {
-		CommentDAO.goodOrBad(vo);
+	public void goodOrBad(C_MoodVO vo,C_HistoryDTO dto) throws Exception {
+		List<C_HistoryDTO> result = CommentDAO.c_historyCheck();
+		dto.setComment_no(vo.getCommentNo());
+		dto.setNo(vo.getNo());
+		if(result.isEmpty()) {
+			CommentDAO.goodOrBad(vo);
+			CommentDAO.insertC_History(dto);
+			return;
+		}else if(!result.isEmpty()) {
+			
+			for (int j = 0; j < result.size(); j++) {
+				if( result.get(j).getMem_code().equals(dto.getMem_code()) && result.get(j).getComment_no() == vo.getCommentNo() && result.get(j).getNo() == vo.getNo() ) {
+					throw new IllegalAccessError();
+				}else {
+					CommentDAO.goodOrBad(vo);
+					CommentDAO.insertC_History(dto);
+					return;
+					
+				}
+			}
+		}
+		
 	}
 
 	

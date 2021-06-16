@@ -35,7 +35,7 @@
 			<div class="form-group">
 				<label for="profile">프로필 사진</label><br>
 				<img id="pic" style="margin-left: 15px;" height="180px" width="150px" src="${request.getRealPath('')}customcss\defaultpic.png"><br><br>
-				<input  style="width: 300px" type="file" name="file" onchange="setThumbnail(event)" />
+				<input  style="width: 300px" type="file" name="file" onchange="setThumbnail(event)" required/>
 			</div>
 			
 			<div class="form-group">

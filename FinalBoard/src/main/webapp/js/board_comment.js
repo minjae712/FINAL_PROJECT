@@ -51,6 +51,8 @@ function getB_Mood(){
 
 function getCommentList(){
     
+	
+	
     $.ajax({
         type : "POST",
         dataType : "json",
@@ -63,7 +65,7 @@ function getCommentList(){
             	str += "<div class='modify_" + idx +"'>";
             	str += "<div>";
             	str += "<div><b>" + item.writer + "</b>";
-            	str += "<div align='right'><a id='C_good"+ idx +"' class='glyphicon glyphicon-thumbs-up' onclick='c_checkGoodOrBad("+ item.commentNo + ","+ 1 + ","+ 0 + ")'>추천</a>&nbsp;&nbsp";
+            	str += "<div align='right'><a id='C_good"+ idx +"' class='glyphicon glyphicon-thumbs-up' onclick='c_checkGoodOrBad("+ item.commentNo + ","+ 1 + ","+ 0 +")'>추천</a>&nbsp;&nbsp";
             	str += "<a id='C_bad"+ idx +"' class='glyphicon glyphicon-thumbs-down' onclick='c_checkGoodOrBad("+ item.commentNo + ","+ 0 + ","+ 1 + ")'>반대</a>";
             	str += "</div></div></div>";
             	str += "<div>" + item.content + "</div>";
@@ -175,23 +177,30 @@ function deleteComment(commentNo,no) {
 			"no" : Comment2
 	};
 	
-	$.ajax({
-        type : "POST",
-        dataType : "text",
-        url : "deleteComment.do",
-        data : com,
-        success : function(data){
-        	getCommentCount();
-        	getCommentList();
-        	getBestList();
-        	getB_Mood();
-        	
-        },
-        error : function(request,status,error){
-            alert("통신실패 - " + "code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-        }
-
-	});
+	var del_con = confirm("댓글을 삭제하시겠습니까 ?");
+	
+	if(del_con){
+		
+		$.ajax({
+			type : "POST",
+			dataType : "text",
+			url : "deleteComment.do",
+			data : com,
+			success : function(data){
+				getCommentCount();
+				getCommentList();
+				getBestList();
+				getB_Mood();
+				
+			},
+			error : function(request,status,error){
+				alert("통신실패 - " + "code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+			
+		});
+	}else{
+		return;
+	}
 
 	
 }
@@ -206,6 +215,10 @@ function updateComment(commentNo,no) {
 			"no" : Comment2,
 			"content" : content
 	};
+	
+	var update_con = confirm("댓글 수정을 완료하시겠습니까 ?");
+	
+	if(update_con){
 	
 	$.ajax({
         type : "POST",
@@ -224,6 +237,10 @@ function updateComment(commentNo,no) {
             alert("통신실패 - " + "code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
 	});
+	
+	}else {
+		return;
+	}
 }
 
 function textAreaSet(idx,commentNo,no) { 
@@ -239,6 +256,11 @@ function textAreaSet(idx,commentNo,no) {
 			"no" : Comment2
 	};
 	
+	var update_con = confirm("댓글수정을 하시겠습니까 ?");
+	
+	if(update_con){
+
+	
 	$.ajax({
         type : "POST",
         dataType : "json",
@@ -252,6 +274,7 @@ function textAreaSet(idx,commentNo,no) {
         	str += "<div><small>" + data.regDate + "</small></div>";
         	str += "<div align='right'>";
         	str += "<button class='btn btn-default' onclick='updateComment("+ commentNo + ","+ no + ")'>수정완료</button>";
+        	str += "<button class='btn btn-default' onclick='getCommentList()'>취소</button>";
         	str += "</div><hr>";
             $(".modify_"+ idx).html(str);
             modifying = 1;
@@ -261,6 +284,10 @@ function textAreaSet(idx,commentNo,no) {
             alert("통신실패 - " + "code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
 	});
+	
+	}else {
+		return;
+	}
 }
 
 function c_checkGoodOrBad(commentNo,good,bad) {
@@ -268,7 +295,8 @@ function c_checkGoodOrBad(commentNo,good,bad) {
 			"commentNo" : commentNo,
 			"no" : b_num,
 			"good" : good,
-			"bad" : bad
+			"bad" : bad,
+			"mem_code" : user_code
 	};
 	
 	$.ajax({
@@ -282,18 +310,17 @@ function c_checkGoodOrBad(commentNo,good,bad) {
         	
         },
         error : function(request,status,error){
-            alert("통신실패 - " + "code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        	alert("하나의 댓글 당, 한번의 추천/반대만 가능합니다.");
         }
 	});
-
-	
 }
 
-function b_checkGoodOrBad(good,bad) {
+function b_checkGoodOrBad(good,bad,code) {
 	var com = {
 			"no" : b_num,
 			"good" : good,
-			"bad" : bad
+			"bad" : bad,
+			"mem_code" : code
 	};
 	
 	$.ajax({
@@ -306,7 +333,7 @@ function b_checkGoodOrBad(good,bad) {
         	
         },
         error : function(request,status,error){
-            alert("통신실패 - " + "code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            alert("한 게시글 당, 한번의 추천/반대만 가능합니다.");
         }
 	});
 
