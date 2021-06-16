@@ -149,7 +149,7 @@ function fn_payment() {
         <div class="row">
             <div class="col-lg-12">
                 <div class="bradcam_text text-center">
-                    <h3>펫샵</h3>
+                    <h3>PET SHOP</h3>
                 </div>
             </div>
         </div>
