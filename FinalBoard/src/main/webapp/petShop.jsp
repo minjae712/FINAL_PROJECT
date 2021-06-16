@@ -37,7 +37,7 @@
 					<div class="single_service">
 						<div>
 							<div class="service_icon" align="center">
-								<a href="getProduct.do?pro_code=${product.pro_code}"><img src="./productimage/${product.image}" ></a>
+								<a href="getProduct.do?pro_code=${product.pro_code}&mem_code=${user.mem_code}"><img src="./productimage/${product.image}" ></a>
 							</div>
 						</div>
 						<div class="service_content text-center">

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.springbook.biz.convidence.BillVO;
 import com.springbook.biz.convidence.ProductVO;
 import com.springbook.biz.convidence.ReservationVO;
+import com.springbook.biz.convidence.ReviewVO;
+import com.springbook.biz.convidence.Review_HistoryDTO;
 import com.springbook.biz.user.UserVO;
 
 @Repository
@@ -36,6 +38,10 @@ public class ConvidenceDAO {
 	public List<ProductVO> getShopList() {
 		return mybatis.selectList("ConvidenceDAO.getShopList");
 	}
+	public Review_HistoryDTO getHistory(ReviewVO vo) {
+		return mybatis.selectOne("ConvidenceDAO.getHistory");
+	}
+
 	public ProductVO getProduct(ProductVO vo) {
 		return mybatis.selectOne("ConvidenceDAO.getProduct",vo);
 	}
@@ -52,6 +58,25 @@ public class ConvidenceDAO {
 	}
 	public Integer getOrderCount(BillVO vo) {
 		return mybatis.selectOne("ConvidenceDAO.getOrderCount",vo);
+	}
+	
+	public void insertReviewList(ReviewVO vo){
+		mybatis.insert("ConvidenceDAO.insertReviewList", vo);
+	}
+	public List<ReviewVO> getReview(ReviewVO vo){
+		return mybatis.selectList("ConvidenceDAO.getReview", vo);
+	}
+	
+	public Integer getReviewCount(BillVO vo) {
+		return mybatis.selectOne("ConvidenceDAO.getReviewCount", vo);
+	}
+	
+	public void insertReview_history(Review_HistoryDTO dto) {
+		mybatis.insert("ConvidenceDAO.insertReview_history", dto);
+	}
+	
+	public void deleteReview_history(Review_HistoryDTO dto) {
+		mybatis.delete("ConvidenceDAO.deleteReview_history", dto);
 	}
 
 }

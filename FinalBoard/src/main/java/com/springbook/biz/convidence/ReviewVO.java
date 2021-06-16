@@ -7,18 +7,16 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class BillVO {
+public class ReviewVO {
 	
-	private int sell_code;
+	private int review_code;
 	private String pro_code;
 	private String pro_name;
 	private String mem_code;
 	private int price;
-	private int count;
-	private Date sell_date;
-	private String address;
-	private String phone;
+	private Date review_date;
 	private String name;
-	private String req;
+	private String content;
+	private int sell_code;
 	
 }
