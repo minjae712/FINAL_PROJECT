@@ -30,14 +30,12 @@ public interface ConvidenceService {
 
 	Integer getOrderCount(BillVO vo);
 	
-<<<<<<< HEAD
 	void insertReviewList(ReviewVO vo);
 	
 	List<ReviewVO> getReview(ReviewVO vo);
 	
 	Integer getReviewCount(BillVO vo);
 	
-=======
 	void insertCart(CartVO vo);
 	
 	List<CartVO> getCartList(CartVO vo);
@@ -53,6 +51,5 @@ public interface ConvidenceService {
 	void insertOrderAll(CartVO cvo,BillVO bvo);
 	
 	void insertOrderSel(CartVO cvo,BillVO bvo);
->>>>>>> branch 'master' of https://github.com/minjae712/FINAL_PROJECT.git
 	
 }

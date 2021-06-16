@@ -83,7 +83,7 @@
 	select count(*) from REVIEW_HISTORY where pro_code = #{pro_code} and MEM_CODE = #{mem_code}
 	</select>
 	
-	<select id="getHistory" resultType="review">
+	<select id="getHistory" resultType="Re_history">
 		SELECT * FROM REVIEW_HISTORY WHERE MEM_CODE = #{mem_code} and PRO_CODE = #{pro_code}
 	</select>
 

@@ -47,7 +47,7 @@ public class ConvidenceDAO {
 		return mybatis.selectList("ConvidenceDAO.getShopList");
 	}
 	public Review_HistoryDTO getHistory(ReviewVO vo) {
-		return mybatis.selectOne("ConvidenceDAO.getHistory");
+		return mybatis.selectOne("ConvidenceDAO.getHistory",vo);
 	}
 
 	public ProductVO getProduct(ProductVO vo) {

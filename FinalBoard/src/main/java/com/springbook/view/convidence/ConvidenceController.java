@@ -3,11 +3,8 @@ package com.springbook.view.convidence;
 import java.util.List;
 
 import org.json.JSONArray;
-<<<<<<< HEAD
 import org.json.JSONException;
 import org.json.JSONObject;
-=======
->>>>>>> branch 'master' of https://github.com/minjae712/FINAL_PROJECT.git
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -103,12 +100,9 @@ public class ConvidenceController {
 		Integer result1 = convidenceService.getReviewCount(bvo);
 		List<BillVO> result2 = convidenceService.getOrderList(bvo);
 		model.addAttribute("product", result);
-<<<<<<< HEAD
 		model.addAttribute("reCount",result1);
 		model.addAttribute("billList", result2);
-=======
 		System.out.println(result.getImage_detail());
->>>>>>> branch 'master' of https://github.com/minjae712/FINAL_PROJECT.git
 		return "getProduct.jsp";
 	}
 	
@@ -175,7 +169,6 @@ public class ConvidenceController {
 		return "redirect:getOrderList.do?mem_code=" + vo.getMem_code();
 	}
 	
-<<<<<<< HEAD
 	@RequestMapping(value = "/insertReviewList.do")
 	public String insertReviewList(ReviewVO vo) {
 		convidenceService.insertReviewList(vo);
@@ -201,13 +194,14 @@ public class ConvidenceController {
 			jsonArray.put(json);
 			System.out.println(jsonArray.toString());
 		}
+		
 		return jsonArray.toString();
-=======
+
+	}
 	@RequestMapping(value = "/deleteCart.do")
 	public String deleteCart(CartVO vo) {
 		convidenceService.deleteCart(vo);
 		return "redirect:myCartPage.do?mem_code=" + vo.getMem_code();
->>>>>>> branch 'master' of https://github.com/minjae712/FINAL_PROJECT.git
 	}
 
 }

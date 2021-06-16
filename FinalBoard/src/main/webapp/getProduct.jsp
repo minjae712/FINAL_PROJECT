@@ -207,18 +207,33 @@ cursor: pointer;
 		</div>
 	</div>
 </div>
+
+<div class="container" style="margin-bottom: 10%;">
+	<div class="row">
+		<div class="panel panel-default"
+			style="border: 2px dashed; color: #619fd7">
+			<div class="panel-heading" style="background-color: #619fd7">
+				<h1 class="panel-title" align="center">
+					<b style="color: white;">상품평</b>
+					
+				</h1>
+			</div>
+			<div class="panel-footer">
+				<div class="review"></div>
+			</div>
+		</div>
+	</div>
+</div>
 <c:if test="${reCount >= 1}">
 <div class="container" style="margin-bottom: 10%;">
 		<div class="row">
-		<p align="center"><button class="a" >리뷰쓰기</button></p>
+		<p align="center"><button class="a" >상품후기작성</button></p>
 		<div class="b">
 			<div class="panel panel-default" style="border: 2px dashed; color: #619fd7">
 			
 					<div class="panel-heading"  style="background-color: #619fd7">
-						<h1 class="panel-title" align="center"><b style="color: white;">상품평</b></h1>
+						<h1 class="panel-title" align="center"><b style="color: white;">상품후기작성</b></h1>
 					</div>
-<<<<<<< HEAD
-=======
 				<c:forEach items="" var="dsReplyList">
 					<div class="panel panel-info">
 					<div class="panel-body">
@@ -244,7 +259,6 @@ cursor: pointer;
            		 </div>
 				</div>
 				</c:forEach>
->>>>>>> branch 'master' of https://github.com/minjae712/FINAL_PROJECT.git
 			<div class="panel-footer">
 				<form id="createReply" accept-charset="UTF-8" action="insertReviewList.do" method="post">
 				    <select name="sell_code">
@@ -268,22 +282,6 @@ cursor: pointer;
         </div>
 </div>
 	</c:if>
-
-		<div class="container" style="margin-bottom: 10%;">
-			<div class="row">
-				<div class="panel panel-default"
-					style="border: 2px dashed; color: #619fd7">
-					<div class="panel-heading" style="background-color: #619fd7">
-						<h1 class="panel-title" align="center">
-							<b style="color: white;">상품평</b>
-						</h1>
-					</div>
-					<div class="panel-footer">
-						<div class="review"></div>
-					</div>
-				</div>
-			</div>
-		</div>
 	<jsp:include page="./hf/footer.jsp"></jsp:include>
 </body>
 </html>

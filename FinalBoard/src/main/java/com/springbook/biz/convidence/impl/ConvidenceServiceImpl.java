@@ -1,10 +1,7 @@
 package com.springbook.biz.convidence.impl;
 
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.Iterator;
-=======
->>>>>>> branch 'master' of https://github.com/minjae712/FINAL_PROJECT.git
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,7 +82,6 @@ public class ConvidenceServiceImpl implements ConvidenceService {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public void insertReviewList(ReviewVO vo) {
 		Review_HistoryDTO dto = convidenceDAO.getHistory(vo);
 		convidenceDAO.deleteReview_history(dto);
@@ -101,7 +97,6 @@ public class ConvidenceServiceImpl implements ConvidenceService {
 	public Integer getReviewCount(BillVO vo) {
 		return convidenceDAO.getReviewCount(vo);
 	}
-=======
 	public void insertCart(CartVO vo) {
 		convidenceDAO.insertCart(vo);
 	}
@@ -170,5 +165,4 @@ public class ConvidenceServiceImpl implements ConvidenceService {
 		convidenceDAO.insertOrderAll(result2);
 	}
 
->>>>>>> branch 'master' of https://github.com/minjae712/FINAL_PROJECT.git
 }
