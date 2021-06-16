@@ -116,7 +116,7 @@ div.line-blue{
 										<li><a href="#">고객센터 <i class="ti-angle-down"></i></a>
 											<ul class="submenu">
 												<li><a href="getNoticeList.do">공지사항</a></li>
-												<li><a href="#">1:1문의하기</a></li>
+												<li><a href="contact.jsp">회사위치</a></li>
 												<li><a href="FAQ.jsp">FAQ</a></li>
 											</ul></li>
                                     </ul>

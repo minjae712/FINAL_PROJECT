@@ -45,7 +45,7 @@
                             </h3>
                             <ul class="links">
                                 <li><a href="getNoticeList.do">공지사항</a></li>
-                                <li><a href="#">1:1 문의하기</a></li>
+                                <li><a href="contact.jsp">회사위치</a></li>
                                 <li><a href="FAQ.jsp">FAQ</a></li>
                             </ul>
                         </div>
