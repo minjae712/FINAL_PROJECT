@@ -313,8 +313,6 @@ function c_checkGoodOrBad(commentNo,good,bad) {
         	alert("하나의 댓글 당, 한번의 추천/반대만 가능합니다.");
         }
 	});
-
-	
 }
 
 function b_checkGoodOrBad(good,bad,code) {
