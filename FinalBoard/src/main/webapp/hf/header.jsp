@@ -110,13 +110,13 @@ div.line-blue{
 											<li><a href="#">서비스 <i class="ti-angle-down"></i></a>
 											<ul class="submenu">
 										        <li><a href="reservationPage.do">동물병원 예약</a></li>
-										        <li><a href="getBoardList.do">펫 시터 게시판</a></li>
-                                                <li><a href="petShopPage.do">펫 쇼핑</a></li>
+										        <li><a href="getBoardList.do">펫 시터 구하기</a></li>
+                                                <li><a href="petShopPage.do">PET SHOP</a></li>
 										        </ul></li>
 										<li><a href="#">고객센터 <i class="ti-angle-down"></i></a>
 											<ul class="submenu">
 												<li><a href="getNoticeList.do">공지사항</a></li>
-												<li><a href="contact.jsp">회사위치</a></li>
+												<li><a href="contact.jsp">회사 위치</a></li>
 												<li><a href="FAQ.jsp">FAQ</a></li>
 											</ul></li>
                                     </ul>

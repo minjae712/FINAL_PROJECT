@@ -1,8 +1,10 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE>
 <html>
 <head>
+<% pageContext.setAttribute("replaceChar", "\n"); %>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -42,7 +44,7 @@
 					<td colspan="1"><c:out value="${nvo.cnt}" /></td>
 				</tr>
 				<tr>
-					<td colspan="6" height="400"><c:out value="${nvo.content}" />
+					<td colspan="6" height="400">${fn:replace(nvo.content, replaceChar, "<br/>")}
 					</td>
 				</tr>
 				<tr>

@@ -5,7 +5,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<title>펫샵</title>
+<title>PET SHOP</title>
 </head>
 <body>
 	<jsp:include page="./hf/header.jsp"></jsp:include>
@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="bradcam_text text-center">
-                    <h3>펫샵</h3>
+                    <h3>PET SHOP</h3>
                 </div>
             </div>
         </div>
