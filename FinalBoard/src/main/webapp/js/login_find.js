@@ -1,6 +1,6 @@
-    $(document).ready(function(){
-        // 저장된 쿠키값을 읽어오기
-        var c_user_id = $.cookie("userid");
+$(document).ready(function(){
+
+		var c_user_id = $.cookie("userid");
         var c_user_pwd = $.cookie("password");
 
         //저장된 값이 있다면 입력 요소에 값 출력
@@ -37,17 +37,22 @@
             if ($("#autoSave").is(":checked")) {
                 //체크 되어있다면, 해당 정보를 1년간 유효하도록 쿠키 저장
                 $.cookie("userid", $("#id").val(), {
-                    "expires" : 365             
+                    "expires" : 365
                 });                        
                 $.cookie("password", $("#password").val(), {
                     "expires" : 365
                 });
+                
+
             } else {
                 //체크가 해제되었다면 쿠키 삭제.
                 $.removeCookie("id");
                 $.removeCookie("password");
+                c_user_id = null;
+                c_user_pwd = null;
             }
 
             $("#loginForm").submit();
-        });
-    });
+        });	
+		
+})

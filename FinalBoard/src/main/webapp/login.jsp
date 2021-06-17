@@ -17,10 +17,7 @@
 <!DOCTYPE>
 <html>
 <head>
-<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <style>
 div.login{
 	margin-top: 10%;
@@ -30,8 +27,11 @@ div.login{
 <script type="text/javascript">
 	
 	var error = false;
+    
+    
 	
 	$(document).ready(function(){
+		
 		error = '${error}';
 		
 		if(error) {
@@ -53,9 +53,8 @@ div.login{
 </head>
 <body>
 <jsp:include page="./hf/header.jsp"></jsp:include>
-<center>
+<div align="center">
 	<div class="login" style="width: 70%">
-
 		<h1><a onclick="location.reload()" style="cursor: pointer;"><b>로그인</b></a></h1>
 		<hr>
 		<form class="form-inline" id="loginForm" name="loginForm" action="login.do" method="post">
@@ -68,12 +67,11 @@ div.login{
 			<div class="form-group">
 					<label for="exampleInputName2">PW</label>
 					<input type="password" id="password" name="password" class="form-control" placeholder="비밀번호"/><br><br>
-					<input type="submit" id="btnLogin" value="로그인" class="btn btn-default"/>
+					<input type="button" id="btnLogin" value="로그인" class="btn btn-default"/>
 					<a class="btn btn-default" href="index.jsp">취소</a>
 			</div>
 			<br>
 		</form>
-		
 		<hr>
 			<div>
             	<label for="autoSave">아이디/비밀번호 저장</label>
@@ -83,7 +81,7 @@ div.login{
         	<br>
 		<a href="<%=apiURL%>"><img height="50" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
 	</div>
-</center>
+</div>
 	<jsp:include page="./hf/footer.jsp"></jsp:include>
 </body>
 </html>

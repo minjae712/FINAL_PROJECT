@@ -5,32 +5,9 @@
 <html>
 <head>
 	<!-- JS here -->
-	<script src="./resources/css/js/vendor/modernizr-3.5.0.min.js"></script>
-	<script src="./resources/css/js/vendor/jquery-1.12.4.min.js"></script>
-	<script src="./resources/css/js/popper.min.js"></script>
-	<script src="./resources/css/js/bootstrap.min.js"></script>
-	<script src="./resources/css/js/owl.carousel.min.js"></script>
-	<script src="./resources/css/js/isotope.pkgd.min.js"></script>
-	<script src="./resources/css/js/ajax-form.js"></script>
-	<script src="./resources/css/js/waypoints.min.js"></script>
-	<script src="./resources/css/js/jquery.counterup.min.js"></script>
-	<script src="./resources/css/js/imagesloaded.pkgd.min.js"></script>
-	<script src="./resources/css/js/scrollIt.js"></script>
-	<script src="./resources/css/js/jquery.scrollUp.min.js"></script>
-	<script src="./resources/css/js/wow.min.js"></script>
-	<script src="./resources/css/js/nice-select.min.js"></script>
-	<script src="./resources/css/js/jquery.slicknav.min.js"></script>
-	<script src="./resources/css/js/jquery.magnific-popup.min.js"></script>
-	<script src="./resources/css/js/plugins.js"></script>
-	<script src="./resources/css/js/gijgo.min.js"></script>
-	
-	<!--contact js-->
-	<script src="./resources/css/js/contact.js"></script>
-	<script src="./resources/css/js/jquery.ajaxchimp.min.js"></script>
-	<script src="./resources/css/js/jquery.form.js"></script>
-	<script src="./resources/css/js/jquery.validate.min.js"></script>
-	<script src="./resources/css/js/mail-script.js"></script>
-	<script src="./resources/css/js/main.js"></script>
+	<script type="text/javascript" src="./cdnjs/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="./cdnjs/jquery.cookie.min.js"></script>
+
 	    
     <!-- CSS here -->
 	<link rel="stylesheet" href="./resources/css/css/owl.carousel.min.css">
@@ -44,6 +21,7 @@
 	<link rel="stylesheet" href="./resources/css/css/slicknav.css">
 	<link rel="stylesheet" href="./resources/css/css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+    
 <style>
 a {
 	cursor: pointer;
