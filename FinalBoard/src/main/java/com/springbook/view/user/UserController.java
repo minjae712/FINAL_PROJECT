@@ -68,7 +68,7 @@ public class UserController {
 	}
 
 	@RequestMapping("/login.do")
-	public String getUser(UserVO vo, HttpSession session) {
+	public String getUser(UserVO vo, HttpSession session,Model model) {
 
 		vo.idAndPwIsNotNull(errors, vo);
 		if (!errors.isEmpty()) {
@@ -89,6 +89,8 @@ public class UserController {
 		} else {
 			System.out.println("로그인 실패 : 아이디가 없거나 비밀번호가 틀립니다.");
 			vo = null;
+			Boolean error = Boolean.TRUE;
+			model.addAttribute("error", error);
 			return "login.jsp";
 		}
 	}

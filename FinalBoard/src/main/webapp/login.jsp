@@ -17,17 +17,35 @@
 <!DOCTYPE>
 <html>
 <head>
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <style>
 div.login{
 	margin-top: 10%;
 	margin-bottom: 10%;
 }
 </style>
+<script type="text/javascript">
+	
+	var error = false;
+	
+	$(document).ready(function(){
+		error = '${error}';
+		
+		if(error) {
+			alert("아이디나 비밀번호가 틀렸습니다.다시 입력해주세요.");
+			error = false;
+			return;
+		}
+		
+	})
+	
+</script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- jQuery 라이브러리 참조 -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <!-- plugin 참조 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./js/login_find.js" type="text/javascript"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
