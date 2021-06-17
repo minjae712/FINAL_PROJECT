@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PetStoryDAO">
+
+	<insert id="insertPetStory" >	
+		INSERT INTO PET_STORY(NO,TITLE,WRITER,CONTENT,FILENAME)
+		VALUES((SELECT NVL(MAX(NO), 0) + 1 FROM PET_STORY),#{title},#{writer},#{content},#{fileName})
+	</insert>
+
+	<insert id="insertP_Mood" >	
+		INSERT INTO P_MOOD(no)
+		VALUES((SELECT NVL(MAX(NO), 0) FROM PET_STORY))
+	</insert>
+	
+	<insert id="insertP_History" >	
+		INSERT INTO P_MOOD_HISTORY
+		VALUES(#{no},#{mem_code})
+	</insert>
+	
+	<select id="getPetStoryCount" resultType="int">
+	SELECT COUNT(*) FROM PET_STORY WHERE 1 = 1
+	<if test="searchCondition == 'TITLE'">
+	AND TITLE LIKE '%'||#{searchKeyword}||'%'
+	</if>
+	<if test="searchCondition == 'CONTENT'">
+	AND CONTENT LIKE '%'||#{searchKeyword}||'%'
+	</if>
+	</select>
+	
+	<select id="getPetStoryPages" resultMap="PetStoryResult">
+	SELECT a.*,(SELECT count(*) from P_COMMENT where no = a.no) comment_cnt FROM 
+	(SELECT B.*,ROWNUM AS R FROM (SELECT * FROM PET_STORY WHERE 1 = 1
+	<if test="searchCondition == 'TITLE'">
+	AND TITLE LIKE '%'||#{searchKeyword}||'%'
+	</if>
+	<if test="searchCondition == 'CONTENT'">
+	AND CONTENT LIKE '%'||#{searchKeyword}||'%'
+	</if>
+	ORDER BY NO DESC) B) a
+	<![CDATA[
+	WHERE R >= #{startRow} AND R <= #{endRow}
+	]]>
+	</select>
+	
+	<select id="getPetStoryUserPages" resultMap="PetStoryResult">
+	SELECT a.*,(SELECT count(*) from P_COMMENT where no = a.no) comment_cnt FROM 
+	(SELECT B.*,ROWNUM AS R FROM (SELECT * FROM PET_STORY WHERE 1 = 1 AND WRITER = #{name}
+	<if test="searchCondition == 'TITLE'">
+	AND TITLE LIKE '%'||#{searchKeyword}||'%'
+	</if>
+	<if test="searchCondition == 'CONTENT'">
+	AND CONTENT LIKE '%'||#{searchKeyword}||'%'
+	</if>
+	ORDER BY NO DESC) B) a
+	<![CDATA[
+	WHERE R >= #{startRow} AND R <= #{endRow}
+	]]>
+	</select>
+	
+	<select id="getPetStory" resultType="petstory">
+		SELECT * FROM PET_STORY WHERE NO = #{no}
+	</select>
+
+	<select id="getMood" resultType="P_MOOD">
+		SELECT * FROM P_MOOD WHERE NO = #{no}
+	</select>
+	
+	<select id="P_historyCheck" resultType="P_HISTORY">
+		SELECT * FROM P_MOOD_HISTORY
+	</select>
+
+	<select id="getBestList" resultType="petstory">
+		SELECT NO, WRITER, TITLE, CONTENT, REGDATE, CNT, ROW_NUMBER() OVER
+		(ORDER BY CNT DESC, REGDATE DESC) AS RANK
+		FROM (SELECT NO, WRITER, TITLE, CONTENT, REGDATE, CNT FROM PET_STORY ORDER BY
+		CNT DESC)
+		<![CDATA[
+		where rownum <= 5  AND REGDATE between ADD_MONTHS ( TRUNC(sysdate, 'MM'), -1) AND LAST_DAY(SYSDATE)
+		]]>
+	</select>
+
+	<update id="increaseCount">
+		UPDATE PET_STORY SET CNT = CNT + 1 WHERE NO = #{no}
+	</update>
+
+	<update id="goodOrBad" parameterType="P_MOOD">
+		UPDATE P_MOOD
+		<if test="good == 1">
+		SET GOOD = GOOD + 1
+		</if>
+		<if test="bad == 1">
+		SET BAD = BAD + 1
+		</if>
+		WHERE NO = #{no}
+	</update>
+
+	<update id="updatePetStory">
+		UPDATE PET_STORY SET TITLE=#{title}, CONTENT=#{content} WHERE NO = #{no}
+	</update>
+
+	<delete id="deletePetStory">
+		DELETE FROM PET_STORY WHERE NO = #{no}
+	</delete>
+	
+	<delete id="deleteP_History">
+		DELETE FROM P_MOOD_HISTORY WHERE NO = #{no}
+	</delete>
+
+	<delete id="deleteP_Mood">
+		DELETE FROM P_MOOD WHERE NO = #{no}
+	</delete>
+
+	<resultMap id="PetStoryResult" type="petstory">
+		<id property="no" column="NO" />
+		<result property="writer" column="WRITER" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="regDate" column="REGDATE" />
+		<result property="cnt" column="CNT" />
+		<result property="comment_cnt" column="comment_cnt"/>
+	</resultMap>
+
+</mapper>

@@ -21,6 +21,13 @@
 		<typeAlias type="com.springbook.biz.convidence.ReviewVO" alias="review" />
 		<typeAlias type="com.springbook.biz.convidence.CartVO" alias="cart" />
 		<typeAlias type="com.springbook.biz.user.NaverLoginVO" alias="naver"/>
+		<typeAlias type="com.springbook.biz.PetStory.PetStoryVO" alias="petstory"/>
+		<typeAlias type="com.springbook.biz.PetStory.P_MoodVO" alias="P_MOOD"/>
+		<typeAlias type="com.springbook.biz.PetStory.P_HistoryDTO" alias="P_HISTORY"/>
+		<typeAlias type="com.springbook.biz.P_comment.P_CommentVO" alias="P_Comment" />
+		<typeAlias type="com.springbook.biz.P_comment.P_C_MoodVO" alias="P_C_MOOD" />
+		<typeAlias type="com.springbook.biz.P_comment.P_C_HistoryDTO" alias="P_C_HISTORY" />
+		<typeAlias type="com.springbook.biz.P_comment.P_BestCommentDTO" alias="P_best" />
 	</typeAliases>
 	
 	<!-- Sql Mapper 설정 -->
@@ -30,5 +37,7 @@
 		<mapper resource="mappings/comment-mapping.xml" />
 		<mapper resource="mappings/convidence-mapping.xml" />
 		<mapper resource="mappings/naver-mapping.xml" />
+		<mapper resource="mappings/petstory-mapping.xml"/>
+		<mapper resource="mappings/petstorycomment-mapping.xml"/>
 	</mappers>
 </configuration>

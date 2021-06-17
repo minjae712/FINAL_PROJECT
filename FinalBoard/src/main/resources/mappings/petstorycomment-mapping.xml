@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="P_CommentDAO">
+
+	<insert id="insertP_Comment">	
+		INSERT INTO P_COMMENT(COMMENT_NO,NO,WRITER,CONTENT)
+		VALUES((SELECT NVL(MAX(COMMENT_NO), 0) + 1 FROM P_COMMENT),#{no},#{writer},#{content})
+	</insert>
+
+	<insert id="insertP_Mood">	
+		INSERT INTO P_COMMENT_MOOD(NO,COMMENT_NO) VALUES(#{no},(SELECT NVL(MAX(COMMENT_NO), 0) FROM P_COMMENT))
+	</insert>
+	
+	<insert id="insertP_C_History" >	
+		INSERT INTO P_C_MOOD_HISTORY
+		VALUES(#{no},#{comment_no},#{mem_code})
+	</insert>
+
+	<select id="textAreaSet" resultType="P_Comment">
+	SELECT * FROM P_COMMENT WHERE NO = #{no} AND COMMENT_NO = #{commentNo}
+	</select>
+	
+	<select id="getP_CommentList" resultMap="P_CommentResult">
+	<![CDATA[
+	SELECT * FROM P_COMMENT WHERE NO = #{no} ORDER BY COMMENT_NO
+	]]>
+	</select>
+
+	<select id="getP_BestCommentList" resultMap="P_BestResult">
+	SELECT * FROM (SELECT B.*,ROWNUM AS R FROM 
+	(SELECT BC.COMMENT_NO,BC.NO,BC.WRITER,BC.REGDATE,BC.CONTENT,CM.GOOD,CM.BAD FROM 
+	P_COMMENT BC,P_COMMENT_MOOD CM 
+	WHERE BC.COMMENT_NO = CM.COMMENT_NO AND BC.NO = #{no} ORDER BY CM.GOOD DESC) B)
+	<![CDATA[
+	 WHERE R >= 1 AND R <= 3
+	]]>
+	</select>
+	
+	<select id="P_c_historyCheck" resultType="P_C_HISTORY">
+		SELECT * FROM P_C_MOOD_HISTORY
+	</select>
+	
+	<select id="getP_CommentMood" resultMap="P_C_MoodResult">
+	SELECT * FROM P_COMMENT_MOOD WHERE NO = #{no} ORDER BY COMMENT_NO
+	</select>
+
+	<update id="updateP_Comment">
+		UPDATE P_COMMENT SET CONTENT=#{content} WHERE NO = #{no} AND COMMENT_NO = #{commentNo}
+	</update>
+
+	<update id="goodOrBad" parameterType="P_C_MOOD">
+		UPDATE P_COMMENT_MOOD
+		<if test="good == 1">
+		SET GOOD = GOOD + 1
+		</if>
+		<if test="bad == 1">
+		SET BAD = BAD + 1
+		</if>
+		WHERE NO = #{no} AND COMMENT_NO = #{commentNo}
+	</update>
+	
+	<select id="getP_CommentCount" resultType="int">
+	SELECT COUNT(*) FROM P_COMMENT WHERE NO = #{no}
+	</select>
+	
+	<delete id="deleteP_Comment">
+		DELETE FROM P_COMMENT WHERE NO = #{no} AND COMMENT_NO = #{commentNo}
+	</delete>
+	
+	<delete id="deleteAllP_Comment">
+		DELETE FROM P_COMMENT WHERE NO = #{no}
+	</delete>
+
+	<delete id="deleteP_Mood">
+		DELETE FROM P_COMMENT_MOOD WHERE NO = #{no} AND COMMENT_NO = #{commentNo} 
+	</delete>
+	
+	<delete id="deleteP_C_History">
+		DELETE FROM P_C_MOOD_HISTORY WHERE NO = #{no} AND COMMENT_NO = #{commentNo} 
+	</delete>
+
+	<delete id="deleteAllP_C_Mood">
+		DELETE FROM P_COMMENT_MOOD WHERE NO = #{no}
+	</delete>
+
+	<delete id="deleteAllP_C_History">
+		DELETE FROM P_C_MOOD_HISTORY WHERE NO = #{no}
+	</delete>
+
+	<resultMap id="P_CommentResult" type="P_Comment">
+		<id property="commentNo" column="COMMENT_NO"/>
+		<result property="no" column="NO" />
+		<result property="writer" column="WRITER" />
+		<result property="content" column="CONTENT" />
+		<result property="regDate" column="REGDATE" />
+	</resultMap>
+
+	<resultMap id="P_BestResult" type="P_best">
+		<id property="commentNo" column="COMMENT_NO"/>
+		<result property="no" column="NO" />
+		<result property="writer" column="WRITER" />
+		<result property="content" column="CONTENT" />
+		<result property="regDate" column="REGDATE" />
+		<result property="good" column="GOOD" />
+		<result property="bad" column="BAD" />
+	</resultMap>
+	
+		<resultMap id="P_C_MoodResult" type="P_C_MOOD">
+		<id property="commentNo" column="COMMENT_NO"/>
+		<result property="no" column="NO" />
+		<result property="good" column="GOOD" />
+		<result property="bad" column="BAD" />
+	</resultMap>
+
+</mapper>
