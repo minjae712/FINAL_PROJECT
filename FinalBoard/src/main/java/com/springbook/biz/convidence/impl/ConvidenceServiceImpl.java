@@ -70,6 +70,10 @@ public class ConvidenceServiceImpl implements ConvidenceService {
 
 	@Override
 	public void deleteOrder(BillVO vo) {
+		ReviewVO review = new ReviewVO();
+		review.setSell_code(vo.getSell_code());
+		Review_HistoryDTO dto = convidenceDAO.getHistory(review);
+		convidenceDAO.deleteReview_history(dto);
 		convidenceDAO.deleteOrder(vo);
 	}
 	@Override
