@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
-<!doctype html>
+<!DOCTYPE>
 <html class="no-js" lang="zxx">
 
 <head>
@@ -8,25 +8,7 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- <link rel="manifest" href="site.webmanifest"> -->
-<link rel="shortcut icon" type="image/x-icon"
-	href="./resources/css/img/favicon.png">
-<!-- Place favicon.ico in the root directory -->
-
-<!-- CSS here -->
-<link rel="stylesheet" href="./resources/css/css/bootstrap.min.css">
-<link rel="stylesheet" href="./resources/css/css/owl.carousel.min.css">
-<link rel="stylesheet" href="./resources/css/css/magnific-popup.css">
-<link rel="stylesheet" href="./resources/css/css/font-awesome.min.css">
-<link rel="stylesheet" href="./resources/css/css/themify-icons.css">
-<link rel="stylesheet" href="./resources/css/css/nice-select.css">
-<link rel="stylesheet" href="./resources/css/css/flaticon.css">
-<link rel="stylesheet" href="./resources/css/css/gijgo.css">
-<link rel="stylesheet" href="./resources/css/css/animate.css">
-<link rel="stylesheet" href="./resources/css/css/slicknav.css">
-<link rel="stylesheet" href="./resources/css/css/style.css">
-<!-- <link rel="stylesheet" href="css/responsive.css"> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 
 <body>

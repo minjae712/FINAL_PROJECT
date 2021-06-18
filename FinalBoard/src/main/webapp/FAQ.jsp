@@ -1,16 +1,12 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <!DOCTYPE>
-<html class="no-js" lang="zxx">
-
+<html>
 <head>
 <meta charset="utf-8">
-<meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>고객센터</title>
-<meta name="description" content="">
 <!-- CSS here -->
 <link rel="stylesheet" type="text/css" href="./resources/css/css/bootstrap.min.css">
 <link rel="stylesheet" href="./resources/css/assets/css/style.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 <script>document.getElementsByTagName("html")[0].className += " js";</script>
 </head>

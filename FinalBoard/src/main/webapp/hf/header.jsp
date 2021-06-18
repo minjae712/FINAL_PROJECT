@@ -40,7 +40,7 @@ div.line-blue{
 </head>
 <body>
     <header>
-        <div class="header-area" >
+        <div class="header-area">
             <div class="header-top_area" >
                 <div class="container" >
                     <div class="row" >
@@ -49,11 +49,11 @@ div.line-blue{
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-4 " >
-                            <div class="social_media_links" >
+                            <div>
                             	<u:isLogin>
-                            		<b style="color: white;">${user.name}님, 환영합니다!</b>
-                            		<a href="myCartPage.do?mem_code=${user.mem_code}"><button style="width: 10%;height: 5%"><i class="glyphicon glyphicon-shopping-cart"></i></button></a>
-                            		<a href="getUser.do"><img src="./customcss/MyPage.png"></a>
+                            		<b class="dropdown" style="color: white;font-size: 15px;margin-right: 3%;">${user.name}님, 환영합니다!</b>
+                            		<a href="myCartPage.do?mem_code=${user.mem_code}" style="margin-right: 3%;"><img src="./customcss/cart.png"></a>
+                            		<a href="getUser.do"><img src="./customcss/MyPage.png" style="margin-right: 3%;"></a>
 									<a href="${pageContext.request.contextPath}/logout.do"><img src="./customcss/Logout_button.png"></a>
 								</u:isLogin>
                                 <u:notLogin>
