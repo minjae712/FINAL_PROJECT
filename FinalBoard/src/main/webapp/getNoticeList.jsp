@@ -34,8 +34,8 @@
 	            </a>
 	        </li>
 	        <li>
-	            <a href="#" class="d-flex" style="color: #619fd7;">
-	                1:1 문의하기
+	            <a href="contact.jsp" class="d-flex" style="color: #619fd7;">
+	                회사위치
 	            </a>
 	        </li>
 	        <li>
