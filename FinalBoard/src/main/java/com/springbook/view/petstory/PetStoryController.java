@@ -67,14 +67,14 @@ public class PetStoryController {
 			}
 		}	
 		petStoryService.insertPetStory(vo);
-		return "redirect:InsertBoardSuccess.jsp";
+		return "redirect:InsertPetStorySuccess.jsp";
 	}
 	
 
 	@RequestMapping("/updatePetStory.do")
 	public String updatePetStory(@ModelAttribute("PetStory") PetStoryVO vo) {
 		petStoryService.updatePetStory(vo);
-		return "updateBoardSuccess.jsp";
+		return "updatePetStorySuccess.jsp";
 	}
 
 	@RequestMapping("/deletePetStory.do")
@@ -87,7 +87,7 @@ public class PetStoryController {
 	public String getPetStory(PetStoryVO vo, Model model) {
 		PetStoryVO result = petStoryService.getPetStory(vo);
 		model.addAttribute("PetStory", result);
-		return "getBoard.jsp"; 
+		return "getPetStory.jsp"; 
 	}
 
 	@RequestMapping("/getPetStoryMood.do")
@@ -116,7 +116,7 @@ public class PetStoryController {
 		PetStoryPages<PetStoryVO> result = petStoryService.getPetStoryPages(pages.getCurrentPage(),vo);
 		vo.setSearchKeyword(vo.getSearchKeyword());
 		model.addAttribute("petstorys",result);
-		return "blog.jsp";
+		return "getPetStoryList.jsp";
 	}
 	
 	@RequestMapping(value ="/getPetStoryUserList.do")
@@ -129,7 +129,7 @@ public class PetStoryController {
 		vo.searchNullCheck(vo);
 		PetStoryPages<PetStoryVO> result = petStoryService.getPetStoryUserPages(pageNo, vo, name);
 		vo.setSearchKeyword(vo.getSearchKeyword());
-		model.addAttribute("pages",result);
+		model.addAttribute("petstorys",result);
 		return "getBoardUserPage.jsp";
 	}
 	

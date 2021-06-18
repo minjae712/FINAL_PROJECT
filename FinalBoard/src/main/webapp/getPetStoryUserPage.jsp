@@ -34,7 +34,7 @@
 		<div style="width: 70%">
 			<div align="right">
 				<c:if test="${user.isEmpty()}">
-					<a class="btn btn-default" href="insertBoard.jsp">새글 등록</a>
+					<a class="btn btn-default" href="insertPetStory.jsp">새글 등록</a>
 				</c:if>
 			</div>
 			<table class="table table-striped">
@@ -45,37 +45,37 @@
 					<th width="100">등록일</th>
 					<th width="50">조회수</th>
 				</tr>
-				<c:forEach items="${pages.boardList}" var="board">
+				<c:forEach items="${petstorys.petStoryList}" var="petsotry">
 					<tr>
-						<td>${board.no}</td>
-						<td align="left"><a href="getBoard.do?no=${board.no}">${board.title}</a>[${board.comment_cnt}]</td>
-						<td>${board.writer}</td>
-						<td>${board.regDate}</td>
-						<td>${board.cnt}</td>
+						<td>${petsotry.no}</td>
+						<td align="left"><a href="getBoard.do?no=${petsotry.no}">${petsotry.title}</a>[${petsotry.comment_cnt}]</td>
+						<td>${petsotry.writer}</td>
+						<td>${petsotry.regDate}</td>
+						<td>${petsotry.cnt}</td>
 					</tr>
 				</c:forEach>
-				<c:if test="${pages.hasArticles()}">
+				<c:if test="${petstorys.hasArticles()}">
 					<tr>
 						<td colspan="5" class="text-center">
 							<ul class="pagination">
-								<c:if test="${pages.startPage > 5}">
+								<c:if test="${petstorys.startPage > 5}">
 									<li><a
-										href="getBoardUserList.do?currentPage=${pages.startPage - 5}&searchKeyword=${bvo.searchKeyword}">이전</a></li>
+										href="getPetStoryUserList.do?currentPage=${petstorys.startPage - 5}&searchKeyword=${pvo.searchKeyword}">이전</a></li>
 								</c:if>
-								<c:forEach var="pNo" begin="${pages.startPage}"
-									end="${pages.endPage}">
-									<c:if test="${pNo == pages.currentPage}">
+								<c:forEach var="pNo" begin="${petstorys.startPage}"
+									end="${petstorys.endPage}">
+									<c:if test="${pNo == petstorys.currentPage}">
 										<li class="active"><a
-											href="getBoardUserList.do?currentPage=${pNo}&searchKeyword=${bvo.searchKeyword}">${pNo}</a></li>
+											href="getPetStoryUserList.do?currentPage=${pNo}&searchKeyword=${pvo.searchKeyword}">${pNo}</a></li>
 									</c:if>
-									<c:if test="${pNo != pages.currentPage}">
+									<c:if test="${pNo != petstorys.currentPage}">
 										<li><a
-											href="getBoardUserList.do?currentPage=${pNo}&searchKeyword=${bvo.searchKeyword}">${pNo}</a></li>
+											href="getPetStoryUserList.do?currentPage=${pNo}&searchKeyword=${pvo.searchKeyword}">${pNo}</a></li>
 									</c:if>
 								</c:forEach>
-								<c:if test="${pages.endPage < pages.totalPages}">
+								<c:if test="${petstorys.endPage < petstorys.totalPages}">
 									<li><a
-										href="getBoardUserList.do?currentPage=${pages.startPage + 5}&searchKeyword=${bvo.searchKeyword}">다음</a></li>
+										href="getPetStoryUserList.do?currentPage=${pages.startPage + 5}&searchKeyword=${pvo.searchKeyword}">다음</a></li>
 								</c:if>
 							</ul>
 						</td>
@@ -85,13 +85,13 @@
 		</div>
 	</div>
 	<div align="center" style="margin-bottom: 10%;">
-		<form class="form-inline" action="getBoardUserList.do" method="post">
+		<form class="form-inline" action="getPetStoryUserList.do" method="post">
 			<div class="form-group">
 				<select class="form-control" name="searchCondition">
 					<option value="TITLE" selected="selected">제목</option>
 					<option value="CONTENT">내용</option>
 				</select> <input class="form-control" name="searchKeyword" type="text"
-					value="${bvo.searchKeyword}" /> <input class="btn btn-default"
+					value="${pvo.searchKeyword}" /> <input class="btn btn-default"
 					type="submit" value="검색" />
 			</div>
 		</form>

@@ -83,7 +83,8 @@ div.line-blue{
 										<li><a href="about.jsp">사이트 소개</a></li>
 										<li><a href="#">게시판 <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                 <li><a href="getBoardList.do">마이펫 자랑하기</a></li>
+                                                 <li><a href="getBoardList.do">게시글</a></li>
+                                                 <li><a href="getPetStoryList.do">마이펫 자랑하기</a></li>
                                                 </ul> </li>
 											<li><a href="#">서비스 <i class="ti-angle-down"></i></a>
 											<ul class="submenu">

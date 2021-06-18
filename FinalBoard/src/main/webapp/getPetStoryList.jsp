@@ -86,10 +86,6 @@
 							<article class="blog_item">
 								<div class="blog_item_img">
 									<img class="card-img rounded-0" src="./resources/css/img/blog/single_blog_1.png" alt="">
-									<a href="#" class="blog_item_date">
-										<h3>15</h3>
-										<p>Jan</p>
-									</a>
 								</div>
 
 								<div class="blog_details">
@@ -144,9 +140,9 @@
 					</div>
 					<div align="right">
 						<c:if test="${user.isEmpty()}">
-							<a class="btn btn-default" href="insertBoard.jsp">새글 등록</a>
+							<a class="btn btn-default" href="insertPetStory.jsp">새글 등록</a>
 							<c:if test="${user.isAdmin()}">
-								<a class="btn btn-danger" href="insertNotice.jsp">공지사항 등록</a>
+								<a class="btn btn-danger" href="getPetStoryUserList.do?name=${user.name}">내글 확인</a>
 							</c:if>
 						</c:if>
 					</div>
@@ -154,13 +150,13 @@
 				<div class="col-lg-4">
 					<div class="blog_right_sidebar">
 						<aside class="single_sidebar_widget search_widget">
-							<form action="#">
+							<form action="getPetStoryUserList.do" method="post">
 								<div class="form-group">
 									<div class="input-group mb-3">
-										<input type="text" class="form-control"
-											placeholder='Search Keyword' onfocus="this.placeholder = ''"
-											onblur="this.placeholder = 'Search Keyword'"
-											name="searchKeyword" value="${bvo.searchKeyword}">
+									<select class="form-control" name="searchCondition" style="height: 50px">
+										<option value="TITLE" selected="selected">제목</option>
+										<option value="CONTENT">내용</option> </select>
+										<input class="form-control" name="searchKeyword" type="text" value="${pvo.searchKeyword}" />
 										<div class="input-group-append">
 											<button class="btn" type="button">
 												<i class="ti-search"></i>
