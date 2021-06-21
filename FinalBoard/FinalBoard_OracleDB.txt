@@ -74,7 +74,7 @@ CREATE TABLE MEMBER(
 );
 
 
-INSERT INTO MEMBER VALUES('test','admin','test123','test@naver.com','lion_profile.png','멍냥컴퍼니 관리1팀',sysdate,'08500','서울 금천구 가마산로 76(가산동)',CONCAT('ME00',TO_CHAR(MEM_SEQ.CURRVAL)),'010-0000-0000');
+INSERT INTO MEMBER VALUES('test','admin','test123','boreds@daum.net','lion_profile.png','멍냥컴퍼니 관리1팀',sysdate,'08500','서울 금천구 가마산로 76(가산동)',CONCAT('ME00',TO_CHAR(MEM_SEQ.CURRVAL)),'010-0000-0000');
 INSERT INTO MEMBER VALUES('user','user','user123','user@naver.com','lion_profile.png','김해민',sysdate,'21510','인천 남동구 간석로 7(간석동)',CONCAT('ME00',TO_CHAR(MEM_SEQ.NEXTVAL)),'010-0000-0000');
 
 
@@ -212,9 +212,9 @@ INSERT INTO PRODUCT VALUES(CONCAT('PR00',TO_CHAR(PRO_SEQ.NEXTVAL)),'cat_snack.pn
 DROP TABLE BILL CASCADE CONSTRAINT;
 CREATE TABLE BILL(
   SELL_CODE NUMBER,					-- 판매내역코드
-  PRO_CODE VARCHAR2(20),			-- 제품코드
-  PRO_NAME VARCHAR2(20),			-- 제품이름
-  MEM_CODE VARCHAR2(20),			-- 유저코드
+  PRO_CODE VARCHAR2(100),			-- 제품코드
+  PRO_NAME VARCHAR2(100),			-- 제품이름
+  MEM_CODE VARCHAR2(100),			-- 유저코드
   PRICE NUMBER,						-- 판매총가격
   COUNT NUMBER,						-- 판매총수량
   SELL_DATE DATE,					-- 결제일

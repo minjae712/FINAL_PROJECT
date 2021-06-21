@@ -45,7 +45,7 @@ public class PetStoryController {
 	public String insertPetStory(PetStoryVO vo,HttpServletRequest request) throws IOException {
 		
 		vo.setFileName("");
-		String upload ="uploadfile\\"; //저장할 경로
+		String upload ="customcss\\"; //저장할 경로
 		String realFolder = request.getRealPath("") + upload; //web-inf바로전 까지 저장할 경로
 		System.out.println( "설정 경로 : " + realFolder);
 		MultipartFile uploadFile = vo.getUploadFile();

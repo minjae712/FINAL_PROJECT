@@ -70,11 +70,23 @@ public class ConvidenceServiceImpl implements ConvidenceService {
 
 	@Override
 	public void deleteOrder(BillVO vo) {
+		System.out.println("로그1");
 		ReviewVO review = new ReviewVO();
+		System.out.println("로그2");
 		review.setSell_code(vo.getSell_code());
-		Review_HistoryDTO dto = convidenceDAO.getHistory(review);
+		review.setMem_code(vo.getMem_code());
+		review.setPro_code(vo.getPro_code());
+		List<Review_HistoryDTO> dto2 = convidenceDAO.getHistory(review);
+		Review_HistoryDTO dto = new Review_HistoryDTO();
+		for (int i = 0; i < dto2.size(); i++) {
+			if (dto2.get(i).getSell_code() == vo.getSell_code()) {
+				dto.setSell_code(vo.getSell_code());
+			}
+		}
+		System.out.println("로그4");
 		convidenceDAO.deleteReview_history(dto);
 		convidenceDAO.deleteOrder(vo);
+		System.out.println("로그5");
 	}
 	@Override
 	public void deleteCart(CartVO vo) {
@@ -87,7 +99,13 @@ public class ConvidenceServiceImpl implements ConvidenceService {
 
 	@Override
 	public void insertReviewList(ReviewVO vo) {
-		Review_HistoryDTO dto = convidenceDAO.getHistory(vo);
+		List<Review_HistoryDTO> dto2 = convidenceDAO.getHistory(vo);
+		Review_HistoryDTO dto = new Review_HistoryDTO();
+		for (int i = 0; i < dto2.size(); i++) {
+			if (dto2.get(i).getSell_code() == vo.getSell_code()) {
+				dto.setSell_code(vo.getSell_code());
+			}
+		}
 		convidenceDAO.deleteReview_history(dto);
 		convidenceDAO.insertReviewList(vo);
 	}

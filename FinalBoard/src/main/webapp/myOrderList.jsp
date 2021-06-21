@@ -8,6 +8,7 @@
 <script type="text/javascript">
 	
 	var order_code;
+	var pro_code;
 	var user_code = '${user.mem_code}';
 	
 function fn_deleteOrder() {
@@ -16,7 +17,7 @@ function fn_deleteOrder() {
 	
 	if(order_code != 0 && order_code != null) {
 		if(del_Order){
-			location.href = "deleteOrder.do?sell_code=" + order_code + "&mem_code=" + user_code;
+			location.href = "deleteOrder.do?sell_code=" + order_code + "&mem_code=" + user_code + "&pro_code=" + pro_code;
 		}else{
 			return;
 		};
@@ -26,8 +27,9 @@ function fn_deleteOrder() {
 	}
 }
 
-function fn_saveNum(num) {
+function fn_saveNum(num,pro) {
 	order_code = num;
+	pro_code = pro;
 }
 </script>
 <meta charset="UTF-8">
@@ -73,7 +75,7 @@ function fn_saveNum(num) {
 					<td>${order.address}</td>
 					<td>${order.name}</td>
 					<td>${order.req}</td>
-					<td><input type="radio" id="del_reser${order.sell_code}" value="${order.sell_code}" onclick="fn_saveNum(${order.sell_code})"></td>
+					<td><input type="radio" id="del_reser${order.sell_code}" value="${order.sell_code}" onclick="fn_saveNum(${order.sell_code},'${order.pro_code}')"></td>
 				</tr>
 			</c:forEach>
 		</table>

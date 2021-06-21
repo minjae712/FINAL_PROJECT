@@ -90,6 +90,12 @@ function fn_delete() {
 				<input class="form-control" type="text" value="${user.birth}" style="width: 160px;" readonly="readonly">
 			</span>
 		</span><br><br><br>
+		<span class="form-group has-warning">
+			<label class="col-md-1 control-label">전화번호</label>
+			<span class="col-md-1">
+				<input class="form-control" type="text" value="${user.phone}" style="width: 160px;" readonly="readonly">
+			</span>
+		</span><br><br><br>
 		<span class="form-group has-warning">	
 			<label class="col-md-1 control-label">주소</label>
 			<span class="col-md-1">

@@ -165,8 +165,10 @@ public class ConvidenceController {
 	
 	@RequestMapping(value = "/deleteOrder.do")
 	public String deleteOrder(BillVO vo) {
+		System.out.println("시작은 완료");
 		convidenceService.deleteOrder(vo);
-		return "redirect:getOrderList.do?mem_code=" + vo.getMem_code();
+		System.out.println("작동은 완료");
+		return "OrderdeleteSuccess.jsp";
 	}
 	
 	@RequestMapping(value = "/insertReviewList.do")

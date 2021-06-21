@@ -289,7 +289,9 @@ public class UserController {
 	}
 	
 	@RequestMapping("/getUser.do")
-	public String getUser() {
+	public String getUser(UserVO vo,HttpSession session) {
+		UserVO user = userservice.getUser(vo);
+		session.setAttribute("user", user);
 		return "myPage.jsp";
 	}
 
